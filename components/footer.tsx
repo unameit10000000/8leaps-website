@@ -29,7 +29,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-black text-white py-12 mt-auto">
+    <footer className="bg-black text-white py-12 mt-auto lg:px-4">
       <div className="container">
         <div className="grid gap-8 md:grid-cols-3">
           <div>

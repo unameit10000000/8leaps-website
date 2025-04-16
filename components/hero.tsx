@@ -18,7 +18,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-green-500 to-green-400 py-16 md:py-36">
+    <section className="relative overflow-hidden bg-gradient-to-b from-green-500 to-green-400 py-16 md:py-36 lg:px-4">
       {/* Decorative elements */}
       <div className="absolute inset-0 z-0 opacity-20">
         <div className="absolute top-10 left-10 h-8 w-8 rounded-full bg-white"></div>
@@ -97,7 +97,7 @@ export function Hero() {
         <div className="order-1 md:order-2 flex justify-center">
           <div className="relative h-64 w-64 md:h-80 md:w-80">
             <Image
-              src="/rocket.svg"
+              src="/hero-image.png"
               alt="Rocket illustration"
               fill
               className="object-contain"

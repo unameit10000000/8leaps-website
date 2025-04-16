@@ -200,14 +200,14 @@ const translations = {
       "Blazing fast performance",
     ],
     "pricing.custom.description":
-      "For projects with unique requirements and specific needs—built exactly to your specifications.",
+      "For projects with unique requirements and specific needs, built exactly to your specifications.",
     "pricing.additional.title": "Additional Services",
     "pricing.additional.ai.title": "AI Integrations",
     "pricing.additional.ai.description":
-      "Smart integrations for startups and established businesses. From chatbots to content tools and backend automation—bring AI into your product, website, or workflow.",
+      "Smart integrations for startups and established businesses. From chatbots to content tools and backend automation, bring AI into your product, website, or workflow.",
     "pricing.additional.validation.title": "Idea Validation",
     "pricing.additional.validation.description":
-      "Testing and validation for new products and startup ideas. We act like real users, test like devs, and think like critics—offering you feedback, bug reports, and UX suggestions before launch.",
+      "Testing and validation for new products and startup ideas. We act like real users, test like devs, and think like critics, offering you feedback, bug reports, and UX suggestions before launch.",
     "pricing.cta": "Contact us",
   },
   nl: {
@@ -225,7 +225,7 @@ const translations = {
     "services.contact": "Neem contact op",
     "hero.title": "Spring vooruit. Blijf voorop.",
     "hero.subtitle":
-      "De concurrentie wacht niet—en wij ook niet. Van krachtige weboplossingen tot slimme strategie, wij zorgen dat je snel schakelt, relevant blijft en je digitale aanwezigheid blijft verbeteren.",
+      "De concurrentie wacht niet, en wij ook niet. Van krachtige weboplossingen tot slimme strategie, wij zorgen dat je snel schakelt, relevant blijft en je digitale aanwezigheid blijft verbeteren.",
     "hero.cta": "Lees meer over onze diensten",
     "chat.button": "Plan Gesprek ☕",
     "footer.rights": "Alle rechten voorbehouden",
@@ -402,14 +402,14 @@ const translations = {
       "Razendsnelle prestaties",
     ],
     "pricing.custom.description":
-      "Voor projecten met unieke vereisten en specifieke behoeften—precies gebouwd volgens uw specificaties.",
+      "Voor projecten met unieke vereisten en specifieke behoeften, precies gebouwd volgens uw specificaties.",
     "pricing.additional.title": "Aanvullende Diensten",
     "pricing.additional.ai.title": "AI Integraties",
     "pricing.additional.ai.description":
-      "Slimme integraties voor startups en gevestigde bedrijven. Van chatbots tot content tools en backend automatisering—breng AI in uw product, website of workflow.",
+      "Slimme integraties voor startups en gevestigde bedrijven. Van chatbots tot content tools en backend automatisering, breng AI in uw product, website of workflow.",
     "pricing.additional.validation.title": "Idee Validatie",
     "pricing.additional.validation.description":
-      "Testen en validatie voor nieuwe producten en startup ideeën. We handelen als echte gebruikers, testen als ontwikkelaars en denken als critici—en bieden u feedback, bugrapporten en UX-suggesties vóór de lancering.",
+      "Testen en validatie voor nieuwe producten en startup ideeën. We handelen als echte gebruikers, testen als ontwikkelaars en denken als critici, en bieden u feedback, bugrapporten en UX-suggesties vóór de lancering.",
     "pricing.cta": "Neem contact op",
   },
 };
