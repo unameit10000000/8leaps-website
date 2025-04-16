@@ -1,27 +1,15 @@
-"use client";
+"use client"
 
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import { useLanguage } from "@/components/language-provider";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Check,
-  Code,
-  Lightbulb,
-  Bot,
-  MessageCircleQuestion,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
+import { useLanguage } from "@/components/language-provider"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Check, Code, Lightbulb, Bot, MessageCircleQuestion } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function ServicesPage() {
-  const { t } = useLanguage();
+  const { t } = useLanguage()
 
   // Main service categories
   const mainServices = [
@@ -74,19 +62,15 @@ export default function ServicesPage() {
       ],
       bgColor: "bg-green-50 dark:bg-green-900/20", // End with green background
     },
-  ];
+  ]
 
   return (
     <main className="min-h-screen flex flex-col">
       <Header />
       <div className="bg-gradient-to-b from-green-500 to-green-400 py-12 md:py-24">
         <div className="container">
-          <h1 className="text-4xl font-bold text-white text-center">
-            {t("services.title")}
-          </h1>
-          <p className="text-white text-center mt-4 max-w-2xl mx-auto">
-            {t("services.page.subtitle")}
-          </p>
+          <h1 className="text-4xl font-bold text-white text-center">{t("services.title")}</h1>
+          <p className="text-white text-center mt-4 max-w-2xl mx-auto">{t("services.page.subtitle")}</p>
         </div>
       </div>
 
@@ -102,13 +86,9 @@ export default function ServicesPage() {
                 <div>
                   <div className="flex items-center gap-4 mb-4 md:mb-8">
                     {service.icon}
-                    <h2 className="text-2xl md:text-3xl font-bold">
-                      {service.title}
-                    </h2>
+                    <h2 className="text-2xl md:text-3xl font-bold">{service.title}</h2>
                   </div>
-                  <p className="text-muted-foreground mb-4 md:mb-8">
-                    {service.description}
-                  </p>
+                  <p className="text-muted-foreground mb-4 md:mb-8">{service.description}</p>
                   <ul className="space-y-2 md:space-y-4">
                     {service.subServices.map((subService, idx) => (
                       <li key={idx} className="flex items-start">
@@ -123,26 +103,18 @@ export default function ServicesPage() {
                     <>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
-                          <CardTitle>
-                            {t("services.consulting.card1.title")}
-                          </CardTitle>
+                          <CardTitle>{t("services.consulting.card1.title")}</CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <CardDescription>
-                            {t("services.consulting.card1.description")}
-                          </CardDescription>
+                          <CardDescription>{t("services.consulting.card1.description")}</CardDescription>
                         </CardContent>
                       </Card>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
-                          <CardTitle>
-                            {t("services.consulting.card2.title")}
-                          </CardTitle>
+                          <CardTitle>{t("services.consulting.card2.title")}</CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <CardDescription>
-                            {t("services.consulting.card2.description")}
-                          </CardDescription>
+                          <CardDescription>{t("services.consulting.card2.description")}</CardDescription>
                         </CardContent>
                       </Card>
                     </>
@@ -151,26 +123,18 @@ export default function ServicesPage() {
                     <>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
-                          <CardTitle>
-                            {t("services.validation.card1.title")}
-                          </CardTitle>
+                          <CardTitle>{t("services.validation.card1.title")}</CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <CardDescription>
-                            {t("services.validation.card1.description")}
-                          </CardDescription>
+                          <CardDescription>{t("services.validation.card1.description")}</CardDescription>
                         </CardContent>
                       </Card>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
-                          <CardTitle>
-                            {t("services.validation.card2.title")}
-                          </CardTitle>
+                          <CardTitle>{t("services.validation.card2.title")}</CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <CardDescription>
-                            {t("services.validation.card2.description")}
-                          </CardDescription>
+                          <CardDescription>{t("services.validation.card2.description")}</CardDescription>
                         </CardContent>
                       </Card>
                     </>
@@ -179,26 +143,18 @@ export default function ServicesPage() {
                     <>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
-                          <CardTitle>
-                            {t("services.webdev.card1.title")}
-                          </CardTitle>
+                          <CardTitle>{t("services.webdev.card1.title")}</CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <CardDescription>
-                            {t("services.webdev.card1.description")}
-                          </CardDescription>
+                          <CardDescription>{t("services.webdev.card1.description")}</CardDescription>
                         </CardContent>
                       </Card>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
-                          <CardTitle>
-                            {t("services.webdev.card2.title")}
-                          </CardTitle>
+                          <CardTitle>{t("services.webdev.card2.title")}</CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <CardDescription>
-                            {t("services.webdev.card2.description")}
-                          </CardDescription>
+                          <CardDescription>{t("services.webdev.card2.description")}</CardDescription>
                         </CardContent>
                       </Card>
                     </>
@@ -207,36 +163,25 @@ export default function ServicesPage() {
                     <>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
-                          <CardTitle>
-                            {t("services.aiintegration.card1.title")}
-                          </CardTitle>
+                          <CardTitle>{t("services.aiintegration.card1.title")}</CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <CardDescription>
-                            {t("services.aiintegration.card1.description")}
-                          </CardDescription>
+                          <CardDescription>{t("services.aiintegration.card1.description")}</CardDescription>
                         </CardContent>
                       </Card>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
-                          <CardTitle>
-                            {t("services.aiintegration.card2.title")}
-                          </CardTitle>
+                          <CardTitle>{t("services.aiintegration.card2.title")}</CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <CardDescription>
-                            {t("services.aiintegration.card2.description")}
-                          </CardDescription>
+                          <CardDescription>{t("services.aiintegration.card2.description")}</CardDescription>
                         </CardContent>
                       </Card>
                     </>
                   )}
                 </div>
                 <div className="mt-4 md:mt-8">
-                  <Button
-                    asChild
-                    className="bg-green-500 hover:bg-green-600 text-white"
-                  >
+                  <Button asChild className="bg-green-500 hover:bg-green-600 text-white">
                     <Link href="/contact">{t("services.contact")}</Link>
                   </Button>
                 </div>
@@ -249,24 +194,13 @@ export default function ServicesPage() {
       {/* Call to action section */}
       <section className="py-12 md:py-24 bg-muted/50">
         <div className="container text-center">
-          <h2 className="text-3xl font-bold mb-4 md:mb-8">
-            {t("services.cta.title")}
-          </h2>
-          <p className="text-muted-foreground mb-6 md:mb-12 max-w-2xl mx-auto">
-            {t("services.cta.description")}
-          </p>
+          <h2 className="text-3xl font-bold mb-4 md:mb-8">{t("services.cta.title")}</h2>
+          <p className="text-muted-foreground mb-6 md:mb-12 max-w-2xl mx-auto">{t("services.cta.description")}</p>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-            <Button
-              asChild
-              className="bg-green-500 hover:bg-green-600 text-white px-8"
-            >
+            <Button asChild className="bg-green-500 hover:bg-green-600 text-white px-8">
               <Link href="/contact">{t("services.cta.contact")}</Link>
             </Button>
-            <Button
-              asChild
-              variant="outline"
-              className="hover:text-green-500 hover:border-green-500"
-            >
+            <Button asChild variant="outline" className="hover:text-green-500 hover:border-green-500">
               <Link href="/pricing">{t("services.cta.pricing")}</Link>
             </Button>
           </div>
@@ -275,5 +209,5 @@ export default function ServicesPage() {
 
       <Footer />
     </main>
-  );
+  )
 }

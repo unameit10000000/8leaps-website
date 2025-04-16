@@ -1,16 +1,16 @@
-"use client";
+"use client"
 
-import type React from "react";
+import type React from "react"
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react"
 
-type Language = "en" | "nl";
+type Language = "en" | "nl"
 
 type LanguageContextType = {
-  language: Language;
-  setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
-};
+  language: Language
+  setLanguage: (lang: Language) => void
+  t: (key: string) => string
+}
 
 // Add pricing page translations
 const translations = {
@@ -43,10 +43,8 @@ const translations = {
     "footer.connect": "Connect",
     "services.webdev.desc":
       "Custom, modern, responsive websites and web applications built with the latest technologies and thoughtful design.",
-    "services.aiintegration.desc":
-      "Seamless AI integration solutions to enhance your digital products and services.",
-    "services.consulting.desc":
-      "Strategic technology consulting to help your business grow and innovate.",
+    "services.aiintegration.desc": "Seamless AI integration solutions to enhance your digital products and services.",
+    "services.consulting.desc": "Strategic technology consulting to help your business grow and innovate.",
     "services.validation.desc":
       "Comprehensive testing and validation for new ideas and early-stage products. We act as real users, perform blackbox testing, and check for security issues and bugs to ensure your product is market-ready.",
 
@@ -65,8 +63,7 @@ const translations = {
     "services.validation.sub1": "User experience testing and feedback",
     "services.validation.sub2": "Market fit analysis",
     "services.validation.sub3": "Security and performance testing",
-    "services.validation.sub4":
-      "Comprehensive bug reporting and recommendations",
+    "services.validation.sub4": "Comprehensive bug reporting and recommendations",
     "services.validation.card1.title": "User Testing",
     "services.validation.card1.description":
       "We act as real users to test your product, providing detailed feedback on usability, functionality, and overall experience.",
@@ -89,8 +86,7 @@ const translations = {
     "services.aiintegration.sub1": "AI-powered chatbots and virtual assistants",
     "services.aiintegration.sub2": "Content generation and optimization tools",
     "services.aiintegration.sub3": "Data analysis and insights automation",
-    "services.aiintegration.sub4":
-      "Custom AI solutions for specific business needs",
+    "services.aiintegration.sub4": "Custom AI solutions for specific business needs",
     "services.aiintegration.card1.title": "Conversational AI",
     "services.aiintegration.card1.description":
       "Enhance customer engagement with intelligent chatbots and virtual assistants that provide personalized interactions and support.",
@@ -119,8 +115,7 @@ const translations = {
     "about.values.quality.text":
       "We're committed to excellence in everything we do, from code to client communication.",
     "about.values.collaboration.title": "Collaboration",
-    "about.values.collaboration.text":
-      "We work closely with our clients, treating their challenges as our own.",
+    "about.values.collaboration.text": "We work closely with our clients, treating their challenges as our own.",
     "about.approach.title": "Our Approach",
     "about.approach.text1":
       "We take a strategic, client-focused approach to every project. Our process begins with a deep understanding of your business goals and challenges. We then craft tailored solutions that address your specific needs, using the most appropriate technologies and methodologies.",
@@ -145,8 +140,7 @@ const translations = {
     "contact.form.message.placeholder": "Your message",
     "contact.form.submit": "Send Message",
     "contact.letschat.title": "Let's Chat",
-    "contact.letschat.text":
-      "Prefer a more direct approach? Schedule a call with us to discuss your project needs.",
+    "contact.letschat.text": "Prefer a more direct approach? Schedule a call with us to discuss your project needs.",
     "contact.letschat.button": "Schedule a Call ☕",
 
     // Pricing page translations
@@ -232,8 +226,7 @@ const translations = {
     "services.title": "Onze Diensten",
     "services.description":
       "Wij bieden uitgebreide ontwikkelingsoplossingen om uw bedrijf te laten floreren in de digitale wereld.",
-    "services.page.subtitle":
-      "Uitgebreide oplossingen voor uw digitale behoeften",
+    "services.page.subtitle": "Uitgebreide oplossingen voor uw digitale behoeften",
     "footer.description":
       "Professionele webontwikkelingsdiensten die bedrijven helpen vooruit te springen in de digitale wereld.",
     "footer.quicklinks": "Snelle Links",
@@ -242,17 +235,14 @@ const translations = {
       "Op maat gemaakte, moderne, responsieve websites en webapplicaties gebouwd met de nieuwste technologieën en doordacht ontwerp.",
     "services.aiintegration.desc":
       "Naadloze AI-integratieoplossingen om uw digitale producten en diensten te verbeteren.",
-    "services.consulting.desc":
-      "Strategische technologische consultancy om uw bedrijf te laten groeien en innoveren.",
+    "services.consulting.desc": "Strategische technologische consultancy om uw bedrijf te laten groeien en innoveren.",
     "services.validation.desc":
       "Uitgebreide tests en validatie voor nieuwe ideeën en producten in een vroeg stadium. We handelen als echte gebruikers, voeren blackbox-tests uit en controleren op beveiligingsproblemen en bugs om ervoor te zorgen dat uw product klaar is voor de markt.",
 
     // Detailed service descriptions
-    "services.consulting.sub1":
-      "Strategische technologieplanning en roadmapping",
+    "services.consulting.sub1": "Strategische technologieplanning en roadmapping",
     "services.consulting.sub2": "Begeleiding bij digitale transformatie",
-    "services.consulting.sub3":
-      "Selectie en optimalisatie van technologiestack",
+    "services.consulting.sub3": "Selectie en optimalisatie van technologiestack",
     "services.consulting.sub4": "Procesverbetering en automatisering",
     "services.consulting.card1.title": "Technologiestrategie",
     "services.consulting.card1.description":
@@ -272,8 +262,7 @@ const translations = {
     "services.validation.card2.description":
       "Onze experts voeren grondige technische validatie uit, waarbij potentiële beveiligingsproblemen, prestatiebottlenecks en bugs worden geïdentificeerd vóór de lancering.",
 
-    "services.webdev.sub1":
-      "Ontwikkeling van aangepaste websites en webapplicaties",
+    "services.webdev.sub1": "Ontwikkeling van aangepaste websites en webapplicaties",
     "services.webdev.sub2": "Responsief ontwerp voor alle apparaten",
     "services.webdev.sub3": "E-commerce oplossingen",
     "services.webdev.sub4": "Content management systemen",
@@ -285,14 +274,10 @@ const translations = {
     "services.webdev.card2.description":
       "We ontwikkelen op maat gemaakte webapplicaties met moderne frameworks en technologieën om aan uw specifieke zakelijke vereisten te voldoen en een naadloze gebruikerservaring te bieden.",
 
-    "services.aiintegration.sub1":
-      "AI-gestuurde chatbots en virtuele assistenten",
-    "services.aiintegration.sub2":
-      "Tools voor contentgeneratie en -optimalisatie",
-    "services.aiintegration.sub3":
-      "Automatisering van gegevensanalyse en inzichten",
-    "services.aiintegration.sub4":
-      "Aangepaste AI-oplossingen voor specifieke zakelijke behoeften",
+    "services.aiintegration.sub1": "AI-gestuurde chatbots en virtuele assistenten",
+    "services.aiintegration.sub2": "Tools voor contentgeneratie en -optimalisatie",
+    "services.aiintegration.sub3": "Automatisering van gegevensanalyse en inzichten",
+    "services.aiintegration.sub4": "Aangepaste AI-oplossingen voor specifieke zakelijke behoeften",
     "services.aiintegration.card1.title": "Conversationele AI",
     "services.aiintegration.card1.description":
       "Verbeter klantbetrokkenheid met intelligente chatbots en virtuele assistenten die gepersonaliseerde interacties en ondersteuning bieden.",
@@ -318,8 +303,7 @@ const translations = {
     "about.values.innovation.text":
       "We verkennen voortdurend nieuwe technologieën en benaderingen om geavanceerde oplossingen te leveren.",
     "about.values.quality.title": "Kwaliteit",
-    "about.values.quality.text":
-      "We streven naar uitmuntendheid in alles wat we doen, van code tot klantcommunicatie.",
+    "about.values.quality.text": "We streven naar uitmuntendheid in alles wat we doen, van code tot klantcommunicatie.",
     "about.values.collaboration.title": "Samenwerking",
     "about.values.collaboration.text":
       "We werken nauw samen met onze klanten en behandelen hun uitdagingen als de onze.",
@@ -412,47 +396,45 @@ const translations = {
       "Testen en validatie voor nieuwe producten en startup ideeën. We handelen als echte gebruikers, testen als ontwikkelaars en denken als critici, en bieden u feedback, bugrapporten en UX-suggesties vóór de lancering.",
     "pricing.cta": "Neem contact op",
   },
-};
+}
 
 const LanguageContext = createContext<LanguageContextType>({
   language: "en",
   setLanguage: () => {},
   t: (key) => key,
-});
+})
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en");
+  const [language, setLanguage] = useState<Language>("en")
 
   useEffect(() => {
     // Detect browser language
-    const browserLang = navigator.language.split("-")[0];
+    const browserLang = navigator.language.split("-")[0]
     if (browserLang === "nl") {
-      setLanguage("nl");
+      setLanguage("nl")
     }
 
     // Check if there's a stored language preference
-    const storedLang = localStorage.getItem("language") as Language;
+    const storedLang = localStorage.getItem("language") as Language
     if (storedLang && (storedLang === "en" || storedLang === "nl")) {
-      setLanguage(storedLang);
+      setLanguage(storedLang)
     }
-  }, []);
+  }, [])
 
   const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang);
-    localStorage.setItem("language", lang);
-  };
+    setLanguage(lang)
+    localStorage.setItem("language", lang)
+  }
 
   const t = (key: string): string => {
-    return translations[language][key as keyof typeof translations.en] || key;
-  };
+    return translations[language][key as keyof typeof translations.en] || key
+  }
 
   return (
-    <LanguageContext.Provider
-      value={{ language, setLanguage: handleSetLanguage, t }}
-    >
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
       {children}
     </LanguageContext.Provider>
-  );
+  )
 }
 
-export const useLanguage = () => useContext(LanguageContext);
+export const useLanguage = () => useContext(LanguageContext)

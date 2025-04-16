@@ -1,42 +1,30 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { useLanguage } from "./language-provider";
-import { useTheme } from "next-themes";
-import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  Sheet,
-  SheetDescription,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Moon, Sun, Menu } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { useLanguage } from "./language-provider"
+import { useTheme } from "next-themes"
+import { usePathname } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/sheet"
+import { Moon, Sun, Menu } from "lucide-react"
+import { Separator } from "@/components/ui/separator"
 
 export function Header() {
-  const { language, setLanguage, t } = useLanguage();
-  const { theme, setTheme } = useTheme();
-  const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
+  const { language, setLanguage, t } = useLanguage()
+  const { theme, setTheme } = useTheme()
+  const pathname = usePathname()
+  const [mounted, setMounted] = useState(false)
 
   // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    setMounted(true)
+  }, [])
 
   // Simple exact path matching
-  const isActive = (path: string) => pathname === path;
+  const isActive = (path: string) => pathname === path
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:px-4">
@@ -47,9 +35,7 @@ export function Header() {
             {mounted ? (
               <div className="relative h-6 w-32">
                 <Image
-                  src={
-                    theme === "dark" ? "/logo-text-dark.png" : "/logo-text.png"
-                  }
+                  src={theme === "dark" ? "/logo-text-dark.png" : "/logo-text.png"}
                   alt="8Leaps"
                   fill
                   className="object-contain"
@@ -57,12 +43,7 @@ export function Header() {
               </div>
             ) : (
               <div className="relative h-6 w-32">
-                <Image
-                  src="/logo-text.png"
-                  alt="8Leaps"
-                  fill
-                  className="object-contain"
-                />
+                <Image src="/logo-text.png" alt="8Leaps" fill className="object-contain" />
               </div>
             )}
           </Link>
@@ -127,12 +108,8 @@ export function Header() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setLanguage("en")}>
-                English
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLanguage("nl")}>
-                Nederlands
-              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setLanguage("en")}>English</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setLanguage("nl")}>Nederlands</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
@@ -156,7 +133,11 @@ export function Header() {
               className="bg-gradient-to-r from-green-500 to-green-400 hover:from-green-600 hover:to-green-500 text-white"
             >
               <a
-                href="https://calendly.com/bartolomeohart/intro-discovery-call"
+                href={
+                  language === "en"
+                    ? "https://calendly.com/bartolomeohart/intro-discovery-call"
+                    : "https://calendly.com/bartolomeohart/intro-ontdekking-gesprek"
+                }
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -222,7 +203,11 @@ export function Header() {
                       className="w-full bg-gradient-to-r from-green-500 to-green-400 hover:from-green-600 hover:to-green-500 text-white"
                     >
                       <a
-                        href="https://calendly.com/bartolomeohart/intro-discovery-call"
+                        href={
+                          language === "en"
+                            ? "https://calendly.com/bartolomeohart/intro-discovery-call"
+                            : "https://calendly.com/bartolomeohart/intro-ontdekking-gesprek"
+                        }
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -237,5 +222,5 @@ export function Header() {
         </div>
       </div>
     </header>
-  );
+  )
 }
