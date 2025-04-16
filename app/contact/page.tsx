@@ -77,7 +77,7 @@ export default function ContactPage() {
                   className="bg-green-500 hover:bg-green-600 text-white px-8 w-full"
                 >
                   <a
-                    href="https://calendly.com/8leaps"
+                    href="https://calendly.com/bartolomeohart/intro-discovery-call"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

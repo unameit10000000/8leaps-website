@@ -156,7 +156,7 @@ export function Header() {
               className="bg-gradient-to-r from-green-500 to-green-400 hover:from-green-600 hover:to-green-500 text-white"
             >
               <a
-                href="https://calendly.com/8leaps"
+                href="https://calendly.com/bartolomeohart/intro-discovery-call"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -222,7 +222,7 @@ export function Header() {
                       className="w-full bg-gradient-to-r from-green-500 to-green-400 hover:from-green-600 hover:to-green-500 text-white"
                     >
                       <a
-                        href="https://calendly.com/8leaps"
+                        href="https://calendly.com/bartolomeohart/intro-discovery-call"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
