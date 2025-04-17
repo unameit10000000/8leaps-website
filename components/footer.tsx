@@ -1,32 +1,32 @@
-"use client"
+"use client";
 
-import { useLanguage } from "./language-provider"
-import { usePathname } from "next/navigation"
-import Link from "next/link"
-import Image from "next/image"
-import { useTheme } from "next-themes"
-import { Github, Linkedin, Twitter } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useLanguage } from "./language-provider";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
+import { useTheme } from "next-themes";
+import { Github, Linkedin, Twitter } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export function Footer() {
-  const { t } = useLanguage()
-  const { theme } = useTheme()
-  const pathname = usePathname()
-  const currentYear = new Date().getFullYear()
-  const [mounted, setMounted] = useState(false)
+  const { t } = useLanguage();
+  const { theme } = useTheme();
+  const pathname = usePathname();
+  const currentYear = new Date().getFullYear();
+  const [mounted, setMounted] = useState(false);
 
   // Only show theme-specific content after mounting to prevent hydration mismatch
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   // Use the same exact path matching as in the header
   const isActive = (path: string) => {
     if (path === "/") {
-      return pathname === "/"
+      return pathname === "/";
     }
-    return pathname === path
-  }
+    return pathname === path;
+  };
 
   return (
     <footer className="bg-black text-white py-12 mt-auto lg:px-4">
@@ -36,11 +36,21 @@ export function Footer() {
             {/* Show appropriate full logo based on theme */}
             {mounted ? (
               <div className="mb-4 relative h-20 w-32">
-                <Image src="/logo-full-dark.png" alt="8Leaps" fill className="object-contain" />
+                <Image
+                  src="/logo-full-dark.png"
+                  alt="8Leaps"
+                  fill
+                  className="object-contain"
+                />
               </div>
             ) : (
               <div className="mb-4 relative h-20 w-32">
-                <Image src="/logo-full.png" alt="8Leaps" fill className="object-contain" />
+                <Image
+                  src="/logo-full.png"
+                  alt="8Leaps"
+                  fill
+                  className="object-contain"
+                />
               </div>
             )}
             <p className="text-gray-400 max-w-xs">{t("footer.description")}</p>
@@ -104,7 +114,7 @@ export function Footer() {
 
           <div>
             <h3 className="text-xl font-bold mb-4">{t("footer.connect")}</h3>
-            <div className="flex space-x-4 mb-4">
+            {/* <div className="flex space-x-4 mb-4">
               <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">
                 <Github className="h-6 w-6" />
                 <span className="sr-only">GitHub</span>
@@ -117,7 +127,7 @@ export function Footer() {
                 <Twitter className="h-6 w-6" />
                 <span className="sr-only">Twitter</span>
               </a>
-            </div>
+            </div> */}
             <p className="text-gray-400">
               info@8leaps.com
               <br />
@@ -135,5 +145,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
