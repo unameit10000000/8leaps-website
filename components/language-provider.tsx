@@ -131,7 +131,7 @@ const translations = {
     "contact.title": "Contact Us",
     "contact.getintouch.title": "Get in Touch",
     "contact.getintouch.text":
-      "Have a question or want to discuss a project? We'd love to hear from you. Fill out the form and we'll get back to you as soon as possible.",
+      "Have a question or want to discuss a project? We'd love to hear from you. Contact us directly or plan a meeting.",
     "contact.email.title": "Email",
     "contact.phone.title": "Phone",
     "contact.location.title": "Location",
@@ -333,7 +333,7 @@ const translations = {
     "contact.title": "Contact",
     "contact.getintouch.title": "Neem Contact Op",
     "contact.getintouch.text":
-      "Heeft u een vraag of wilt u een project bespreken? We horen graag van u. Vul het formulier in en we nemen zo snel mogelijk contact met u op.",
+      "Heeft u een vraag of wilt u een project bespreken? We horen graag van u. Neem direct contact op of plan een afspraak in.",
     "contact.email.title": "E-mail",
     "contact.phone.title": "Telefoon",
     "contact.location.title": "Locatie",
