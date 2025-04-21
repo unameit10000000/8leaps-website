@@ -4,15 +4,85 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/components/language-provider"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Check, Code, Lightbulb, Bot, MessageCircleQuestion } from "lucide-react"
+import { Check, Code, Lightbulb, Bot, MessageCircleQuestion, Rocket } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { useEffect } from "react"
 
 export default function ServicesPage() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+
+  // Add this useEffect at the beginning of the ServicesPage component to handle hash navigation
+  useEffect(() => {
+    // Function to scroll to section based on hash
+    const scrollToSection = () => {
+      // Get the hash from the URL (remove the # symbol)
+      const hash = window.location.hash.substring(1)
+
+      if (hash) {
+        // Use a longer delay to ensure everything is fully loaded and rendered
+        // Longer delay for mobile devices
+        setTimeout(() => {
+          // Find the element with the corresponding ID
+          const element = document.getElementById(hash)
+
+          if (element) {
+            // Get the navbar height - fixed value if we can't calculate it
+            const navbar = document.querySelector("header")
+            const navbarHeight = navbar ? navbar.offsetHeight : 64
+
+            // Add extra padding for mobile
+            const mobilePadding = window.innerWidth < 768 ? 20 : 0
+
+            // Calculate the element's position
+            const elementPosition = element.getBoundingClientRect().top + window.scrollY
+
+            // Scroll with a larger offset to ensure visibility
+            window.scrollTo({
+              top: elementPosition - navbarHeight - 60 - mobilePadding, // Increased padding to 60px + mobile padding
+              behavior: "smooth",
+            })
+
+            // Add a visual indicator to the current section
+            element.classList.add("ring-2", "ring-green-500")
+
+            // Remove the highlight after a few seconds
+            setTimeout(() => {
+              element.classList.remove("ring-2", "ring-green-500")
+            }, 2000)
+          }
+        }, 600) // Increased delay to 600ms for better mobile compatibility
+      }
+    }
+
+    // Call the function when the component mounts
+    scrollToSection()
+
+    // Also add an event listener for hash changes
+    window.addEventListener("hashchange", scrollToSection)
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("hashchange", scrollToSection)
+    }
+  }, [])
 
   // Main service categories
   const mainServices = [
+    {
+      icon: <Rocket className="h-12 w-12 text-green-500" />,
+      title: t("services.mvp.title"),
+      description: t("services.mvp.desc"),
+      subServices: [
+        language === "en" ? "From idea to MVP in 1-3 weeks" : "Van idee naar MVP in 1-3 weken",
+        t("services.mvp.sub2"),
+        t("services.mvp.sub3"),
+        t("services.mvp.sub4"),
+      ],
+      bgColor: "bg-green-50 dark:bg-green-900/20", // Start with green background
+      specialLink: "/mvp", // Special link for MVP service
+      buttonText: t("services.mvp.button"), // Custom button text
+    },
     {
       icon: <MessageCircleQuestion className="h-12 w-12 text-green-500" />,
       title: t("services.consulting"),
@@ -81,7 +151,18 @@ export default function ServicesPage() {
             {mainServices.map((service, index) => (
               <div
                 key={index}
-                className={`grid md:grid-cols-2 gap-4 md:gap-12 items-start p-4 md:p-12 rounded-lg ${service.bgColor}`}
+                id={
+                  index === 0
+                    ? "mvp"
+                    : index === 1
+                      ? "consulting"
+                      : index === 2
+                        ? "validation"
+                        : index === 3
+                          ? "webdev"
+                          : "ai-integration"
+                }
+                className={`grid md:grid-cols-2 gap-4 md:gap-12 items-start p-4 md:p-12 rounded-lg ${service.bgColor} scroll-mt-32 md:scroll-mt-24 pt-8`}
               >
                 <div>
                   <div className="flex items-center gap-4 mb-4 md:mb-8">
@@ -103,6 +184,30 @@ export default function ServicesPage() {
                     <>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
+                          <CardTitle>{t("services.mvp.card1.title")}</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <CardDescription>
+                            {language === "en"
+                              ? "Get your product to market in just 1-3 weeks, allowing you to start gathering user feedback immediately."
+                              : "Breng uw product in slechts 1-3 weken op de markt, zodat u direct gebruikersfeedback kunt verzamelen."}
+                          </CardDescription>
+                        </CardContent>
+                      </Card>
+                      <Card className="border-2 hover:border-green-500 transition-all duration-300">
+                        <CardHeader>
+                          <CardTitle>{t("services.mvp.card2.title")}</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <CardDescription>{t("services.mvp.card2.description")}</CardDescription>
+                        </CardContent>
+                      </Card>
+                    </>
+                  )}
+                  {index === 1 && (
+                    <>
+                      <Card className="border-2 hover:border-green-500 transition-all duration-300">
+                        <CardHeader>
                           <CardTitle>{t("services.consulting.card1.title")}</CardTitle>
                         </CardHeader>
                         <CardContent>
@@ -119,7 +224,7 @@ export default function ServicesPage() {
                       </Card>
                     </>
                   )}
-                  {index === 1 && (
+                  {index === 2 && (
                     <>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
@@ -139,7 +244,7 @@ export default function ServicesPage() {
                       </Card>
                     </>
                   )}
-                  {index === 2 && (
+                  {index === 3 && (
                     <>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
@@ -159,7 +264,7 @@ export default function ServicesPage() {
                       </Card>
                     </>
                   )}
-                  {index === 3 && (
+                  {index === 4 && (
                     <>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
@@ -182,7 +287,16 @@ export default function ServicesPage() {
                 </div>
                 <div className="mt-4 md:mt-8">
                   <Button asChild className="bg-green-500 hover:bg-green-600 text-white">
-                    <Link href="/contact">{t("services.contact")}</Link>
+                    {index === 0 ? (
+                      // MVP service - link to /mvp
+                      <Link href="/mvp">{service.buttonText || t("services.contact")}</Link>
+                    ) : index === 3 ? (
+                      // Web development service - link to /pricing
+                      <Link href="/pricing">Start</Link>
+                    ) : (
+                      // Other services - link to /contact
+                      <Link href="/contact">{t("services.contact")}</Link>
+                    )}
                   </Button>
                 </div>
               </div>
@@ -194,6 +308,7 @@ export default function ServicesPage() {
       {/* Call to action section */}
       <section className="py-12 md:py-24 bg-muted/50">
         <div className="container text-center">
+          {" "}
           <h2 className="text-3xl font-bold mb-4 md:mb-8">{t("services.cta.title")}</h2>
           <p className="text-muted-foreground mb-6 md:mb-12 max-w-2xl mx-auto">{t("services.cta.description")}</p>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">

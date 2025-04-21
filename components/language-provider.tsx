@@ -1,16 +1,16 @@
-"use client";
+"use client"
 
-import type React from "react";
+import type React from "react"
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react"
 
-type Language = "en" | "nl";
+type Language = "en" | "nl"
 
 type LanguageContextType = {
-  language: Language;
-  setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
-};
+  language: Language
+  setLanguage: (lang: Language) => void
+  t: (key: string) => string
+}
 
 // Add pricing page translations
 const translations = {
@@ -43,12 +43,26 @@ const translations = {
     "footer.connect": "Connect",
     "services.webdev.desc":
       "Custom, modern, responsive websites and web applications built with the latest technologies and thoughtful design.",
-    "services.aiintegration.desc":
-      "Seamless AI integration solutions to enhance your digital products and services.",
-    "services.consulting.desc":
-      "Strategic technology consulting to help your business grow and innovate.",
+    "services.aiintegration.desc": "Seamless AI integration solutions to enhance your digital products and services.",
+    "services.consulting.desc": "Strategic technology consulting to help your business grow and innovate.",
     "services.validation.desc":
       "Comprehensive testing and validation for new ideas and early-stage products. We act as real users, perform blackbox testing, and check for security issues and bugs to ensure your product is market-ready.",
+
+    // MVP service translations
+    "services.mvp.title": "MVP Development",
+    "services.mvp.desc":
+      "Rapid development of your Minimum Viable Product to validate your idea quickly and efficiently.",
+    "services.mvp.sub1": "From idea to MVP in 1-3 weeks",
+    "services.mvp.sub2": "Focus on core functionality",
+    "services.mvp.sub3": "User testing and feedback collection",
+    "services.mvp.sub4": "Iterative development approach",
+    "services.mvp.card1.title": "Quick Launch",
+    "services.mvp.card1.description":
+      "Get your product to market in just 1-3 weeks, allowing you to start gathering user feedback immediately.",
+    "services.mvp.card2.title": "Iterative Approach",
+    "services.mvp.card2.description":
+      "We work in short sprints, allowing for quick adjustments based on your feedback throughout the development process.",
+    "services.mvp.button": "Start",
 
     // Detailed service descriptions
     "services.consulting.sub1": "Strategic technology planning and roadmapping",
@@ -65,8 +79,7 @@ const translations = {
     "services.validation.sub1": "User experience testing and feedback",
     "services.validation.sub2": "Market fit analysis",
     "services.validation.sub3": "Security and performance testing",
-    "services.validation.sub4":
-      "Comprehensive bug reporting and recommendations",
+    "services.validation.sub4": "Comprehensive bug reporting and recommendations",
     "services.validation.card1.title": "User Testing",
     "services.validation.card1.description":
       "We act as real users to test your product, providing detailed feedback on usability, functionality, and overall experience.",
@@ -89,8 +102,7 @@ const translations = {
     "services.aiintegration.sub1": "AI-powered chatbots and virtual assistants",
     "services.aiintegration.sub2": "Content generation and optimization tools",
     "services.aiintegration.sub3": "Data analysis and insights automation",
-    "services.aiintegration.sub4":
-      "Custom AI solutions for specific business needs",
+    "services.aiintegration.sub4": "Custom AI solutions for specific business needs",
     "services.aiintegration.card1.title": "Conversational AI",
     "services.aiintegration.card1.description":
       "Enhance customer engagement with intelligent chatbots and virtual assistants that provide personalized interactions and support.",
@@ -119,8 +131,7 @@ const translations = {
     "about.values.quality.text":
       "We're committed to excellence in everything we do, from code to client communication.",
     "about.values.collaboration.title": "Collaboration",
-    "about.values.collaboration.text":
-      "We work closely with our clients, treating their challenges as our own.",
+    "about.values.collaboration.text": "We work closely with our clients, treating their challenges as our own.",
     "about.approach.title": "Our Approach",
     "about.approach.text1":
       "We take a strategic, client-focused approach to every project. Our process begins with a deep understanding of your business goals and challenges. We then craft tailored solutions that address your specific needs, using the most appropriate technologies and methodologies.",
@@ -131,7 +142,7 @@ const translations = {
     "contact.title": "Contact Us",
     "contact.getintouch.title": "Get in Touch",
     "contact.getintouch.text":
-      "Have a question or want to discuss a project? We'd love to hear from you. Contact us directly or plan a meeting.",
+      "Have a question or want to discuss a project? We'd love to hear from you. Fill in the form or plan a meeting to have a chat.",
     "contact.email.title": "Email",
     "contact.phone.title": "Phone",
     "contact.location.title": "Location",
@@ -145,8 +156,7 @@ const translations = {
     "contact.form.message.placeholder": "Your message",
     "contact.form.submit": "Send Message",
     "contact.letschat.title": "Let's Chat",
-    "contact.letschat.text":
-      "Prefer a more direct approach? Schedule a call with us to discuss your project needs.",
+    "contact.letschat.text": "Schedule a call (phone or Google Meet) with us to discuss your project needs.",
     "contact.letschat.button": "Schedule a Call ☕",
 
     // Pricing page translations
@@ -207,8 +217,84 @@ const translations = {
       "Smart integrations for startups and established businesses. From chatbots to content tools and backend automation, bring AI into your product, website, or workflow.",
     "pricing.additional.validation.title": "Idea Validation",
     "pricing.additional.validation.description":
-      "Testing and validation for new products and startup ideas. We act like real users, test like devs, and think like critics, offering you feedback, bug reports, and UX suggestions before launch.",
+      "Testing and validation for new products and startup ideas. We act like real users, test like devs, and think like critics, offering you feedback, bug reports, and UX-suggestions before launch.",
     "pricing.cta": "Contact us",
+    "pricing.predefined.packages": "Fixed Bundles",
+    "pricing.custom.calculator": "Custom Calculator",
+    "pricing.select.client.type": "Select Client Type",
+    "pricing.need.custom": "Need a more customized solution? Try our calculator to build your own package.",
+    "pricing.build.custom": "Build Custom Package",
+    "pricing.step.type": "Type",
+    "pricing.step.tier": "Tier",
+    "pricing.step.technology": "Technology",
+    "pricing.step.extras": "Extras",
+    "pricing.select.tier": "Select Tier",
+    "pricing.select.technology": "Select Technology",
+    "pricing.tech.consultation": "For the Custom-made tier, technology is determined during consultation",
+    "pricing.continue": "Continue",
+    "pricing.select.packages": "Select Additional Packages",
+    "pricing.packages.consultation": "For the Custom-made tier, additional packages are determined during consultation",
+    "pricing.back": "Back",
+    "pricing.request.consultation": "Request Consultation",
+    "pricing.summary": "Summary",
+    "pricing.review.details": "Review your request details and fill in your contact information to submit.",
+    "pricing.package": "Package:",
+    "pricing.client.type": "Client Type:",
+    "pricing.company": "Company",
+    "pricing.company.desc": "Standard pricing for businesses of all sizes.",
+    "pricing.student": "Student",
+    "pricing.student.desc": "25% discount for students with valid ID.",
+    "pricing.nonprofit": "Non-profit",
+    "pricing.nonprofit.desc": "50% discount for registered non-profit organizations.",
+    "pricing.discount": "Discount:",
+    "pricing.total": "Total:",
+    "pricing.tier": "Tier:",
+    "pricing.technology": "Technology:",
+    "pricing.packages": "Packages:",
+    "pricing.consultation.needed": "Consultation needed",
+    "pricing.form.firstname": "First Name",
+    "pricing.form.lastname": "Last Name",
+    "pricing.form.email": "Email",
+    "pricing.form.phone": "Phone (optional)",
+    "pricing.form.message": "Additional Information (optional)",
+    "pricing.form.message.placeholder": "Tell us more about your project or specific requirements...",
+    "pricing.form.submit": "Submit Request",
+    "pricing.view.details": "View details",
+    "pricing.tier.name": "Tier: ",
+    "pricing.technology.name": "Technology:",
+    "pricing.included.packages": "Included packages:",
+    "pricing.compatible.with": "Compatible with:",
+    "pricing.most.popular": "Most Popular",
+    "pricing.popular": "Popular",
+    "pricing.simple.bundle": "Simple Bundle",
+    "pricing.plus.bundle": "Plus Bundle",
+    "pricing.premium.bundle": "Premium Bundle",
+    "pricing.simple.bundle.desc": "Simple website with basic functionality",
+    "pricing.plus.bundle.desc": "Complete WordPress solution for businesses",
+    "pricing.premium.bundle.desc": "Advanced solution with custom frontend",
+    "pricing.month": "/month",
+    "pricing.fill.required": "Please fill in all required fields",
+    "pricing.request.submitted": "Request submitted! Check the console for details.",
+    "pricing.tech.idontknow": "I don't know",
+    "pricing.tech.frontend": "Frontend Full",
+    "pricing.tech.wpheadless": "WP CMS (headless) + flexible frontend",
+    "pricing.tech.wpfull": "WP CMS Full",
+    "pricing.package.integrations": "Integrations (WP Plugins)",
+    "pricing.package.contactforms": "Contact Forms",
+    "pricing.package.setup": "Setup",
+    "pricing.package.setup.desc": "Domain, hosting & email (one-time fee)",
+    "pricing.package.maintenance": "Maintenance",
+    "pricing.package.maintenance.desc": "Domain, hosting, email and updates (€9.99/month)",
+    "pricing.in.consultation": "In consultation",
+    "pricing.consultation.text": "For the Custom-made tier, additional packages are determined during consultation",
+    "pricing.mvp.bundle": "MVP Bundle",
+    "pricing.mvp.bundle.desc": "Rapid development for your minimum viable product",
+    "pricing.about": "About",
+    "pricing.mvp.timeframe": "Delivered within 1-3 weeks",
+    "pricing.learn.more": "Learn More",
+    "pricing.error": "Error",
+    "pricing.submission.failed": "Failed to submit request",
+    "pricing.unexpected.error": "An unexpected error occurred. Please try again later.",
   },
   nl: {
     "nav.home": "Home",
@@ -232,8 +318,7 @@ const translations = {
     "services.title": "Onze Diensten",
     "services.description":
       "Wij bieden uitgebreide ontwikkelingsoplossingen om uw bedrijf te laten floreren in de digitale wereld.",
-    "services.page.subtitle":
-      "Uitgebreide oplossingen voor uw digitale behoeften",
+    "services.page.subtitle": "Uitgebreide oplossingen voor uw digitale behoeften",
     "footer.description":
       "Professionele webontwikkelingsdiensten die bedrijven helpen vooruit te springen in de digitale wereld.",
     "footer.quicklinks": "Snelle Links",
@@ -242,17 +327,29 @@ const translations = {
       "Op maat gemaakte, moderne, responsieve websites en webapplicaties gebouwd met de nieuwste technologieën en doordacht ontwerp.",
     "services.aiintegration.desc":
       "Naadloze AI-integratieoplossingen om uw digitale producten en diensten te verbeteren.",
-    "services.consulting.desc":
-      "Strategische technologische consultancy om uw bedrijf te laten groeien en innoveren.",
+    "services.consulting.desc": "Strategische technologische consultancy om uw bedrijf te laten groeien en innoveren.",
     "services.validation.desc":
       "Uitgebreide tests en validatie voor nieuwe ideeën en producten in een vroeg stadium. We handelen als echte gebruikers, voeren blackbox-tests uit en controleren op beveiligingsproblemen en bugs om ervoor te zorgen dat uw product klaar is voor de markt.",
 
+    // MVP service translations
+    "services.mvp.title": "MVP Ontwikkeling",
+    "services.mvp.desc": "Snelle ontwikkeling van uw Minimum Viable Product om uw idee snel en efficiënt te valideren.",
+    "services.mvp.sub1": "Van idee naar MVP in 1-3 weken",
+    "services.mvp.sub2": "Focus op kernfunctionaliteit",
+    "services.mvp.sub3": "Gebruikerstesten en feedback verzamelen",
+    "services.mvp.sub4": "Iteratieve ontwikkelingsaanpak",
+    "services.mvp.card1.title": "Snelle Lancering",
+    "services.mvp.card1.description":
+      "Breng uw product in slechts 1-3 weken op de markt, zodat u direct gebruikersfeedback kunt verzamelen.",
+    "services.mvp.card2.title": "Iteratieve Aanpak",
+    "services.mvp.card2.description":
+      "We werken in korte sprints, waardoor snelle aanpassingen mogelijk zijn op basis van uw feedback tijdens het ontwikkelingsproces.",
+    "services.mvp.button": "Starten",
+
     // Detailed service descriptions
-    "services.consulting.sub1":
-      "Strategische technologieplanning en roadmapping",
+    "services.consulting.sub1": "Strategische technologieplanning en roadmapping",
     "services.consulting.sub2": "Begeleiding bij digitale transformatie",
-    "services.consulting.sub3":
-      "Selectie en optimalisatie van technologiestack",
+    "services.consulting.sub3": "Selectie en optimalisatie van technologiestack",
     "services.consulting.sub4": "Procesverbetering en automatisering",
     "services.consulting.card1.title": "Technologiestrategie",
     "services.consulting.card1.description":
@@ -272,8 +369,7 @@ const translations = {
     "services.validation.card2.description":
       "Onze experts voeren grondige technische validatie uit, waarbij potentiële beveiligingsproblemen, prestatiebottlenecks en bugs worden geïdentificeerd vóór de lancering.",
 
-    "services.webdev.sub1":
-      "Ontwikkeling van aangepaste websites en webapplicaties",
+    "services.webdev.sub1": "Ontwikkeling van aangepaste websites en webapplicaties",
     "services.webdev.sub2": "Responsief ontwerp voor alle apparaten",
     "services.webdev.sub3": "E-commerce oplossingen",
     "services.webdev.sub4": "Content management systemen",
@@ -285,14 +381,10 @@ const translations = {
     "services.webdev.card2.description":
       "We ontwikkelen op maat gemaakte webapplicaties met moderne frameworks en technologieën om aan uw specifieke zakelijke vereisten te voldoen en een naadloze gebruikerservaring te bieden.",
 
-    "services.aiintegration.sub1":
-      "AI-gestuurde chatbots en virtuele assistenten",
-    "services.aiintegration.sub2":
-      "Tools voor contentgeneratie en -optimalisatie",
-    "services.aiintegration.sub3":
-      "Automatisering van gegevensanalyse en inzichten",
-    "services.aiintegration.sub4":
-      "Aangepaste AI-oplossingen voor specifieke zakelijke behoeften",
+    "services.aiintegration.sub1": "AI-gestuurde chatbots en virtuele assistenten",
+    "services.aiintegration.sub2": "Tools voor contentgeneratie en -optimalisatie",
+    "services.aiintegration.sub3": "Automatisering van gegevensanalyse en inzichten",
+    "services.aiintegration.sub4": "Aangepaste AI-oplossingen voor specifieke zakelijke behoeften",
     "services.aiintegration.card1.title": "Conversationele AI",
     "services.aiintegration.card1.description":
       "Verbeter klantbetrokkenheid met intelligente chatbots en virtuele assistenten die gepersonaliseerde interacties en ondersteuning bieden.",
@@ -318,8 +410,7 @@ const translations = {
     "about.values.innovation.text":
       "We verkennen voortdurend nieuwe technologieën en benaderingen om geavanceerde oplossingen te leveren.",
     "about.values.quality.title": "Kwaliteit",
-    "about.values.quality.text":
-      "We streven naar uitmuntendheid in alles wat we doen, van code tot klantcommunicatie.",
+    "about.values.quality.text": "We streven naar uitmuntendheid in alles wat we doen, van code tot klantcommunicatie.",
     "about.values.collaboration.title": "Samenwerking",
     "about.values.collaboration.text":
       "We werken nauw samen met onze klanten en behandelen hun uitdagingen als de onze.",
@@ -333,7 +424,7 @@ const translations = {
     "contact.title": "Contact",
     "contact.getintouch.title": "Neem Contact Op",
     "contact.getintouch.text":
-      "Heeft u een vraag of wilt u een project bespreken? We horen graag van u. Neem direct contact op of plan een afspraak in.",
+      "Heeft u een vraag of wilt u een project bespreken? We horen graag van u. Vul het formulier in of plan een gesprek om te chatten.",
     "contact.email.title": "E-mail",
     "contact.phone.title": "Telefoon",
     "contact.location.title": "Locatie",
@@ -347,8 +438,7 @@ const translations = {
     "contact.form.message.placeholder": "Uw bericht",
     "contact.form.submit": "Bericht Versturen",
     "contact.letschat.title": "Laten We Praten",
-    "contact.letschat.text":
-      "Geeft u de voorkeur aan een directere aanpak? Plan een gesprek met ons om uw projectbehoeften te bespreken.",
+    "contact.letschat.text": "Plan een gesprek (telefoon of Google Meet) met ons om uw projectbehoeften te bespreken.",
     "contact.letschat.button": "Plan een Gesprek ☕",
 
     // Pricing page translations
@@ -411,48 +501,137 @@ const translations = {
     "pricing.additional.validation.description":
       "Testen en validatie voor nieuwe producten en startup ideeën. We handelen als echte gebruikers, testen als ontwikkelaars en denken als critici, en bieden u feedback, bugrapporten en UX-suggesties vóór de lancering.",
     "pricing.cta": "Neem contact op",
+    "pricing.predefined.packages": "Vaste Bundels",
+    "pricing.custom.calculator": "Aangepaste Calculator",
+    "pricing.select.client.type": "Selecteer Klanttype",
+    "pricing.need.custom":
+      "Heeft u een meer aangepaste oplossing nodig? Probeer onze calculator om uw eigen pakket samen te stellen.",
+    "pricing.build.custom": "Maak Aangepast Pakket",
+    "pricing.step.type": "Type",
+    "pricing.step.tier": "Niveau",
+    "pricing.step.technology": "Technologie",
+    "pricing.step.extras": "Extra's",
+    "pricing.select.tier": "Selecteer Niveau",
+    "pricing.select.technology": "Selecteer Technologie",
+    "pricing.tech.consultation": "Voor het Custom-made niveau wordt de technologie bepaald tijdens het overleg",
+    "pricing.continue": "Doorgaan",
+    "pricing.select.packages": "Selecteer Aanvullende Pakketten",
+    "pricing.packages.consultation":
+      "Voor het Custom-made niveau worden aanvullende pakketten bepaald tijdens het overleg",
+    "pricing.back": "Terug",
+    "pricing.request.consultation": "Consultatie Aanvragen",
+    "pricing.summary": "Samenvatting",
+    "pricing.review.details": "Bekijk uw aanvraaggegevens en vul uw contactgegevens in om te verzenden.",
+    "pricing.package": "Pakket:",
+    "pricing.client.type": "Klanttype:",
+    "pricing.company": "Bedrijf",
+    "pricing.company.desc": "Standaard prijzen voor bedrijven van alle groottes.",
+    "pricing.student": "Student",
+    "pricing.student.desc": "25% korting voor studenten met een geldige studentenkaart.",
+    "pricing.nonprofit": "Non-profit",
+    "pricing.nonprofit.desc": "50% korting voor geregistreerde non-profit organisaties.",
+    "pricing.discount": "Korting:",
+    "pricing.total": "Totaal:",
+    "pricing.tier": "Niveau:",
+    "pricing.technology": "Technologie:",
+    "pricing.packages": "Pakketten:",
+    "pricing.consultation.needed": "Consultatie nodig",
+    "pricing.form.firstname": "Voornaam",
+    "pricing.form.lastname": "Achternaam",
+    "pricing.form.email": "E-mail",
+    "pricing.form.phone": "Telefoon (optioneel)",
+    "pricing.form.message": "Aanvullende Informatie (optioneel)",
+    "pricing.form.message.placeholder": "Vertel ons meer over uw project of specifieke vereisten...",
+    "pricing.form.submit": "Aanvraag Indienen",
+    "pricing.view.details": "Bekijk details",
+    "pricing.tier.name": "Niveau: ",
+    "pricing.technology.name": "Technologie:",
+    "pricing.included.packages": "Inbegrepen pakketten:",
+    "pricing.compatible.with": "Compatibel met:",
+    "pricing.most.popular": "Meest Populair",
+    "pricing.popular": "Populair",
+    "pricing.simple.bundle": "Eenvoudig Bundel",
+    "pricing.plus.bundle": "Plus Bundel",
+    "pricing.premium.bundle": "Premium Bundel",
+    "pricing.simple.bundle.desc": "Eenvoudige website met basisfunctionaliteit",
+    "pricing.plus.bundle.desc": "Complete WordPress-oplossing voor bedrijven",
+    "pricing.premium.bundle.desc": "Geavanceerde oplossing met aangepaste frontend",
+    "pricing.month": "/maand",
+    "pricing.fill.required": "Vul alle verplichte velden in",
+    "pricing.request.submitted": "Aanvraag ingediend! Controleer de console voor details.",
+    "pricing.tech.idontknow": "Ik weet het niet",
+    "pricing.tech.frontend": "Frontend Volledig",
+    "pricing.tech.wpheadless": "WP CMS (headless) + flexibele frontend",
+    "pricing.tech.wpfull": "WP CMS Volledig",
+    "pricing.package.integrations": "Integraties (WP Plugins)",
+    "pricing.package.contactforms": "Contactformulieren",
+    "pricing.package.setup": "Setup",
+    "pricing.package.setup.desc": "Domein, hosting & e-mail (eenmalige kosten)",
+    "pricing.package.maintenance": "Onderhoud",
+    "pricing.package.maintenance.desc": "Domein, hosting, e-mail en updates (€9.99/maand)",
+    "pricing.in.consultation": "In overleg",
+    "pricing.consultation.text": "Voor het Custom-made niveau worden aanvullende pakketten bepaald tijdens het overleg",
+    "pricing.mvp.bundle": "MVP Bundel",
+    "pricing.mvp.bundle.desc": "Snelle ontwikkeling voor uw minimaal levensvatbaar product",
+    "pricing.about": "Over",
+    "pricing.mvp.timeframe": "Geleverd binnen 1-3 weken",
+    "pricing.learn.more": "Meer Informatie",
+    "pricing.error": "Fout",
+    "pricing.submission.failed": "Aanvraag indienen mislukt",
+    "pricing.unexpected.error": "Er is een onverwachte fout opgetreden. Probeer het later opnieuw.",
   },
-};
+}
 
 const LanguageContext = createContext<LanguageContextType>({
   language: "en",
   setLanguage: () => {},
   t: (key) => key,
-});
+})
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en");
+  const [language, setLanguage] = useState<Language>("en")
 
   useEffect(() => {
     // Detect browser language
-    const browserLang = navigator.language.split("-")[0];
+    const browserLang = navigator.language.split("-")[0]
     if (browserLang === "nl") {
-      setLanguage("nl");
+      setLanguage("nl")
     }
 
     // Check if there's a stored language preference
-    const storedLang = localStorage.getItem("language") as Language;
+    const storedLang = localStorage.getItem("language") as Language
     if (storedLang && (storedLang === "en" || storedLang === "nl")) {
-      setLanguage(storedLang);
+      setLanguage(storedLang)
     }
-  }, []);
+  }, [])
 
   const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang);
-    localStorage.setItem("language", lang);
-  };
+    setLanguage(lang)
+    localStorage.setItem("language", lang)
+  }
 
   const t = (key: string): string => {
-    return translations[language][key as keyof typeof translations.en] || key;
-  };
+    // Check if the key exists in the current language
+    if (translations[language] && key in translations[language]) {
+      return translations[language][key as keyof typeof translations.en]
+    }
+
+    // If not found in current language, try English as fallback
+    if (language !== "en" && translations.en && key in translations.en) {
+      console.warn(`Missing translation for key "${key}" in language "${language}", using English fallback`)
+      return translations.en[key as keyof typeof translations.en]
+    }
+
+    // If still not found, return the key itself and log a warning
+    console.warn(`Translation key not found: "${key}"`)
+    return key
+  }
 
   return (
-    <LanguageContext.Provider
-      value={{ language, setLanguage: handleSetLanguage, t }}
-    >
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
       {children}
     </LanguageContext.Provider>
-  );
+  )
 }
 
-export const useLanguage = () => useContext(LanguageContext);
+export const useLanguage = () => useContext(LanguageContext)

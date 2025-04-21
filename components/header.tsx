@@ -89,6 +89,7 @@ export function Header() {
               {t("nav.about")}
             </Link>
 
+            {/* Update to point to /contact page */}
             <Link
               href="/contact"
               className={`text-sm font-medium transition-colors hover:text-primary ${
@@ -189,6 +190,7 @@ export function Header() {
                   >
                     {t("nav.about")}
                   </Link>
+                  {/* Update mobile menu link as well */}
                   <Link
                     href="/contact"
                     className={`text-lg font-medium transition-colors hover:text-primary ${

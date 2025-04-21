@@ -57,3 +57,21 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  /* Add specific scroll padding for mobile */
+  @media (max-width: 768px) {
+    html {
+      scroll-padding-top: 6rem; /* Increased padding for mobile */
+    }
+  }
+
+  .section-highlight {
+    transition: all 0.3s ease;
+  }
+}
