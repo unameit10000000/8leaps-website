@@ -1,14 +1,19 @@
-import { NextResponse } from "next/server"
-import nodemailer from "nodemailer"
+import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 export async function POST(request: Request) {
   try {
     // Parse the request body
-    const body = await request.json()
-    const { name, email, subject, message, language } = body
+    const body = await request.json();
+    const { name, email, subject, message, language } = body;
 
     // Log the received information and environment variables (for debugging)
-    console.log("Contact form submission received:", { name, email, subject, language })
+    console.log("Contact form submission received:", {
+      name,
+      email,
+      subject,
+      language,
+    });
     console.log("Using email configuration:", {
       host: process.env.EMAIL_SERVER_HOST,
       port: process.env.EMAIL_SERVER_PORT,
@@ -16,7 +21,7 @@ export async function POST(request: Request) {
       username: process.env.EMAIL_USERNAME ? "Set" : "Not set",
       password: process.env.EMAIL_PASSWORD ? "Set" : "Not set",
       from: process.env.EMAIL_FROM,
-    })
+    });
 
     // Validate required environment variables
     if (
@@ -26,8 +31,13 @@ export async function POST(request: Request) {
       !process.env.EMAIL_PASSWORD ||
       !process.env.EMAIL_FROM
     ) {
-      console.error("Missing required email configuration environment variables")
-      return NextResponse.json({ error: "Server email configuration is incomplete" }, { status: 500 })
+      console.error(
+        "Missing required email configuration environment variables"
+      );
+      return NextResponse.json(
+        { error: "Server email configuration is incomplete" },
+        { status: 500 }
+      );
     }
 
     // Create a transporter using SMTP
@@ -45,16 +55,18 @@ export async function POST(request: Request) {
         // Do not fail on invalid certs
         rejectUnauthorized: false,
       },
-    })
+    });
 
     // Define the destination email (8Leaps team email)
-    const toEmail = "info@8leaps.com" // Hardcoded recipient
+    const toEmail = "info@8leaps.com"; // Hardcoded recipient
 
     // Prepare email content based on language
-    const isNL = language === "nl"
+    const isNL = language === "nl";
 
     // Email to 8Leaps team
-    const emailSubject = isNL ? `Nieuw Contactformulier Bericht: ${subject}` : `New Contact Form Submission: ${subject}`
+    const emailSubject = isNL
+      ? `Nieuw Contactformulier Bericht: ${subject}`
+      : `New Contact Form Submission: ${subject}`;
 
     const emailContent = isNL
       ? `
@@ -72,7 +84,7 @@ export async function POST(request: Request) {
         
         Message:
         ${message}
-      `
+      `;
 
     // HTML version of the email for better formatting
     const htmlContent = isNL
@@ -91,26 +103,29 @@ export async function POST(request: Request) {
         <p><strong>Subject:</strong> ${subject}</p>
         <h3>Message:</h3>
         <p>${message.replace(/\n/g, "<br>")}</p>
-      `
+      `;
 
     // Verify SMTP connection configuration
     try {
-      console.log("Verifying SMTP connection...")
-      const verification = await transporter.verify()
-      console.log("SMTP Verification successful:", verification)
+      console.log("Verifying SMTP connection...");
+      const verification = await transporter.verify();
+      console.log("SMTP Verification successful");
     } catch (verifyError) {
-      console.error("SMTP Verification Error:", verifyError)
+      console.error("SMTP Verification Error:", verifyError);
       return NextResponse.json(
         {
           error: "Failed to verify SMTP connection",
-          details: verifyError instanceof Error ? verifyError.message : String(verifyError),
+          details:
+            verifyError instanceof Error
+              ? verifyError.message
+              : String(verifyError),
         },
-        { status: 500 },
-      )
+        { status: 500 }
+      );
     }
 
     // Send the email to 8Leaps
-    console.log("Sending email to 8Leaps team...")
+    console.log("Sending email to 8Leaps team...");
     const info = await transporter.sendMail({
       from: process.env.EMAIL_FROM,
       to: toEmail,
@@ -118,16 +133,18 @@ export async function POST(request: Request) {
       subject: emailSubject,
       text: emailContent,
       html: htmlContent,
-    })
+    });
 
-    console.log("Contact form email sent successfully:", info.messageId)
+    console.log("Contact form email sent successfully");
 
     // Send confirmation email to the user
     try {
-      console.log("Sending confirmation email to user...")
+      console.log("Sending confirmation email to user...");
 
       // Confirmation email content based on language
-      const userConfirmationSubject = isNL ? "Bedankt voor uw bericht aan 8Leaps" : "Thank you for contacting 8Leaps"
+      const userConfirmationSubject = isNL
+        ? "Bedankt voor uw bericht aan 8Leaps"
+        : "Thank you for contacting 8Leaps";
 
       const userConfirmationText = isNL
         ? `
@@ -157,7 +174,7 @@ export async function POST(request: Request) {
           
           Best regards,
           The 8Leaps Team
-        `
+        `;
 
       const userConfirmationHtml = isNL
         ? `
@@ -185,7 +202,7 @@ export async function POST(request: Request) {
           <p>${message.replace(/\n/g, "<br>")}</p>
           
           <p>Best regards,<br>The 8Leaps Team</p>
-        `
+        `;
 
       const userConfirmationInfo = await transporter.sendMail({
         from: process.env.EMAIL_FROM,
@@ -193,26 +210,29 @@ export async function POST(request: Request) {
         subject: userConfirmationSubject,
         text: userConfirmationText,
         html: userConfirmationHtml,
-      })
+      });
 
-      console.log("User confirmation email sent successfully:", userConfirmationInfo.messageId)
+      console.log(
+        "User confirmation email sent successfully:",
+        userConfirmationInfo.messageId
+      );
     } catch (confirmationError) {
       // If confirmation email fails, log it but don't fail the whole request
-      console.error("Error sending confirmation email:", confirmationError)
+      console.error("Error sending confirmation email:", confirmationError);
     }
 
     return NextResponse.json({
       success: true,
       messageId: info.messageId,
-    })
+    });
   } catch (error) {
-    console.error("Error sending contact form email:", error)
+    console.error("Error sending contact form email:", error);
     return NextResponse.json(
       {
         error: "Failed to send message",
         details: error instanceof Error ? error.message : String(error),
       },
-      { status: 500 },
-    )
+      { status: 500 }
+    );
   }
 }
