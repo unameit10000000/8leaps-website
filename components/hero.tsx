@@ -1,20 +1,20 @@
-"use client";
+"use client"
 
-import { useLanguage } from "./language-provider";
-import { useTheme } from "next-themes";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useLanguage } from "./language-provider"
+import { useTheme } from "next-themes"
+import { Button } from "@/components/ui/button"
+import Image from "next/image"
+import { useEffect, useState } from "react"
 
 export function Hero() {
-  const { t } = useLanguage();
-  const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { t } = useLanguage()
+  const { theme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
   // Only show theme-specific content after mounting to prevent hydration mismatch
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    setMounted(true)
+  }, [])
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-green-500 to-green-400 py-16 md:py-36 lg:px-4">
@@ -31,35 +31,20 @@ export function Hero() {
           {mounted ? (
             <div
               className={`p-4 md:p-8 rounded-lg max-w-md ${
-                theme === "dark"
-                  ? "bg-card text-card-foreground border-2 border-border"
-                  : "bg-black text-white"
+                theme === "dark" ? "bg-card text-card-foreground border-2 border-border" : "bg-black text-white"
               }`}
             >
               {/* Adjusted grid layout with more space for text (1/7 ratio) */}
               <h1 className="text-3xl md:text-3xl font-bold w-full mb-4">
                 {t("hero.title")}
                 <span className="inline-block ml-1">
-                  <Image
-                    src="/logo.png"
-                    alt="8Leaps Logo"
-                    width={40}
-                    height={40}
-                    className="inline"
-                  />
+                  <Image src="/logo.png" alt="8Leaps Logo" width={40} height={40} className="inline" />
                 </span>
               </h1>
-              <p
-                className={`mb-5 ${
-                  theme === "dark" ? "text-muted-foreground" : "text-gray-300"
-                }`}
-              >
+              <p className={`mb-5 ${theme === "dark" ? "text-muted-foreground" : "text-gray-300"}`}>
                 {t("hero.subtitle")}
               </p>
-              <Button
-                asChild
-                className="bg-green-500 hover:bg-green-600 text-white"
-              >
+              <Button asChild className="bg-green-500 hover:bg-green-600 text-white">
                 <a href="#services">{t("hero.cta")}</a>
               </Button>
             </div>
@@ -69,24 +54,14 @@ export function Hero() {
               <div className="grid grid-cols-8 items-center gap-2 mb-4">
                 <div className="col-span-1 flex justify-center">
                   <div className="relative w-10 h-10">
-                    <Image
-                      src="/logo.png"
-                      alt="8Leaps Logo"
-                      fill
-                      className="object-contain"
-                    />
+                    <Image src="/logo.png" alt="8Leaps Logo" fill className="object-contain" />
                   </div>
                 </div>
-                <h1 className="col-span-7 text-3xl md:text-4xl font-bold">
-                  {t("hero.title")}
-                </h1>
+                <h1 className="col-span-7 text-3xl md:text-4xl font-bold">{t("hero.title")}</h1>
               </div>
 
               <p className="mb-5 text-gray-300">{t("hero.subtitle")}</p>
-              <Button
-                asChild
-                className="bg-green-500 hover:bg-green-600 text-white"
-              >
+              <Button asChild className="bg-green-500 hover:bg-green-600 text-white">
                 <a href="#services">{t("hero.cta")}</a>
               </Button>
             </div>
@@ -95,23 +70,14 @@ export function Hero() {
 
         <div className="order-1 md:order-2 flex justify-center">
           <div className="relative h-64 w-64 md:h-80 md:w-80">
-            <Image
-              src="/hero.png"
-              alt="Rocket illustration"
-              fill
-              className="object-contain"
-            />
+            <Image src="/hero.png" alt="Digital growth illustration" fill className="object-contain" />
           </div>
         </div>
       </div>
 
       {/* Wave effect at the bottom */}
       <div className="absolute bottom-0 left-0 right-0">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 320"
-          className="w-full"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full">
           <path
             fill="currentColor"
             fillOpacity="1"
@@ -121,5 +87,5 @@ export function Hero() {
         </svg>
       </div>
     </section>
-  );
+  )
 }

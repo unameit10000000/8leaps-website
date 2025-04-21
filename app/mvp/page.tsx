@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import { useLanguage } from "@/components/language-provider";
-import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
-import Image from "next/image";
-import dynamic from "next/dynamic";
-import { useMediaQuery } from "@/hooks/use-media-query";
+import { useState, useEffect } from "react"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
+import { useLanguage } from "@/components/language-provider"
+import { Button } from "@/components/ui/button"
+import { Check, Crown } from "lucide-react"
+import Image from "next/image"
+import dynamic from "next/dynamic"
+import { useMediaQuery } from "@/hooks/use-media-query"
 import {
   Dialog,
   DialogContent,
@@ -16,56 +16,56 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Separator } from "@/components/ui/separator";
+} from "@/components/ui/dialog"
+import { Separator } from "@/components/ui/separator"
 
 // Dynamically import the ParticleLogo component with SSR disabled
 const ParticleLogo = dynamic(() => import("@/components/ParticleLogo"), {
   ssr: false,
-});
+})
 
 export default function MVPPage() {
-  const { t, language } = useLanguage();
-  const [showAnimation, setShowAnimation] = useState(true);
-  const [animationComplete, setAnimationComplete] = useState(false);
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const { t, language } = useLanguage()
+  const [showAnimation, setShowAnimation] = useState(true)
+  const [animationComplete, setAnimationComplete] = useState(false)
+  const isMobile = useMediaQuery("(max-width: 768px)")
 
-  const [showOrderDialog, setShowOrderDialog] = useState(false);
-  const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [showOrderDialog, setShowOrderDialog] = useState(false)
+  const [selectedPackage, setSelectedPackage] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     // Function to set the correct viewport height
     const setVH = () => {
       // First we get the viewport height and multiply it by 1% to get a value for a vh unit
-      const vh = window.innerHeight * 0.01;
+      const vh = window.innerHeight * 0.01
       // Then we set the value in the --vh custom property to the root of the document
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-    };
+      document.documentElement.style.setProperty("--vh", `${vh}px`)
+    }
 
     // Set the height initially
-    setVH();
+    setVH()
 
     // Add event listener to reset when window is resized
-    window.addEventListener("resize", setVH);
+    window.addEventListener("resize", setVH)
 
     // Clean up
-    return () => window.removeEventListener("resize", setVH);
-  }, []);
+    return () => window.removeEventListener("resize", setVH)
+  }, [])
 
   useEffect(() => {
     // Show animation when component mounts
     const timer = setTimeout(() => {
-      setAnimationComplete(true);
-    }, 3000); // 4s display + 1s fade = 5s total
+      setAnimationComplete(true)
+    }, 3000) // 4s display + 1s fade = 5s total
 
-    return () => clearTimeout(timer);
-  }, []);
+    return () => clearTimeout(timer)
+  }, [])
 
   const handleGetStarted = (packageName: string) => {
-    setSelectedPackage(packageName);
-    setShowOrderDialog(true);
-  };
+    setSelectedPackage(packageName)
+    setShowOrderDialog(true)
+  }
 
   return (
     <main className="min-h-screen flex flex-col">
@@ -122,19 +122,11 @@ export default function MVPPage() {
       )}
 
       {/* Only show content after animation is complete */}
-      <div
-        className={
-          animationComplete
-            ? "opacity-100 transition-opacity duration-500"
-            : "opacity-0"
-        }
-      >
+      <div className={animationComplete ? "opacity-100 transition-opacity duration-500" : "opacity-0"}>
         <Header />
         <div className="bg-gradient-to-b from-green-500 to-green-400 py-12 md:py-24 lg:px-4">
           <div className="container">
-            <h1 className="text-4xl font-bold text-white text-center">
-              {t("services.mvp.title")}
-            </h1>
+            <h1 className="text-4xl font-bold text-white text-center">{t("services.mvp.title")}</h1>
             <p className="text-white text-center mt-4 max-w-2xl mx-auto">
               {language === "en"
                 ? "Get your product to market quickly with our rapid MVP development service"
@@ -149,9 +141,7 @@ export default function MVPPage() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl font-bold mb-6">
-                  {language === "en"
-                    ? "From Idea to MVP in Just 1-3 Weeks"
-                    : "Van Idee naar MVP in Slechts 1-3 Weken"}
+                  {language === "en" ? "From Idea to MVP in Just 1-3 Weeks" : "Van Idee naar MVP in Slechts 1-3 Weken"}
                 </h2>
                 <p className="text-lg text-muted-foreground mb-6">
                   {language === "en"
@@ -163,26 +153,29 @@ export default function MVPPage() {
                     ? "We focus on building the core functionality of your product, allowing you to test your concept with real users and gather valuable feedback before investing in a full-scale solution."
                     : "We richten ons op het bouwen van de kernfunctionaliteit van uw product, zodat u uw concept kunt testen met echte gebruikers en waardevolle feedback kunt verzamelen voordat u investeert in een volledige oplossing."}
                 </p>
-                <Button
-                  className="bg-green-500 hover:bg-green-600 text-white px-8"
-                  onClick={() => {
-                    document
-                      .getElementById("mvp-options")
-                      ?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  {language === "en" ? "View Options" : "Bekijk Opties"}
-                </Button>
+                <div className="flex gap-4">
+                  <Button
+                    className="bg-green-500 hover:bg-green-600 text-white px-8"
+                    onClick={() => {
+                      document.getElementById("mvp-options")?.scrollIntoView({ behavior: "smooth" })
+                    }}
+                  >
+                    {language === "en" ? "View Options" : "Bekijk Opties"}
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="border-green-500 text-green-500 hover:bg-green-50 px-8"
+                    onClick={() => {
+                      window.location.href = "/services"
+                    }}
+                  >
+                    {language === "en" ? "Other Services" : "Andere Diensten"}
+                  </Button>
+                </div>
               </div>
               <div className="flex justify-center">
                 <div className="relative h-64 w-64 md:h-80 md:w-80">
-                  <Image
-                    src="/mvp.png"
-                    alt="MVP Development"
-                    width={320}
-                    height={320}
-                    className="rounded-lg"
-                  />
+                  <Image src="/mvp.png" alt="MVP Development" width={320} height={320} className="rounded-lg" />
                 </div>
               </div>
             </div>
@@ -192,20 +185,21 @@ export default function MVPPage() {
         {/* Process section */}
         <section className="py-16 md:py-24 lg:px-4">
           <div className="container">
-            <h2 className="text-3xl font-bold mb-12 text-center">
-              {language === "en"
-                ? "Our MVP Development Process"
-                : "Ons MVP Ontwikkelingsproces"}
+            <h2 className="text-3xl font-bold mb-4 text-center">
+              {language === "en" ? "Our MVP Development Process" : "Ons MVP Ontwikkelingsproces"}
             </h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+              {language === "en"
+                ? "Unlike traditional development, our MVP process is streamlined and focused on rapid delivery. We prioritize core functionality over perfection, allowing you to validate your idea in the market quickly and iterate based on real user feedback."
+                : "In tegenstelling tot traditionele ontwikkeling is ons MVP-proces gestroomlijnd en gericht op snelle levering. We geven prioriteit aan kernfunctionaliteit boven perfectie, zodat u uw idee snel in de markt kunt valideren en kunt itereren op basis van echte gebruikersfeedback."}
+            </p>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="relative">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-500 text-white font-bold text-lg mb-4">
                   1
                 </div>
                 <h3 className="text-xl font-bold mb-3">
-                  {language === "en"
-                    ? "Discovery & Planning"
-                    : "Ontdekking & Planning"}
+                  {language === "en" ? "Discovery & Planning" : "Ontdekking & Planning"}
                 </h3>
                 <p className="text-muted-foreground mb-6">
                   {language === "en"
@@ -215,27 +209,15 @@ export default function MVPPage() {
                 <ul className="space-y-2">
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Feature prioritization"
-                        : "Functie prioritering"}
-                    </span>
+                    <span>{language === "en" ? "Feature prioritization" : "Functie prioritering"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "User journey mapping"
-                        : "Gebruikersreis in kaart brengen"}
-                    </span>
+                    <span>{language === "en" ? "User journey mapping" : "Gebruikersreis in kaart brengen"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Technology selection"
-                        : "Technologieselectie"}
-                    </span>
+                    <span>{language === "en" ? "Technology selection" : "Technologieselectie"}</span>
                   </li>
                 </ul>
               </div>
@@ -244,9 +226,7 @@ export default function MVPPage() {
                   2
                 </div>
                 <h3 className="text-xl font-bold mb-3">
-                  {language === "en"
-                    ? "Rapid Development"
-                    : "Snelle Ontwikkeling"}
+                  {language === "en" ? "Rapid Development" : "Snelle Ontwikkeling"}
                 </h3>
                 <p className="text-muted-foreground mb-6">
                   {language === "en"
@@ -256,27 +236,15 @@ export default function MVPPage() {
                 <ul className="space-y-2">
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Agile methodology"
-                        : "Agile methodologie"}
-                    </span>
+                    <span>{language === "en" ? "Agile methodology" : "Agile methodologie"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Daily progress updates"
-                        : "Dagelijkse voortgangsupdates"}
-                    </span>
+                    <span>{language === "en" ? "Daily progress updates" : "Dagelijkse voortgangsupdates"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Continuous integration"
-                        : "Continue integratie"}
-                    </span>
+                    <span>{language === "en" ? "Continuous integration" : "Continue integratie"}</span>
                   </li>
                 </ul>
               </div>
@@ -285,9 +253,7 @@ export default function MVPPage() {
                   3
                 </div>
                 <h3 className="text-xl font-bold mb-3">
-                  {language === "en"
-                    ? "Launch & Iterate"
-                    : "Lanceren & Itereren"}
+                  {language === "en" ? "Launch & Iterate" : "Lanceren & Itereren"}
                 </h3>
                 <p className="text-muted-foreground mb-6">
                   {language === "en"
@@ -297,27 +263,15 @@ export default function MVPPage() {
                 <ul className="space-y-2">
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Deployment assistance"
-                        : "Hulp bij implementatie"}
-                    </span>
+                    <span>{language === "en" ? "Deployment assistance" : "Hulp bij implementatie"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Basic analytics setup"
-                        : "Basis analytics setup"}
-                    </span>
+                    <span>{language === "en" ? "Basic analytics setup" : "Basis analytics setup"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Feedback collection tools"
-                        : "Feedback verzamelingstools"}
-                    </span>
+                    <span>{language === "en" ? "Feedback collection tools" : "Feedback verzamelingstools"}</span>
                   </li>
                 </ul>
               </div>
@@ -328,13 +282,8 @@ export default function MVPPage() {
         {/* Pricing section */}
         <section className="py-16 bg-muted/50 lg:px-4">
           <div className="container">
-            <h2
-              className="text-3xl font-bold mb-6 text-center"
-              id="mvp-options"
-            >
-              {language === "en"
-                ? "MVP Development Options"
-                : "MVP Ontwikkelingsopties"}
+            <h2 className="text-3xl font-bold mb-6 text-center" id="mvp-options">
+              {language === "en" ? "MVP Development Options" : "MVP Ontwikkelingsopties"}
             </h2>
             <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
               {language === "en"
@@ -348,9 +297,7 @@ export default function MVPPage() {
                 <h3 className="text-2xl font-bold mb-2">MVP One</h3>
                 <div className="text-3xl font-bold mb-1">$499</div>
                 <p className="text-sm text-muted-foreground mb-4">
-                  {language === "en"
-                    ? "One-time Payment"
-                    : "Eenmalige betaling"}
+                  {language === "en" ? "One-time Payment" : "Eenmalige betaling"}
                 </p>
                 <p className="text-muted-foreground mb-6">
                   {language === "en"
@@ -360,45 +307,27 @@ export default function MVPPage() {
                 <ul className="space-y-3 mb-8 flex-grow">
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "For Web Applications Only"
-                        : "Alleen voor webapplicaties"}
-                    </span>
+                    <span>{language === "en" ? "For Web Applications Only" : "Alleen voor webapplicaties"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en" ? "1 Core Feature" : "1 kernfunctie"}
-                    </span>
+                    <span>{language === "en" ? "1 Core Feature" : "1 kernfunctie"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en" ? "Authentication" : "Authenticatie"}
-                    </span>
+                    <span>{language === "en" ? "Authentication" : "Authenticatie"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en" ? "Deployment" : "Implementatie"}
-                    </span>
+                    <span>{language === "en" ? "Deployment" : "Implementatie"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Clean, Functional UI"
-                        : "Schone, functionele UI"}
-                    </span>
+                    <span>{language === "en" ? "Clean, Functional UI" : "Schone, functionele UI"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Delivered in 1-3 Weeks"
-                        : "Geleverd in 1-3 weken"}
-                    </span>
+                    <span>{language === "en" ? "Delivered in 1-3 Weeks" : "Geleverd in 1-3 weken"}</span>
                   </li>
                 </ul>
                 <Button
@@ -412,14 +341,13 @@ export default function MVPPage() {
               {/* MVP Standard */}
               <div className="bg-card p-8 rounded-lg border-2 border-green-500 flex flex-col h-full relative">
                 <div className="absolute top-0 right-0 bg-green-500 text-white px-4 py-1 text-sm font-medium rounded-bl-lg">
+                  <Crown className="inline-block mr-1 h-4 w-4" />
                   {language === "en" ? "Popular" : "Populair"}
                 </div>
                 <h3 className="text-2xl font-bold mb-2">MVP Standard</h3>
                 <div className="text-3xl font-bold mb-1">$2,499</div>
                 <p className="text-sm text-muted-foreground mb-4">
-                  {language === "en"
-                    ? "One-time or Milestone Payments"
-                    : "Eenmalige of mijlpaalbetalingen"}
+                  {language === "en" ? "One-time or Milestone Payments" : "Eenmalige of mijlpaalbetalingen"}
                 </p>
                 <p className="text-muted-foreground mb-6">
                   {language === "en"
@@ -430,64 +358,38 @@ export default function MVPPage() {
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
                     <span>
-                      {language === "en"
-                        ? "For Web & Mobile Applications"
-                        : "Voor web- en mobiele applicaties"}
+                      {language === "en" ? "For Web & Mobile Applications" : "Voor web- en mobiele applicaties"}
                     </span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "2 or More Core Features"
-                        : "2 of meer kernfuncties"}
-                    </span>
+                    <span>{language === "en" ? "2 or More Core Features" : "2 of meer kernfuncties"}</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
+                    <span>{language === "en" ? "Authentication" : "Authenticatie"}</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
+                    <span>{language === "en" ? "Custom UI Design" : "Aangepast UI-ontwerp"}</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
+                    <span>{language === "en" ? "Product Requirements Document" : "Product vereisten document"}</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
+                    <span>{language === "en" ? "Deployment & Hosting Setup" : "Implementatie & hosting setup"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
                     <span>
-                      {language === "en" ? "Authentication" : "Authenticatie"}
+                      {language === "en" ? "1 Month of Post-Launch Support" : "1 maand ondersteuning na lancering"}
                     </span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Custom UI Design"
-                        : "Aangepast UI-ontwerp"}
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Product Requirements Document"
-                        : "Product vereisten document"}
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Deployment & Hosting Setup"
-                        : "Implementatie & hosting setup"}
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "1 Month of Post-Launch Support"
-                        : "1 maand ondersteuning na lancering"}
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Delivered in 1-3 Weeks"
-                        : "Geleverd in 1-3 weken"}
-                    </span>
+                    <span>{language === "en" ? "Delivered in 1-3 Weeks" : "Geleverd in 1-3 weken"}</span>
                   </li>
                 </ul>
                 <Button
@@ -502,9 +404,7 @@ export default function MVPPage() {
               <div className="bg-card p-8 rounded-lg border-2 flex flex-col h-full">
                 <h3 className="text-2xl font-bold mb-2">MVP Growth</h3>
                 <div className="text-3xl font-bold mb-1">$1,499</div>
-                <p className="text-sm text-muted-foreground mb-4">
-                  {language === "en" ? "Per Month" : "Per maand"}
-                </p>
+                <p className="text-sm text-muted-foreground mb-4">{language === "en" ? "Per Month" : "Per maand"}</p>
                 <p className="text-muted-foreground mb-6">
                   {language === "en"
                     ? "For founders who need ongoing development and iterations for their MVP."
@@ -514,42 +414,24 @@ export default function MVPPage() {
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
                     <span>
-                      {language === "en"
-                        ? "For Web & Mobile Applications"
-                        : "Voor web- en mobiele applicaties"}
+                      {language === "en" ? "For Web & Mobile Applications" : "Voor web- en mobiele applicaties"}
                     </span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Continuous Feature Development"
-                        : "Continue functieontwikkeling"}
-                    </span>
+                    <span>{language === "en" ? "Continuous Feature Development" : "Continue functieontwikkeling"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Bug Fixes & Maintenance"
-                        : "Bugfixes & onderhoud"}
-                    </span>
+                    <span>{language === "en" ? "Bug Fixes & Maintenance" : "Bugfixes & onderhoud"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "UX/UI Refinements"
-                        : "UX/UI-verfijningen"}
-                    </span>
+                    <span>{language === "en" ? "UX/UI Refinements" : "UX/UI-verfijningen"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>
-                      {language === "en"
-                        ? "Scaling Support"
-                        : "Schaalondersteuning"}
-                    </span>
+                    <span>{language === "en" ? "Scaling Support" : "Schaalondersteuning"}</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
@@ -562,9 +444,7 @@ export default function MVPPage() {
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
                     <span>
-                      {language === "en"
-                        ? "Ongoing Development & Support"
-                        : "Doorlopende ontwikkeling & ondersteuning"}
+                      {language === "en" ? "Ongoing Development & Support" : "Doorlopende ontwikkeling & ondersteuning"}
                     </span>
                   </li>
                 </ul>
@@ -583,9 +463,7 @@ export default function MVPPage() {
         <section className="py-16 md:py-24 lg:px-4">
           <div className="container text-center">
             <h2 className="text-3xl font-bold mb-6">
-              {language === "en"
-                ? "Questions about building an MVP?"
-                : "Vragen over het bouwen van een MVP?"}
+              {language === "en" ? "Questions about building an MVP?" : "Vragen over het bouwen van een MVP?"}
             </h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
               {language === "en"
@@ -595,8 +473,7 @@ export default function MVPPage() {
             <Button
               className="bg-green-500 hover:bg-green-600 text-white px-8"
               onClick={() => {
-                setSelectedPackage(null);
-                setShowOrderDialog(true);
+                window.location.href = "/contact"
               }}
             >
               {t("services.contact")}
@@ -611,11 +488,7 @@ export default function MVPPage() {
       <Dialog open={showOrderDialog} onOpenChange={setShowOrderDialog}>
         <DialogContent className="sm:max-w-md max-h-[90vh] flex flex-col">
           <DialogHeader className="flex-shrink-0">
-            <DialogTitle>
-              {language === "en"
-                ? "Request MVP Development"
-                : "MVP-ontwikkeling aanvragen"}
-            </DialogTitle>
+            <DialogTitle>{language === "en" ? "Request MVP Development" : "MVP-ontwikkeling aanvragen"}</DialogTitle>
             <DialogDescription>
               {language === "en"
                 ? "Review your package details and fill in your contact information to submit."
@@ -624,19 +497,13 @@ export default function MVPPage() {
           </DialogHeader>
 
           {/* Scrollable content area */}
-          <div
-            className="overflow-y-auto flex-grow py-4 pr-2"
-            style={{ maxHeight: "calc(90vh - 180px)" }}
-          >
+          <div className="overflow-y-auto flex-grow py-4 pr-2" style={{ maxHeight: "calc(90vh - 180px)" }}>
             {/* Package Summary */}
             <div className="space-y-4">
               <div className="flex justify-between">
                 <span>{language === "en" ? "Package:" : "Pakket:"}</span>
                 <span className="font-medium">
-                  {selectedPackage ||
-                    (language === "en"
-                      ? "Custom Request"
-                      : "Aangepaste aanvraag")}
+                  {selectedPackage || (language === "en" ? "Custom Request" : "Aangepaste aanvraag")}
                 </span>
               </div>
 
@@ -648,9 +515,7 @@ export default function MVPPage() {
                   </div>
                   <div className="flex justify-between">
                     <span>{language === "en" ? "Timeline:" : "Tijdlijn:"}</span>
-                    <span className="font-medium">
-                      {language === "en" ? "1-3 Weeks" : "1-3 Weken"}
-                    </span>
+                    <span className="font-medium">{language === "en" ? "1-3 Weeks" : "1-3 Weken"}</span>
                   </div>
                 </>
               )}
@@ -663,9 +528,7 @@ export default function MVPPage() {
                   </div>
                   <div className="flex justify-between">
                     <span>{language === "en" ? "Timeline:" : "Tijdlijn:"}</span>
-                    <span className="font-medium">
-                      {language === "en" ? "1-3 Weeks" : "1-3 Weken"}
-                    </span>
+                    <span className="font-medium">{language === "en" ? "1-3 Weeks" : "1-3 Weken"}</span>
                   </div>
                 </>
               )}
@@ -674,15 +537,11 @@ export default function MVPPage() {
                 <>
                   <div className="flex justify-between">
                     <span>{language === "en" ? "Price:" : "Prijs:"}</span>
-                    <span className="font-medium">
-                      $1,499 {language === "en" ? "per month" : "per maand"}
-                    </span>
+                    <span className="font-medium">$1,499 {language === "en" ? "per month" : "per maand"}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>{language === "en" ? "Timeline:" : "Tijdlijn:"}</span>
-                    <span className="font-medium">
-                      {language === "en" ? "Ongoing" : "Doorlopend"}
-                    </span>
+                    <span className="font-medium">{language === "en" ? "Ongoing" : "Doorlopend"}</span>
                   </div>
                 </>
               )}
@@ -725,37 +584,21 @@ export default function MVPPage() {
                   id="email"
                   type="email"
                   className="w-full p-2 border rounded-md"
-                  placeholder={
-                    language === "en"
-                      ? "john.doe@example.com"
-                      : "jan.jansen@voorbeeld.nl"
-                  }
+                  placeholder={language === "en" ? "john.doe@example.com" : "jan.jansen@voorbeeld.nl"}
                   required
                 />
               </div>
 
               <div className="space-y-2">
                 <label htmlFor="phone" className="text-sm font-medium">
-                  {language === "en"
-                    ? "Phone (optional)"
-                    : "Telefoon (optioneel)"}
+                  {language === "en" ? "Phone (optional)" : "Telefoon (optioneel)"}
                 </label>
-                <input
-                  id="phone"
-                  type="tel"
-                  className="w-full p-2 border rounded-md"
-                  placeholder="+31 6 12345678"
-                />
+                <input id="phone" type="tel" className="w-full p-2 border rounded-md" placeholder="+31 6 12345678" />
               </div>
 
               <div className="space-y-2">
-                <label
-                  htmlFor="projectDescription"
-                  className="text-sm font-medium"
-                >
-                  {language === "en"
-                    ? "Project Description"
-                    : "Projectbeschrijving"}
+                <label htmlFor="projectDescription" className="text-sm font-medium">
+                  {language === "en" ? "Project Description" : "Projectbeschrijving"}
                 </label>
                 <textarea
                   id="projectDescription"
@@ -778,36 +621,20 @@ export default function MVPPage() {
               className="bg-green-500 hover:bg-green-600"
               onClick={async () => {
                 // Get form values
-                const firstName = (
-                  document.getElementById("firstName") as HTMLInputElement
-                )?.value;
-                const lastName = (
-                  document.getElementById("lastName") as HTMLInputElement
-                )?.value;
-                const email = (
-                  document.getElementById("email") as HTMLInputElement
-                )?.value;
-                const phone = (
-                  document.getElementById("phone") as HTMLInputElement
-                )?.value;
-                const projectDescription = (
-                  document.getElementById(
-                    "projectDescription"
-                  ) as HTMLTextAreaElement
-                )?.value;
+                const firstName = (document.getElementById("firstName") as HTMLInputElement)?.value
+                const lastName = (document.getElementById("lastName") as HTMLInputElement)?.value
+                const email = (document.getElementById("email") as HTMLInputElement)?.value
+                const phone = (document.getElementById("phone") as HTMLInputElement)?.value
+                const projectDescription = (document.getElementById("projectDescription") as HTMLTextAreaElement)?.value
 
                 // Validate required fields
                 if (!firstName || !lastName || !email) {
-                  alert(
-                    language === "en"
-                      ? "Please fill in all required fields"
-                      : "Vul alle verplichte velden in"
-                  );
-                  return;
+                  alert(language === "en" ? "Please fill in all required fields" : "Vul alle verplichte velden in")
+                  return
                 }
 
                 // Set loading state
-                setIsLoading(true);
+                setIsLoading(true)
 
                 try {
                   // Send the form data to our API
@@ -828,35 +655,35 @@ export default function MVPPage() {
                         language, // Add the current language
                       },
                     }),
-                  });
+                  })
 
-                  const data = await response.json();
+                  const data = await response.json()
 
                   if (response.ok) {
                     // Show success message
                     alert(
                       language === "en"
                         ? "Your request has been submitted! We'll contact you soon."
-                        : "Uw aanvraag is ingediend! We nemen binnenkort contact met u op."
-                    );
-                    setShowOrderDialog(false);
+                        : "Uw aanvraag is ingediend! We nemen binnenkort contact met u op.",
+                    )
+                    setShowOrderDialog(false)
                   } else {
                     // Show error message
                     alert(
                       language === "en"
                         ? `Error: ${data.error || "Failed to submit request"}`
-                        : `Fout: ${data.error || "Aanvraag indienen mislukt"}`
-                    );
+                        : `Fout: ${data.error || "Aanvraag indienen mislukt"}`,
+                    )
                   }
                 } catch (error) {
                   // Show error message
                   alert(
                     language === "en"
                       ? "An unexpected error occurred. Please try again later."
-                      : "Er is een onverwachte fout opgetreden. Probeer het later opnieuw."
-                  );
+                      : "Er is een onverwachte fout opgetreden. Probeer het later opnieuw.",
+                  )
                 } finally {
-                  setIsLoading(false);
+                  setIsLoading(false)
                 }
               }}
               disabled={isLoading}
@@ -898,19 +725,14 @@ export default function MVPPage() {
       {/* Add CSS for animation */}
       <style jsx global>{`
         @keyframes fadeOut {
-          0% {
-            opacity: 1;
-          }
-          100% {
-            opacity: 0;
-            visibility: hidden;
-          }
+          0% { opacity: 1; }
+          100% { opacity: 0; visibility: hidden; }
         }
-
+        
         :root {
           --vh: 1vh;
         }
       `}</style>
     </main>
-  );
+  )
 }

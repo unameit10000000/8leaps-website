@@ -7,7 +7,6 @@ import { useLanguage } from "./language-provider"
 import { useTheme } from "next-themes"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/sheet"
 import { Moon, Sun, Menu } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
@@ -31,7 +30,7 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center space-x-2">
-            {/* Show appropriate logo based on theme */}
+            {/* Show appropriate text-only logo based on theme */}
             {mounted ? (
               <div className="relative h-6 w-32">
                 <Image
@@ -102,17 +101,21 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-2">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="icon" className="h-8 w-8">
-                {language === "en" ? "EN" : "NL"}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setLanguage("en")}>English</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLanguage("nl")}>Nederlands</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Button
+            variant="outline"
+            className="h-8 px-3 flex items-center justify-center gap-2"
+            onClick={() => setLanguage(language === "en" ? "nl" : "en")}
+          >
+            <span className="font-medium text-sm">{language === "en" ? "EN" : "NL"}</span>
+            <div className="relative w-5 h-3.5 overflow-hidden">
+              <Image
+                src={language === "en" ? "/flags/en_flag.svg" : "/flags/nl_flag.svg"}
+                alt={language === "en" ? "English" : "Nederlands"}
+                fill
+                className="object-cover"
+              />
+            </div>
+          </Button>
 
           {mounted && (
             <Button

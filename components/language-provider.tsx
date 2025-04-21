@@ -29,8 +29,8 @@ const translations = {
     "services.contact": "Contact us",
     "hero.title": "Jump forward. Stay ahead.",
     "hero.subtitle":
-      "Your competition doesn't wait, and neither do we. From powerful web experiences to smart consultancy, we help you move fast, stay relevant, and continuously improve your digital presence.",
-    "hero.cta": "Learn more about our services",
+      "The world doesn't wait, and neither do we. From impactful digital experiences to strategic support, we help projects move fast, grow with purpose, and stay ahead.",
+    "hero.cta": "Checkout our services",
     "chat.button": "Schedule a Call ☕",
     "footer.rights": "All rights reserved",
     "services.title": "Our Services",
@@ -47,6 +47,38 @@ const translations = {
     "services.consulting.desc": "Strategic technology consulting to help your business grow and innovate.",
     "services.validation.desc":
       "Comprehensive testing and validation for new ideas and early-stage products. We act as real users, perform blackbox testing, and check for security issues and bugs to ensure your product is market-ready.",
+
+    // How We Work section translations
+    "howwework.title": "How We Work",
+    "howwework.description": "Our process ensures efficient delivery and high-quality results for your project.",
+    "howwework.includes": "This stage includes:",
+
+    "howwework.stage1.title": "Discovery and Planning",
+    "howwework.stage1.description": "We start by understanding your needs and planning the development process.",
+    "howwework.stage1.item1": "Preparing for development",
+    "howwework.stage1.item2": "Content delivery",
+    "howwework.stage1.item3": "Theme/style selection",
+    "howwework.stage1.item4": "Project scope definition",
+
+    "howwework.stage2.title": "Development and Testing",
+    "howwework.stage2.description": "We build your solution and thoroughly test it to ensure quality.",
+    "howwework.stage2.item1": "Frontend and backend development",
+    "howwework.stage2.item2": "Responsive design implementation",
+    "howwework.stage2.item3": "Quality assurance and testing",
+
+    "howwework.stage3.title": "Deployment and Delivery",
+    "howwework.stage3.description": "We launch your project and ensure everything works perfectly.",
+    "howwework.stage3.item1": "Server configuration",
+    "howwework.stage3.item2": "Domain setup and SSL installation",
+    "howwework.stage3.item3": "Final review and handover",
+
+    "howwework.stage4.title": "Maintenance (Optional)",
+    "howwework.stage4.description": "We provide ongoing support to keep your solution running smoothly.",
+    "howwework.stage4.item1": "Regular updates and security patches",
+    "howwework.stage4.item2": "Performance monitoring",
+    "howwework.stage4.item3": "Content updates and technical support",
+
+    "howwework.learn.more": "Learn More About Our Process",
 
     // MVP service translations
     "services.mvp.title": "MVP Development",
@@ -89,8 +121,8 @@ const translations = {
 
     "services.webdev.sub1": "Custom website and web application development",
     "services.webdev.sub2": "Responsive design for all devices",
-    "services.webdev.sub3": "E-commerce solutions",
-    "services.webdev.sub4": "Content management systems",
+    "services.webdev.sub3": "Content management systems",
+    "services.webdev.sub4": "Performance optimization and SEO",
     "services.webdev.sub5": "Performance optimization and SEO",
     "services.webdev.card1.title": "WordPress Solutions",
     "services.webdev.card1.description":
@@ -220,17 +252,17 @@ const translations = {
       "Testing and validation for new products and startup ideas. We act like real users, test like devs, and think like critics, offering you feedback, bug reports, and UX-suggestions before launch.",
     "pricing.cta": "Contact us",
     "pricing.predefined.packages": "Fixed Bundles",
-    "pricing.custom.calculator": "Custom Calculator",
-    "pricing.select.client.type": "Select Client Type",
+    "pricing.custom.calculator": "Choose yourself",
+    "pricing.select.client.type": "I am a",
+    "pricing.select.tier": "Select Tier",
     "pricing.need.custom": "Need a more customized solution? Try our calculator to build your own package.",
-    "pricing.build.custom": "Build Custom Package",
+    "pricing.build.custom": "Compose bundle yourself",
     "pricing.step.type": "Type",
     "pricing.step.tier": "Tier",
-    "pricing.step.technology": "Technology",
-    "pricing.step.extras": "Extras",
-    "pricing.select.tier": "Select Tier",
-    "pricing.select.technology": "Select Technology",
-    "pricing.tech.consultation": "For the Custom-made tier, technology is determined during consultation",
+    "pricing.step.technology": "Tools",
+    "pricing.step.extras": "Extra",
+    "pricing.select.technology": "Select Tools",
+    "pricing.tech.consultation": "For the Custom-made tier, tools are determined during consultation",
     "pricing.continue": "Continue",
     "pricing.select.packages": "Select Additional Packages",
     "pricing.packages.consultation": "For the Custom-made tier, additional packages are determined during consultation",
@@ -249,7 +281,7 @@ const translations = {
     "pricing.discount": "Discount:",
     "pricing.total": "Total:",
     "pricing.tier": "Tier:",
-    "pricing.technology": "Technology:",
+    "pricing.technology": "Tools:",
     "pricing.packages": "Packages:",
     "pricing.consultation.needed": "Consultation needed",
     "pricing.form.firstname": "First Name",
@@ -261,7 +293,7 @@ const translations = {
     "pricing.form.submit": "Submit Request",
     "pricing.view.details": "View details",
     "pricing.tier.name": "Tier: ",
-    "pricing.technology.name": "Technology:",
+    "pricing.technology.name": "Tools:",
     "pricing.included.packages": "Included packages:",
     "pricing.compatible.with": "Compatible with:",
     "pricing.most.popular": "Most Popular",
@@ -295,6 +327,8 @@ const translations = {
     "pricing.error": "Error",
     "pricing.submission.failed": "Failed to submit request",
     "pricing.unexpected.error": "An unexpected error occurred. Please try again later.",
+    "services.explore": "Explore",
+    "services.create": "Create",
   },
   nl: {
     "nav.home": "Home",
@@ -311,8 +345,8 @@ const translations = {
     "services.contact": "Neem contact op",
     "hero.title": "Spring vooruit. Blijf voorop.",
     "hero.subtitle":
-      "De concurrentie wacht niet, en wij ook niet. Van krachtige weboplossingen tot slimme strategie, wij zorgen dat je snel schakelt, relevant blijft en je digitale aanwezigheid blijft verbeteren.",
-    "hero.cta": "Lees meer over onze diensten",
+      "De wereld wacht niet, en wij ook niet. Van impactvolle digitale ervaringen tot strategische ondersteuning, helpen we projecten snel te bewegen, doelgericht te groeien en voorop te blijven.",
+    "hero.cta": "Plan Gesprek ☕",
     "chat.button": "Plan Gesprek ☕",
     "footer.rights": "Alle rechten voorbehouden",
     "services.title": "Onze Diensten",
@@ -330,6 +364,39 @@ const translations = {
     "services.consulting.desc": "Strategische technologische consultancy om uw bedrijf te laten groeien en innoveren.",
     "services.validation.desc":
       "Uitgebreide tests en validatie voor nieuwe ideeën en producten in een vroeg stadium. We handelen als echte gebruikers, voeren blackbox-tests uit en controleren op beveiligingsproblemen en bugs om ervoor te zorgen dat uw product klaar is voor de markt.",
+
+    // How We Work section translations
+    "howwework.title": "Hoe Wij Werken",
+    "howwework.description": "Ons proces zorgt voor efficiënte levering en hoogwaardige resultaten voor uw project.",
+    "howwework.includes": "Deze fase omvat:",
+
+    "howwework.stage1.title": "Ontdekking en Planning",
+    "howwework.stage1.description":
+      "We beginnen met het begrijpen van uw behoeften en het plannen van het ontwikkelingsproces.",
+    "howwework.stage1.item1": "Voorbereiding voor ontwikkeling",
+    "howwework.stage1.item2": "Content levering",
+    "howwework.stage1.item3": "Thema/stijl selectie",
+    "howwework.stage1.item4": "Projectomvang definitie",
+
+    "howwework.stage2.title": "Ontwikkeling en Testen",
+    "howwework.stage2.description": "We bouwen uw oplossing en testen deze grondig om kwaliteit te garanderen.",
+    "howwework.stage2.item1": "Frontend en backend ontwikkeling",
+    "howwework.stage2.item2": "Implementatie van responsief ontwerp",
+    "howwework.stage2.item3": "Kwaliteitsborging en testen",
+
+    "howwework.stage3.title": "Implementatie en Oplevering",
+    "howwework.stage3.description": "We lanceren uw project en zorgen ervoor dat alles perfect werkt.",
+    "howwework.stage3.item1": "Server configuratie",
+    "howwework.stage3.item2": "Domein setup en SSL installatie",
+    "howwework.stage3.item3": "Eindcontrole en overdracht",
+
+    "howwework.stage4.title": "Onderhoud (Optioneel)",
+    "howwework.stage4.description": "We bieden doorlopende ondersteuning om uw oplossing soepel te laten draaien.",
+    "howwework.stage4.item1": "Regelmatige updates en beveiligingspatches",
+    "howwework.stage4.item2": "Prestatiemonitoring",
+    "howwework.stage4.item3": "Content updates en technische ondersteuning",
+
+    "howwework.learn.more": "Meer Over Ons Proces",
 
     // MVP service translations
     "services.mvp.title": "MVP Ontwikkeling",
@@ -371,9 +438,8 @@ const translations = {
 
     "services.webdev.sub1": "Ontwikkeling van aangepaste websites en webapplicaties",
     "services.webdev.sub2": "Responsief ontwerp voor alle apparaten",
-    "services.webdev.sub3": "E-commerce oplossingen",
-    "services.webdev.sub4": "Content management systemen",
-    "services.webdev.sub5": "Prestatie-optimalisatie en SEO",
+    "services.webdev.sub3": "Content management systemen",
+    "services.webdev.sub4": "Prestatie-optimalisatie en SEO",
     "services.webdev.card1.title": "WordPress Oplossingen",
     "services.webdev.card1.description":
       "Van eenvoudige websites tot complexe aangepaste oplossingen, we bouwen professionele WordPress-sites met schone code, geoptimaliseerde prestaties en gebruiksvriendelijke beheerinterfaces.",
@@ -502,18 +568,18 @@ const translations = {
       "Testen en validatie voor nieuwe producten en startup ideeën. We handelen als echte gebruikers, testen als ontwikkelaars en denken als critici, en bieden u feedback, bugrapporten en UX-suggesties vóór de lancering.",
     "pricing.cta": "Neem contact op",
     "pricing.predefined.packages": "Vaste Bundels",
-    "pricing.custom.calculator": "Aangepaste Calculator",
-    "pricing.select.client.type": "Selecteer Klanttype",
+    "pricing.custom.calculator": "Zelf kiezen",
+    "pricing.select.client.type": "Ik ben een",
+    "pricing.select.tier": "Selecteer Niveau",
     "pricing.need.custom":
       "Heeft u een meer aangepaste oplossing nodig? Probeer onze calculator om uw eigen pakket samen te stellen.",
-    "pricing.build.custom": "Maak Aangepast Pakket",
+    "pricing.build.custom": "Bundel zelf samenstellen",
     "pricing.step.type": "Type",
     "pricing.step.tier": "Niveau",
-    "pricing.step.technology": "Technologie",
-    "pricing.step.extras": "Extra's",
-    "pricing.select.tier": "Selecteer Niveau",
-    "pricing.select.technology": "Selecteer Technologie",
-    "pricing.tech.consultation": "Voor het Custom-made niveau wordt de technologie bepaald tijdens het overleg",
+    "pricing.step.technology": "Tools",
+    "pricing.step.extras": "Extra",
+    "pricing.select.technology": "Selecteer Tools",
+    "pricing.tech.consultation": "Voor het Custom-made niveau worden de tools bepaald tijdens het overleg",
     "pricing.continue": "Doorgaan",
     "pricing.select.packages": "Selecteer Aanvullende Pakketten",
     "pricing.packages.consultation":
@@ -533,7 +599,7 @@ const translations = {
     "pricing.discount": "Korting:",
     "pricing.total": "Totaal:",
     "pricing.tier": "Niveau:",
-    "pricing.technology": "Technologie:",
+    "pricing.technology": "Tools:",
     "pricing.packages": "Pakketten:",
     "pricing.consultation.needed": "Consultatie nodig",
     "pricing.form.firstname": "Voornaam",
@@ -545,7 +611,7 @@ const translations = {
     "pricing.form.submit": "Aanvraag Indienen",
     "pricing.view.details": "Bekijk details",
     "pricing.tier.name": "Niveau: ",
-    "pricing.technology.name": "Technologie:",
+    "pricing.technology.name": "Tools:",
     "pricing.included.packages": "Inbegrepen pakketten:",
     "pricing.compatible.with": "Compatibel met:",
     "pricing.most.popular": "Meest Populair",
@@ -579,6 +645,77 @@ const translations = {
     "pricing.error": "Fout",
     "pricing.submission.failed": "Aanvraag indienen mislukt",
     "pricing.unexpected.error": "Er is een onverwachte fout opgetreden. Probeer het later opnieuw.",
+    "services.explore": "Ontdek",
+    "services.create": "Creëer",
+
+    // For tier details
+    "pricing.tier.starter.details": "Starter niveau met essentiële functies",
+    "pricing.tier.professional.details": "Professioneel niveau met uitgebreide functies",
+    "pricing.tier.custom.details": "Volledig op maat gemaakt voor uw specifieke behoeften",
+
+    // For technology details
+    "pricing.tech.frontend.details": "Moderne frontend ontwikkeling met React, Next.js of Vue",
+    "pricing.tech.wpheadless.details": "WordPress als headless CMS met een flexibele frontend",
+    "pricing.tech.wpfull.details": "Volledige WordPress oplossing met aangepaste thema's",
+    "pricing.tech.idontknow.details": "Wij adviseren de beste technologie voor uw project",
+
+    // For package details
+    "pricing.package.integrations.details": "Integratie van plugins en externe diensten",
+    "pricing.package.contactforms.details": "Geavanceerde contactformulieren met aangepaste functionaliteit",
+    "pricing.package.setup.details": "Volledige setup van domein, hosting en e-mail",
+    "pricing.package.maintenance.details": "Doorlopend onderhoud en updates voor uw website",
+
+    // For bundle details
+    "pricing.bundle.simple.features": "Eenvoudige website met essentiële functies",
+    "pricing.bundle.plus.features": "Professionele website met uitgebreide functionaliteit",
+    "pricing.bundle.premium.features": "Volledig op maat gemaakte oplossing voor complexe behoeften",
+    "pricing.bundle.mvp.features": "Snelle ontwikkeling van uw minimaal levensvatbaar product",
+
+    // For view details button
+    "pricing.view.details": "Bekijk details",
+
+    // For included items
+    "pricing.included": "Inbegrepen",
+    "pricing.not.included": "Niet inbegrepen",
+
+    // For consultation text
+    "pricing.consultation.needed": "Consultatie nodig",
+    "pricing.consultation.text": "Voor het op maat gemaakte niveau worden de details bepaald tijdens het overleg",
+
+    // For pricing calculator steps
+    "pricing.step.type.description": "Selecteer uw klanttype",
+    "pricing.step.tier.description": "Kies uw gewenste niveau",
+    "pricing.step.technology.description": "Selecteer de technologie",
+    "pricing.step.extras.description": "Voeg extra diensten toe",
+
+    // For form fields
+    "pricing.form.company": "Bedrijfsnaam (optioneel)",
+    "pricing.form.company.placeholder": "Uw bedrijfsnaam",
+    "pricing.form.requirements": "Specifieke vereisten",
+    "pricing.form.requirements.placeholder": "Vertel ons over specifieke functionaliteiten of vereisten...",
+
+    // Add specific translations for tier inclusions
+    "pricing.tier.starter.inclusion.0": "Uniek ontwerp",
+    "pricing.tier.starter.inclusion.1": "Mobiel-vriendelijk",
+    "pricing.tier.starter.inclusion.2": "1 ontwerpiteratie",
+    "pricing.tier.starter.inclusion.3": "Tot 5 pagina's",
+    "pricing.tier.starter.inclusion.4": "SEO Setup",
+
+    "pricing.tier.professional.inclusion.0": "Alles in starter +",
+    "pricing.tier.professional.inclusion.1": "Voorgedefinieerde thema's",
+    "pricing.tier.professional.inclusion.2": "5 ontwerpiteraties",
+    "pricing.tier.professional.inclusion.3": "Onbeperkt aantal pagina's",
+    "pricing.tier.professional.inclusion.4": "Geavanceerde SEO-optimalisatie",
+    "pricing.tier.professional.inclusion.5": "Prestatie geoptimaliseerd",
+    "pricing.tier.professional.inclusion.6": "Inclusief teksten & afbeeldingen",
+
+    "pricing.tier.customMade.inclusion.0": "Alles in professional +",
+    "pricing.tier.customMade.inclusion.1": "Onbeperkte ontwerpiteraties",
+    "pricing.tier.customMade.inclusion.2": "Geavanceerde database-integraties",
+    "pricing.tier.customMade.inclusion.3": "Aangepaste API-ontwikkeling",
+    "pricing.tier.customMade.inclusion.4": "Integraties met externe diensten",
+    "pricing.tier.customMade.inclusion.5": "AI-integraties",
+    "pricing.tier.customMade.inclusion.6": "Gebruikersauthenticatiesysteem",
   },
 }
 

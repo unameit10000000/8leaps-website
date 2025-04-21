@@ -11,7 +11,6 @@ type CarouselProps = {
   buttonPosition?: "default" | "higher"
 }
 
-// Update the component definition to use the buttonPosition prop
 export function Carousel({ children, className, onSlideChange, buttonPosition = "default" }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = React.useState(0)
   const carouselRef = React.useRef<HTMLDivElement>(null)
@@ -60,54 +59,21 @@ export function Carousel({ children, className, onSlideChange, buttonPosition = 
     }
   }, [currentIndex, onSlideChange])
 
-  // Add touch event handlers to detect swipe navigation
+  // Add scroll event listener
   React.useEffect(() => {
     const carousel = carouselRef.current
     if (carousel) {
-      // Add scroll event listener
-      carousel.addEventListener("scroll", handleScroll)
-
-      // Add touch event listeners to detect swipes
-      let touchStartX = 0
-
-      const handleTouchStart = (e: TouchEvent) => {
-        touchStartX = e.touches[0].clientX
-      }
-
-      const handleTouchEnd = (e: TouchEvent) => {
-        const touchEndX = e.changedTouches[0].clientX
-        const diff = touchStartX - touchEndX
-
-        // If significant swipe detected, notify about slide change
-        if (Math.abs(diff) > 50 && onSlideChange) {
-          // Small delay to ensure the scroll has completed
-          setTimeout(() => {
-            const scrollLeft = carousel.scrollLeft
-            const itemWidth = carousel.offsetWidth
-            const newIndex = Math.round(scrollLeft / itemWidth)
-            onSlideChange(newIndex)
-          }, 100)
-        }
-      }
-
-      carousel.addEventListener("touchstart", handleTouchStart)
-      carousel.addEventListener("touchend", handleTouchEnd)
+      carousel.addEventListener("scroll", handleScroll, { passive: true })
 
       return () => {
         carousel.removeEventListener("scroll", handleScroll)
-        carousel.removeEventListener("touchstart", handleTouchStart)
-        carousel.removeEventListener("touchend", handleTouchEnd)
       }
     }
-  }, [handleScroll, onSlideChange])
+  }, [handleScroll])
 
   return (
     <div className={cn("relative", className)}>
-      <div
-        ref={carouselRef}
-        className="flex w-full overflow-x-auto snap-x snap-mandatory scroll-smooth touch-pan-x scrollbar-hide"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-      >
+      <div ref={carouselRef} className="flex w-full overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide">
         {children.map((child, index) => (
           <div key={index} className="flex-none w-full snap-start px-2">
             {child}
@@ -168,7 +134,7 @@ const CarouselContent = React.forwardRef<HTMLDivElement, CarouselContentProps>((
   return (
     <div
       className={cn(
-        "relative flex w-full overflow-auto snap-x snap-mandatory scroll-smooth touch-pan-x will-change-[scroll-position,transform] py-2",
+        "relative flex w-full overflow-auto snap-x snap-mandatory scroll-smooth will-change-[scroll-position,transform] py-2",
         className,
       )}
       ref={ref}

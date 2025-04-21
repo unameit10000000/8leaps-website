@@ -1,12 +1,15 @@
-import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { NextResponse } from "next/server"
+import nodemailer from "nodemailer"
 
 export async function POST(request: Request) {
   try {
     // Parse the request body
-    const body = await request.json();
-    const { formType, formData } = body;
-    const language = formData.language || "en"; // Default to English if not specified
+    const body = await request.json()
+    const { formType, formData } = body
+    const language = formData.language || "en" // Default to English if not specified
+
+    // Log the received information
+    console.log(`Form submission received from ${formType} page:`, formData)
 
     // Validate required environment variables
     if (
@@ -16,13 +19,8 @@ export async function POST(request: Request) {
       !process.env.EMAIL_PASSWORD ||
       !process.env.EMAIL_FROM
     ) {
-      console.error(
-        "Missing required email configuration environment variables"
-      );
-      return NextResponse.json(
-        { error: "Server email configuration is incomplete" },
-        { status: 500 }
-      );
+      console.error("Missing required email configuration environment variables")
+      return NextResponse.json({ error: "Server email configuration is incomplete" }, { status: 500 })
     }
 
     // Create a transporter using SMTP
@@ -39,30 +37,25 @@ export async function POST(request: Request) {
       tls: {
         rejectUnauthorized: false,
       },
-    });
+    })
 
     // Define the destination email (8Leaps team email)
-    const toEmail = "info@8leaps.com";
+    const toEmail = "info@8leaps.com"
 
     // Check if Dutch language is selected
-    const isNL = language === "nl";
+    const isNL = language === "nl"
 
     // Prepare email content based on form type
-    let subject = "";
-    let emailContent = "";
-    let htmlContent = "";
+    let subject = ""
+    let emailContent = ""
+    let htmlContent = ""
 
     if (formType === "pricing") {
-      const { firstName, lastName, email, phone, message, packageDetails } =
-        formData;
+      const { firstName, lastName, email, phone, message, packageDetails } = formData
 
       subject = isNL
-        ? `Nieuwe Prijsaanvraag: ${
-            packageDetails.package || "Aangepast Pakket"
-          }`
-        : `New Pricing Form Submission: ${
-            packageDetails.package || "Custom Package"
-          }`;
+        ? `Nieuwe Prijsaanvraag: ${packageDetails.package || "Aangepast Pakket"}`
+        : `New Pricing Form Submission: ${packageDetails.package || "Custom Package"}`
 
       emailContent = isNL
         ? `
@@ -77,17 +70,9 @@ export async function POST(request: Request) {
           Pakket: ${packageDetails.package || "Aangepast Pakket"}
           Klanttype: ${packageDetails.clientType || "Niet gespecificeerd"}
           ${packageDetails.tier ? `Niveau: ${packageDetails.tier}` : ""}
-          ${
-            packageDetails.technology
-              ? `Technologie: ${packageDetails.technology}`
-              : ""
-          }
+          ${packageDetails.technology ? `Technologie: ${packageDetails.technology}` : ""}
           ${packageDetails.price ? `Prijs: €${packageDetails.price}` : ""}
-          ${
-            packageDetails.monthlyPrice
-              ? `Maandelijkse Prijs: €${packageDetails.monthlyPrice}/maand`
-              : ""
-          }
+          ${packageDetails.monthlyPrice ? `Maandelijkse Prijs: €${packageDetails.monthlyPrice}/maand` : ""}
           
           Aanvullend Bericht:
           ${message || "Geen aanvullend bericht opgegeven"}
@@ -104,21 +89,13 @@ export async function POST(request: Request) {
           Package: ${packageDetails.package || "Custom Package"}
           Client Type: ${packageDetails.clientType || "Not specified"}
           ${packageDetails.tier ? `Tier: ${packageDetails.tier}` : ""}
-          ${
-            packageDetails.technology
-              ? `Technology: ${packageDetails.technology}`
-              : ""
-          }
+          ${packageDetails.technology ? `Technology: ${packageDetails.technology}` : ""}
           ${packageDetails.price ? `Price: €${packageDetails.price}` : ""}
-          ${
-            packageDetails.monthlyPrice
-              ? `Monthly Price: €${packageDetails.monthlyPrice}/month`
-              : ""
-          }
+          ${packageDetails.monthlyPrice ? `Monthly Price: €${packageDetails.monthlyPrice}/month` : ""}
           
           Additional Message:
           ${message || "No additional message provided"}
-        `;
+        `
 
       htmlContent = isNL
         ? `
@@ -130,39 +107,15 @@ export async function POST(request: Request) {
           <p><strong>Telefoon:</strong> ${phone || "Niet opgegeven"}</p>
           
           <h3>Pakketdetails:</h3>
-          <p><strong>Pakket:</strong> ${
-            packageDetails.package || "Aangepast Pakket"
-          }</p>
-          <p><strong>Klanttype:</strong> ${
-            packageDetails.clientType || "Niet gespecificeerd"
-          }</p>
-          ${
-            packageDetails.tier
-              ? `<p><strong>Niveau:</strong> ${packageDetails.tier}</p>`
-              : ""
-          }
-          ${
-            packageDetails.technology
-              ? `<p><strong>Technologie:</strong> ${packageDetails.technology}</p>`
-              : ""
-          }
-          ${
-            packageDetails.price
-              ? `<p><strong>Prijs:</strong> €${packageDetails.price}</p>`
-              : ""
-          }
-          ${
-            packageDetails.monthlyPrice
-              ? `<p><strong>Maandelijkse Prijs:</strong> €${packageDetails.monthlyPrice}/maand</p>`
-              : ""
-          }
+          <p><strong>Pakket:</strong> ${packageDetails.package || "Aangepast Pakket"}</p>
+          <p><strong>Klanttype:</strong> ${packageDetails.clientType || "Niet gespecificeerd"}</p>
+          ${packageDetails.tier ? `<p><strong>Niveau:</strong> ${packageDetails.tier}</p>` : ""}
+          ${packageDetails.technology ? `<p><strong>Technologie:</strong> ${packageDetails.technology}</p>` : ""}
+          ${packageDetails.price ? `<p><strong>Prijs:</strong> €${packageDetails.price}</p>` : ""}
+          ${packageDetails.monthlyPrice ? `<p><strong>Maandelijkse Prijs:</strong> €${packageDetails.monthlyPrice}/maand</p>` : ""}
           
           <h3>Aanvullend Bericht:</h3>
-          <p>${
-            message
-              ? message.replace(/\n/g, "<br>")
-              : "Geen aanvullend bericht opgegeven"
-          }</p>
+          <p>${message ? message.replace(/\n/g, "<br>") : "Geen aanvullend bericht opgegeven"}</p>
         `
         : `
           <h2>New Pricing Form Submission</h2>
@@ -173,53 +126,22 @@ export async function POST(request: Request) {
           <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
           
           <h3>Package Details:</h3>
-          <p><strong>Package:</strong> ${
-            packageDetails.package || "Custom Package"
-          }</p>
-          <p><strong>Client Type:</strong> ${
-            packageDetails.clientType || "Not specified"
-          }</p>
-          ${
-            packageDetails.tier
-              ? `<p><strong>Tier:</strong> ${packageDetails.tier}</p>`
-              : ""
-          }
-          ${
-            packageDetails.technology
-              ? `<p><strong>Technology:</strong> ${packageDetails.technology}</p>`
-              : ""
-          }
-          ${
-            packageDetails.price
-              ? `<p><strong>Price:</strong> €${packageDetails.price}</p>`
-              : ""
-          }
-          ${
-            packageDetails.monthlyPrice
-              ? `<p><strong>Monthly Price:</strong> €${packageDetails.monthlyPrice}/month</p>`
-              : ""
-          }
+          <p><strong>Package:</strong> ${packageDetails.package || "Custom Package"}</p>
+          <p><strong>Client Type:</strong> ${packageDetails.clientType || "Not specified"}</p>
+          ${packageDetails.tier ? `<p><strong>Tier:</strong> ${packageDetails.tier}</p>` : ""}
+          ${packageDetails.technology ? `<p><strong>Technology:</strong> ${packageDetails.technology}</p>` : ""}
+          ${packageDetails.price ? `<p><strong>Price:</strong> €${packageDetails.price}</p>` : ""}
+          ${packageDetails.monthlyPrice ? `<p><strong>Monthly Price:</strong> €${packageDetails.monthlyPrice}/month</p>` : ""}
           
           <h3>Additional Message:</h3>
-          <p>${
-            message
-              ? message.replace(/\n/g, "<br>")
-              : "No additional message provided"
-          }</p>
-        `;
+          <p>${message ? message.replace(/\n/g, "<br>") : "No additional message provided"}</p>
+        `
     } else if (formType === "mvp") {
-      const {
-        firstName,
-        lastName,
-        email,
-        phone,
-        projectDescription,
-        selectedPackage,
-      } = formData;
+      const { firstName, lastName, email, phone, projectDescription, selectedPackage } = formData
 
       subject = isNL
         ? `Nieuwe MVP Aanvraag: ${selectedPackage || "Aangepaste Aanvraag"}`
-        : `New MVP Request: ${selectedPackage || "Custom Request"}`;
+        : `New MVP Request: ${selectedPackage || "Custom Request"}`
 
       emailContent = isNL
         ? `
@@ -247,7 +169,7 @@ export async function POST(request: Request) {
           
           Project Description:
           ${projectDescription || "No project description provided"}
-        `;
+        `
 
       htmlContent = isNL
         ? `
@@ -262,11 +184,7 @@ export async function POST(request: Request) {
           <p>${selectedPackage || "Aangepaste Aanvraag"}</p>
           
           <h3>Projectbeschrijving:</h3>
-          <p>${
-            projectDescription
-              ? projectDescription.replace(/\n/g, "<br>")
-              : "Geen projectbeschrijving opgegeven"
-          }</p>
+          <p>${projectDescription ? projectDescription.replace(/\n/g, "<br>") : "Geen projectbeschrijving opgegeven"}</p>
         `
         : `
           <h2>New MVP Development Request</h2>
@@ -280,61 +198,37 @@ export async function POST(request: Request) {
           <p>${selectedPackage || "Custom Request"}</p>
           
           <h3>Project Description:</h3>
-          <p>${
-            projectDescription
-              ? projectDescription.replace(/\n/g, "<br>")
-              : "No project description provided"
-          }</p>
-        `;
+          <p>${projectDescription ? projectDescription.replace(/\n/g, "<br>") : "No project description provided"}</p>
+        `
     } else {
-      subject = isNL
-        ? `Nieuw Formulier Bericht: ${formType}`
-        : `New Form Submission: ${formType}`;
+      subject = isNL ? `Nieuw Formulier Bericht: ${formType}` : `New Form Submission: ${formType}`
 
       emailContent = isNL
-        ? `Algemeen formulier bericht van ${formType} pagina:\n\n${JSON.stringify(
-            formData,
-            null,
-            2
-          )}`
-        : `Generic form submission from ${formType} page:\n\n${JSON.stringify(
-            formData,
-            null,
-            2
-          )}`;
+        ? `Algemeen formulier bericht van ${formType} pagina:\n\n${JSON.stringify(formData, null, 2)}`
+        : `Generic form submission from ${formType} page:\n\n${JSON.stringify(formData, null, 2)}`
 
       htmlContent = isNL
-        ? `<h2>Algemeen formulier bericht van ${formType} pagina:</h2><pre>${JSON.stringify(
-            formData,
-            null,
-            2
-          )}</pre>`
-        : `<h2>Generic form submission from ${formType} page:</h2><pre>${JSON.stringify(
-            formData,
-            null,
-            2
-          )}</pre>`;
+        ? `<h2>Algemeen formulier bericht van ${formType} pagina:</h2><pre>${JSON.stringify(formData, null, 2)}</pre>`
+        : `<h2>Generic form submission from ${formType} page:</h2><pre>${JSON.stringify(formData, null, 2)}</pre>`
     }
 
     // Verify SMTP connection
     try {
-      console.log("Verifying SMTP connection...");
-      await transporter.verify();
+      console.log("Verifying SMTP connection...")
+      await transporter.verify()
     } catch (verifyError) {
-      console.error("SMTP Verification Error:", verifyError);
+      console.error("SMTP Verification Error:", verifyError)
       return NextResponse.json(
         {
           error: "Failed to verify SMTP connection",
-          details:
-            verifyError instanceof Error
-              ? verifyError.message
-              : String(verifyError),
+          details: verifyError instanceof Error ? verifyError.message : String(verifyError),
         },
-        { status: 500 }
-      );
+        { status: 500 },
+      )
     }
 
     // Send the email to 8Leaps
+    console.log(`Sending ${formType} form submission to 8Leaps team...`)
     const info = await transporter.sendMail({
       from: process.env.EMAIL_FROM,
       to: toEmail,
@@ -342,11 +236,13 @@ export async function POST(request: Request) {
       subject,
       text: emailContent,
       html: htmlContent,
-    });
+    })
+
+    console.log(`${formType} form email sent successfully:`, info.messageId)
 
     // Send confirmation email to the user
     try {
-      console.log("Sending confirmation email to user...");
+      console.log("Sending confirmation email to user...")
 
       // Confirmation email content based on language
       const userConfirmationSubject = isNL
@@ -354,18 +250,14 @@ export async function POST(request: Request) {
           ? "Bedankt voor uw prijsaanvraag"
           : "Bedankt voor uw MVP ontwikkelingsaanvraag"
         : formType === "pricing"
-        ? "Thank you for your pricing request"
-        : "Thank you for your MVP development request";
+          ? "Thank you for your pricing request"
+          : "Thank you for your MVP development request"
 
       const userConfirmationText = isNL
         ? `
           Beste ${formData.firstName},
           
-          Bedankt voor uw ${
-            formType === "pricing"
-              ? "prijsaanvraag"
-              : "MVP ontwikkelingsaanvraag"
-          } bij 8Leaps. We hebben uw aanvraag ontvangen en zullen zo snel mogelijk contact met u opnemen.
+          Bedankt voor uw ${formType === "pricing" ? "prijsaanvraag" : "MVP ontwikkelingsaanvraag"} bij 8Leaps. We hebben uw aanvraag ontvangen en zullen zo snel mogelijk contact met u opnemen.
           
           Met vriendelijke groet,
           Het 8Leaps Team
@@ -373,39 +265,27 @@ export async function POST(request: Request) {
         : `
           Dear ${formData.firstName},
           
-          Thank you for your ${
-            formType === "pricing"
-              ? "pricing request"
-              : "MVP development request"
-          } with 8Leaps. We have received your submission and will get back to you as soon as possible.
+          Thank you for your ${formType === "pricing" ? "pricing request" : "MVP development request"} with 8Leaps. We have received your submission and will get back to you as soon as possible.
           
           Best regards,
           The 8Leaps Team
-        `;
+        `
 
       const userConfirmationHtml = isNL
         ? `
           <p>Beste ${formData.firstName},</p>
           
-          <p>Bedankt voor uw ${
-            formType === "pricing"
-              ? "prijsaanvraag"
-              : "MVP ontwikkelingsaanvraag"
-          } bij 8Leaps. We hebben uw aanvraag ontvangen en zullen zo snel mogelijk contact met u opnemen.</p>
+          <p>Bedankt voor uw ${formType === "pricing" ? "prijsaanvraag" : "MVP ontwikkelingsaanvraag"} bij 8Leaps. We hebben uw aanvraag ontvangen en zullen zo snel mogelijk contact met u opnemen.</p>
           
           <p>Met vriendelijke groet,<br>Het 8Leaps Team</p>
         `
         : `
           <p>Dear ${formData.firstName},</p>
           
-          <p>Thank you for your ${
-            formType === "pricing"
-              ? "pricing request"
-              : "MVP development request"
-          } with 8Leaps. We have received your submission and will get back to you as soon as possible.</p>
+          <p>Thank you for your ${formType === "pricing" ? "pricing request" : "MVP development request"} with 8Leaps. We have received your submission and will get back to you as soon as possible.</p>
           
           <p>Best regards,<br>The 8Leaps Team</p>
-        `;
+        `
 
       const userConfirmationInfo = await transporter.sendMail({
         from: process.env.EMAIL_FROM,
@@ -413,27 +293,26 @@ export async function POST(request: Request) {
         subject: userConfirmationSubject,
         text: userConfirmationText,
         html: userConfirmationHtml,
-      });
+      })
+
+      console.log("User confirmation email sent successfully:", userConfirmationInfo.messageId)
     } catch (confirmationError) {
       // If confirmation email fails, log it but don't fail the whole request
-      console.error("Error sending confirmation email:", confirmationError);
+      console.error("Error sending confirmation email:", confirmationError)
     }
 
     return NextResponse.json({
       success: true,
       messageId: info.messageId,
-    });
+    })
   } catch (error) {
-    console.error(
-      `Error sending ${request.body?.formType || "form"} submission email:`,
-      error
-    );
+    console.error(`Error sending ${request.body?.formType || "form"} submission email:`, error)
     return NextResponse.json(
       {
         error: "Failed to send form submission",
         details: error instanceof Error ? error.message : String(error),
       },
-      { status: 500 }
-    );
+      { status: 500 },
+    )
   }
 }

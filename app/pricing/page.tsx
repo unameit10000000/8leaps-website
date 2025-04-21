@@ -239,6 +239,28 @@ export default function PricingPage() {
   const [predefinedPackagePrice, setPredefinedPackagePrice] = useState<number | null>(null)
   const [predefinedPackageMonthly, setPredefinedPackageMonthly] = useState<number | null>(null)
 
+  // Auto-select the first predefined package when the component mounts
+  useEffect(() => {
+    if (!selectedPredefinedPackage && Object.keys(DATA.predefinedPackages).length > 0) {
+      // Get visible packages based on client type
+      const visiblePackages = Object.entries(DATA.predefinedPackages)
+        .filter(([key]) => {
+          // Filter out MVP for non-company clients
+          return !(key === "mvp" && predefinedPackageClientType !== "company")
+        })
+        .sort(([key1], [key2]) => {
+          // Put MVP last
+          if (key1 === "mvp") return 1
+          if (key2 === "mvp") return -1
+          return 0
+        })
+
+      if (visiblePackages.length > 0) {
+        setSelectedPredefinedPackage(visiblePackages[0][0] as PredefinedPackageType)
+      }
+    }
+  }, [selectedPredefinedPackage, predefinedPackageClientType])
+
   // Calculator state
   const [step, setStep] = useState(1)
   const [clientType, setClientType] = useState<ClientType>("company")
@@ -443,6 +465,38 @@ export default function PricingPage() {
     setNeedsConsultation(false)
   }, [clientType, selectedTier, selectedDevType, selectedPackages, DATA.discounts.student, DATA.discounts.nonprofit])
 
+  // Add these useEffect hooks after the existing useEffect hooks to set initial selections
+
+  // Add this effect to select the first tier when step 2 is reached
+  useEffect(() => {
+    if (step === 2 && !selectedTier && Object.keys(DATA.tiers).length > 0) {
+      // Select the first tier by default
+      setSelectedTier(Object.keys(DATA.tiers)[0] as TierType)
+    }
+  }, [step, selectedTier])
+
+  // Add this effect to select the first compatible dev type when step 3 is reached
+  useEffect(() => {
+    if (step === 3 && selectedTier && !selectedDevType) {
+      // Find the first compatible dev type
+      const compatibleDevType = Object.entries(DATA.devTypes).find(([key, devType]) =>
+        devType.compatibleTiers.includes(selectedTier),
+      )
+
+      if (compatibleDevType) {
+        setSelectedDevType(compatibleDevType[0] as DevType)
+      }
+    }
+  }, [step, selectedTier, selectedDevType])
+
+  // Add this effect to ensure the calculator client type is selected initially
+  useEffect(() => {
+    if (!clientType && Object.keys(CLIENT_TYPE_INFO).length > 0) {
+      // Set the default client type to the first one (usually "company")
+      setClientType(Object.keys(CLIENT_TYPE_INFO)[0] as ClientType)
+    }
+  }, [clientType])
+
   // Handle predefined package order
   const handlePredefinedPackageRequest = () => {
     if (!selectedPredefinedPackage) {
@@ -542,7 +596,7 @@ export default function PricingPage() {
   // Render "In consultation" text consistently
   const renderConsultationText = () => (
     <span className="flex items-center text-base">
-      <HelpCircle className="h-4 w-4 mr-1" /> {language === "en" ? "In consultation" : t("pricing.in.consultation")}
+      <HelpCircle className="h-4 w-4 mr-1" /> {t("pricing.in.consultation")}
     </span>
   )
 
@@ -637,9 +691,9 @@ export default function PricingPage() {
   // Predefined package cards
   const predefinedPackageCards = Object.entries(DATA.predefinedPackages)
     .sort(([key1], [key2]) => {
-      // Put MVP first
-      if (key1 === "mvp") return -1
-      if (key2 === "mvp") return 1
+      // Put MVP last
+      if (key1 === "mvp") return 1
+      if (key2 === "mvp") return -1
       return 0
     })
     .map(([key, pkg], index) => {
@@ -832,7 +886,9 @@ export default function PricingPage() {
                 {tierData.inclusions.map((inclusion, idx) => (
                   <li key={idx} className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-                    <span>{inclusion}</span>
+                    <span>
+                      {language === "en" ? inclusion : t(`pricing.tier.${pkg.tier}.inclusion.${idx}`) || inclusion}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -983,7 +1039,7 @@ export default function PricingPage() {
           {tier.inclusions.map((inclusion, idx) => (
             <li key={idx} className="flex items-start">
               <Check className="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" />
-              <span>{inclusion}</span>
+              <span>{language === "en" ? inclusion : t(`pricing.tier.${key}.inclusion.${idx}`) || inclusion}</span>
             </li>
           ))}
         </ul>
@@ -1030,6 +1086,9 @@ export default function PricingPage() {
               </li>
             ))}
           </ul>
+          {language === "nl" && (
+            <p className="text-sm text-muted-foreground mt-2">{t(`pricing.tech.${key}.details`) || ""}</p>
+          )}
         </div>
       </CustomAccordion>
     </div>
@@ -1182,6 +1241,9 @@ export default function PricingPage() {
                   className="h-min mb-4"
                   onSlideChange={(index) => {
                     setClientTypeSlide(index)
+                    // Automatically select the client type based on the slide index
+                    const clientTypes = Object.keys(CLIENT_TYPE_INFO) as ClientType[]
+                    setPredefinedPackageClientType(clientTypes[index])
                   }}
                 >
                   {clientTypeCards}
@@ -1200,20 +1262,20 @@ export default function PricingPage() {
                     buttonPosition="higher"
                     onSlideChange={(index) => {
                       setPredefinedPackageSlide(index)
-                      // Set the selected package based on the slide index
-                      // We need to handle the filtered packages for non-company clients
+                      // Get visible packages based on client type
                       const visiblePackages = Object.entries(DATA.predefinedPackages)
                         .filter(([key]) => {
                           // Filter out MVP for non-company clients
                           return !(key === "mvp" && predefinedPackageClientType !== "company")
                         })
                         .sort(([key1], [key2]) => {
-                          // Put MVP first
-                          if (key1 === "mvp") return -1
-                          if (key2 === "mvp") return 1
+                          // Put MVP last
+                          if (key1 === "mvp") return 1
+                          if (key2 === "mvp") return -1
                           return 0
                         })
 
+                      // Automatically select the package based on the slide index
                       if (visiblePackages[index]) {
                         setSelectedPredefinedPackage(visiblePackages[index][0] as PredefinedPackageType)
                       }
@@ -1345,6 +1407,9 @@ export default function PricingPage() {
                       className="h-24 mb-4"
                       onSlideChange={(index) => {
                         setClientTypeSlideCalculator(index)
+                        // Automatically select the client type based on the slide index
+                        const clientTypes = Object.keys(CLIENT_TYPE_INFO) as ClientType[]
+                        setClientType(clientTypes[index])
                       }}
                     >
                       {calculatorClientTypeCards}
@@ -1367,6 +1432,9 @@ export default function PricingPage() {
                       buttonPosition="higher"
                       onSlideChange={(index) => {
                         setTierSlide(index)
+                        // Automatically select the tier based on the slide index
+                        const tierTypes = Object.keys(DATA.tiers) as TierType[]
+                        setSelectedTier(tierTypes[index])
                       }}
                     >
                       {tierCards.map((card, index) => (
@@ -1410,6 +1478,13 @@ export default function PricingPage() {
                           buttonPosition="higher"
                           onSlideChange={(index) => {
                             setDevTypeSlide(index)
+                            // Automatically select the dev type based on the slide index, but only if compatible
+                            const devTypes = Object.keys(DATA.devTypes) as DevType[]
+                            const devType = devTypes[index]
+                            // Only set the dev type if it's compatible with the selected tier
+                            if (selectedTier && DATA.devTypes[devType].compatibleTiers.includes(selectedTier)) {
+                              setSelectedDevType(devType)
+                            }
                           }}
                         >
                           {devTypeCards.map((card, index) => (
@@ -1699,7 +1774,7 @@ export default function PricingPage() {
                 (activeTab === "calculate" && needsConsultation) ? (
                 t("pricing.request.consultation")
               ) : (
-                t("pricing.submit.request")
+                t("pricing.form.submit")
               )}
             </Button>
           </DialogFooter>

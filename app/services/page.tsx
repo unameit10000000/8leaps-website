@@ -8,6 +8,7 @@ import { Check, Code, Lightbulb, Bot, MessageCircleQuestion, Rocket } from "luci
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useEffect } from "react"
+import { HowWeWork } from "@/components/how-we-work"
 
 export default function ServicesPage() {
   const { t, language } = useLanguage()
@@ -70,20 +71,6 @@ export default function ServicesPage() {
   // Main service categories
   const mainServices = [
     {
-      icon: <Rocket className="h-12 w-12 text-green-500" />,
-      title: t("services.mvp.title"),
-      description: t("services.mvp.desc"),
-      subServices: [
-        language === "en" ? "From idea to MVP in 1-3 weeks" : "Van idee naar MVP in 1-3 weken",
-        t("services.mvp.sub2"),
-        t("services.mvp.sub3"),
-        t("services.mvp.sub4"),
-      ],
-      bgColor: "bg-green-50 dark:bg-green-900/20", // Start with green background
-      specialLink: "/mvp", // Special link for MVP service
-      buttonText: t("services.mvp.button"), // Custom button text
-    },
-    {
       icon: <MessageCircleQuestion className="h-12 w-12 text-green-500" />,
       title: t("services.consulting"),
       description: t("services.consulting.desc"),
@@ -121,6 +108,20 @@ export default function ServicesPage() {
       bgColor: "bg-muted/50", // Then grey background again
     },
     {
+      icon: <Rocket className="h-12 w-12 text-green-500" />,
+      title: t("services.mvp.title"),
+      description: t("services.mvp.desc"),
+      subServices: [
+        language === "en" ? "From idea to MVP in 1-3 weeks" : "Van idee naar MVP in 1-3 weken",
+        t("services.mvp.sub2"),
+        t("services.mvp.sub3"),
+        t("services.mvp.sub4"),
+      ],
+      bgColor: "bg-green-50 dark:bg-green-900/20", // Green background
+      specialLink: "/mvp", // Special link for MVP service
+      buttonText: t("services.mvp.button"), // Custom button text
+    },
+    {
       icon: <Bot className="h-12 w-12 text-green-500" />,
       title: t("services.aiintegration"),
       description: t("services.aiintegration.desc"),
@@ -130,7 +131,7 @@ export default function ServicesPage() {
         t("services.aiintegration.sub3"),
         t("services.aiintegration.sub4"),
       ],
-      bgColor: "bg-green-50 dark:bg-green-900/20", // End with green background
+      bgColor: "bg-muted/50", // End with grey background
     },
   ]
 
@@ -153,13 +154,13 @@ export default function ServicesPage() {
                 key={index}
                 id={
                   index === 0
-                    ? "mvp"
+                    ? "consulting"
                     : index === 1
-                      ? "consulting"
+                      ? "validation"
                       : index === 2
-                        ? "validation"
+                        ? "webdev"
                         : index === 3
-                          ? "webdev"
+                          ? "mvp"
                           : "ai-integration"
                 }
                 className={`grid md:grid-cols-2 gap-4 md:gap-12 items-start p-4 md:p-12 rounded-lg ${service.bgColor} scroll-mt-32 md:scroll-mt-24 pt-8`}
@@ -180,7 +181,7 @@ export default function ServicesPage() {
                   </ul>
                 </div>
                 <div className="grid gap-4 md:gap-8">
-                  {index === 0 && (
+                  {index === 3 && (
                     <>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
@@ -204,7 +205,7 @@ export default function ServicesPage() {
                       </Card>
                     </>
                   )}
-                  {index === 1 && (
+                  {index === 0 && (
                     <>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
@@ -224,7 +225,7 @@ export default function ServicesPage() {
                       </Card>
                     </>
                   )}
-                  {index === 2 && (
+                  {index === 1 && (
                     <>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
@@ -244,7 +245,7 @@ export default function ServicesPage() {
                       </Card>
                     </>
                   )}
-                  {index === 3 && (
+                  {index === 2 && (
                     <>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
@@ -276,10 +277,13 @@ export default function ServicesPage() {
                       </Card>
                       <Card className="border-2 hover:border-green-500 transition-all duration-300">
                         <CardHeader>
-                          <CardTitle>{t("services.aiintegration.card2.title")}</CardTitle>
+                          <CardTitle>{t("services.aiintegration.card2.title") || "AI-Powered Automation"}</CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <CardDescription>{t("services.aiintegration.card2.description")}</CardDescription>
+                          <CardDescription>
+                            {t("services.aiintegration.card2.description") ||
+                              "Streamline operations and boost productivity with custom AI solutions."}
+                          </CardDescription>
                         </CardContent>
                       </Card>
                     </>
@@ -287,10 +291,10 @@ export default function ServicesPage() {
                 </div>
                 <div className="mt-4 md:mt-8">
                   <Button asChild className="bg-green-500 hover:bg-green-600 text-white">
-                    {index === 0 ? (
+                    {index === 3 ? (
                       // MVP service - link to /mvp
                       <Link href="/mvp">{service.buttonText || t("services.contact")}</Link>
-                    ) : index === 3 ? (
+                    ) : index === 2 ? (
                       // Web development service - link to /pricing
                       <Link href="/pricing">Start</Link>
                     ) : (
@@ -304,6 +308,11 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+
+      {/* Add the full How We Work section here */}
+      <div id="how-we-work">
+        <HowWeWork />
+      </div>
 
       {/* Call to action section */}
       <section className="py-12 md:py-24 bg-muted/50">
