@@ -368,7 +368,7 @@ const translations = {
     "hero.title": "Spring vooruit. Blijf voorop.",
     "hero.subtitle":
       "De wereld wacht niet, en wij ook niet. Van impactvolle digitale ervaringen tot strategische ondersteuning, helpen we projecten snel te bewegen, doelgericht te groeien en voorop te blijven.",
-    "hero.cta": "Bekijk onze services",
+    "hero.cta": "Bekijk onze diensten",
     "chat.button": "Plan Gesprek ☕",
     "footer.rights": "Alle rechten voorbehouden",
     "services.title": "Onze Diensten",
@@ -644,7 +644,6 @@ const translations = {
     "pricing.tier": "Niveau:",
     "pricing.technology": "Tools:",
     "pricing.packages": "Pakketten:",
-    "pricing.consultation.needed": "Consultatie nodig",
     "pricing.form.firstname": "Voornaam",
     "pricing.form.lastname": "Achternaam",
     "pricing.form.email": "E-mail",
@@ -683,8 +682,6 @@ const translations = {
     "pricing.package.maintenance.desc":
       "Domein, hosting, e-mail en updates (€9.99/maand)",
     "pricing.in.consultation": "In overleg",
-    "pricing.consultation.text":
-      "Voor het Custom-made niveau worden aanvullende pakketten bepaald tijdens het overleg",
     "pricing.mvp.bundle": "MVP Bundel",
     "pricing.mvp.bundle.desc":
       "Snelle ontwikkeling voor uw minimaal levensvatbaar product",
@@ -735,9 +732,6 @@ const translations = {
     "pricing.bundle.mvp.features":
       "Snelle ontwikkeling van uw minimaal levensvatbaar product",
 
-    // For view details button
-    "pricing.view.details": "Bekijk details",
-
     // For included items
     "pricing.included": "Inbegrepen",
     "pricing.not.included": "Niet inbegrepen",
@@ -745,7 +739,7 @@ const translations = {
     // For consultation text
     "pricing.consultation.needed": "Consultatie nodig",
     "pricing.consultation.text":
-      "Voor het op maat gemaakte niveau worden de details bepaald tijdens het overleg",
+      "Voor het op maat gemaakte niveau worden details bepaald tijdens het overleg",
 
     // For pricing calculator steps
     "pricing.step.type.description": "Selecteer uw klanttype",
