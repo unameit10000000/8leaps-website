@@ -6,7 +6,6 @@ import { Analytics } from "@vercel/analytics/react";
 export const metadata: Metadata = {
   title: "8Leaps | Development Services",
   description: "We from 8Leaps offer Professional web development services",
-  generator: "v0.dev",
 };
 
 export default function RootLayout({
