@@ -36,3 +36,10 @@ At 8Leaps, the mission is to accelerate projects and help organizations stay agi
 ## Learn More
 
 Visit 8Leaps to learn more about their web development [services](https://8leaps.com/services) and how they help various types of clients create effective online presences.
+
+## Copyright
+
+(c) 2025-present 8Leaps. All rights reserved.
+
+This code is the exclusive property of 8Leaps. Unauthorized copying,
+modification, distribution, or use is strictly prohibited.
