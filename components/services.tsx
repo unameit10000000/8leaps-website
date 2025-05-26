@@ -1,13 +1,26 @@
-"use client"
+"use client";
 
-import { useLanguage } from "./language-provider"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
-import { Code, Lightbulb, Bot, MessageCircleQuestion, Rocket } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { useLanguage } from "./language-provider";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from "@/components/ui/card";
+import {
+  Code,
+  Lightbulb,
+  Bot,
+  MessageCircleQuestion,
+  Rocket,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export function Services() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
 
   // Define the explore services (IT Consultancy and Idea Validation)
   const exploreServices = [
@@ -23,7 +36,7 @@ export function Services() {
       description: t("services.validation.desc"),
       link: "/services#validation",
     },
-  ]
+  ];
 
   // Define the create services (Web Development, MVP Development, AI Integrations)
   const createServices = [
@@ -45,19 +58,25 @@ export function Services() {
       description: t("services.aiintegration.desc"),
       link: "/services#ai-integration",
     },
-  ]
+  ];
 
   return (
     <section id="services" className="pt-16 pb-0 md:pt-32 md:pb-0">
       <div className="container">
         <div className="text-center mb-12 md:mb-20">
-          <h2 className="text-3xl font-bold mb-4 md:mb-6">{t("services.title")}</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">{t("services.description")}</p>
+          <h2 className="text-3xl font-bold mb-4 md:mb-6">
+            {t("services.title")}
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            {t("services.description")}
+          </p>
         </div>
 
         {/* Explore Section */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold mb-8 text-center">{t("services.explore")}</h3>
+          <h3 className="text-2xl font-bold mb-8 text-center">
+            {t("services.explore")}
+          </h3>
           <div className="grid gap-6 md:gap-10 md:grid-cols-2">
             {exploreServices.map((service, index) => (
               <Card
@@ -109,16 +128,20 @@ export function Services() {
         {/* Green background content */}
         <div className="bg-green-500 text-white py-16 w-full">
           <div className="container">
-            <h3 className="text-2xl font-bold mb-8 text-center text-white">{t("services.create")}</h3>
+            <h3 className="text-2xl font-bold mb-8 text-center text-white">
+              {t("services.create")}
+            </h3>
             <div className="grid gap-6 md:gap-10 md:grid-cols-2 lg:grid-cols-3">
               {createServices.map((service, index) => (
                 <Card
                   key={index}
-                  className="border-2 border-white/20 bg-white/10 backdrop-blur-sm transition-all duration-300 flex flex-col text-white hover:scale-105 hover:z-10"
+                  className="border-2 border-white/20 bg-primary backdrop-blur-sm transition-all duration-300 flex flex-col text-white hover:scale-105 hover:z-10"
                 >
                   <CardHeader>
                     <div className="mb-2">{service.icon}</div>
-                    <CardTitle className="text-white">{service.title}</CardTitle>
+                    <CardTitle className="text-white">
+                      {service.title}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent className="flex-grow">
                     <p className="text-white/80">{service.description}</p>
@@ -157,5 +180,5 @@ export function Services() {
         </div>
       </div>
     </section>
-  )
+  );
 }
