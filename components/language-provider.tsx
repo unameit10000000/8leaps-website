@@ -16,11 +16,18 @@ type LanguageContextType = {
 const translations = {
   en: {
     "nav.home": "Home",
-    "nav.services": "Services",
+    "nav.services": "Solutions",
     "nav.allservices": "All Services",
     "nav.pricing": "Pricing",
+    "nav.blog": "Blog",
     "nav.about": "About",
     "nav.contact": "Contact",
+    // Blog
+    "blog.back": "Back",
+    "blog.readmore": "Read more",
+    // Solutions page header
+    "solutions.title": "Solutions",
+    "solutions.page.subtitle": "Comprehensive services for your digital needs",
     "services.webdev": "Web Development",
     "services.aiintegration": "AI Integrations",
     "services.consulting": "IT Consulting",
@@ -351,14 +358,27 @@ const translations = {
       "An unexpected error occurred. Please try again later.",
     "services.explore": "Explore",
     "services.create": "Create",
+    // Cases
+    "cases.title": "Cases",
+    "cases.subtitle": "A selection of projects we worked on.",
+    "cases.status.live": "Live",
+    "cases.status.building": "Under construction",
+    "cases.view.project": "View project",
   },
   nl: {
     "nav.home": "Home",
-    "nav.services": "Diensten",
+    "nav.services": "Oplossingen",
     "nav.allservices": "Alle Diensten",
     "nav.pricing": "Tarieven",
+    "nav.blog": "Blog",
     "nav.about": "Over ons",
     "nav.contact": "Contact",
+    // Blog
+    "blog.back": "Terug",
+    "blog.readmore": "Lees meer",
+    // Solutions page header
+    "solutions.title": "Oplossingen",
+    "solutions.page.subtitle": "Uitgebreide diensten voor uw digitale behoeften",
     "services.webdev": "Webontwikkeling",
     "services.aiintegration": "AI Integraties",
     "services.consulting": "IT Consultancy",
@@ -694,6 +714,12 @@ const translations = {
       "Er is een onverwachte fout opgetreden. Probeer het later opnieuw.",
     "services.explore": "Ontdek",
     "services.create": "Creëer",
+    // Cases
+    "cases.title": "Cases",
+    "cases.subtitle": "Een selectie van projecten waar we aan hebben gewerkt.",
+    "cases.status.live": "Live",
+    "cases.status.building": "Wordt gebouwd",
+    "cases.view.project": "Bekijk project",
 
     // For tier details
     "pricing.tier.starter.details": "Starter niveau met essentiële functies",

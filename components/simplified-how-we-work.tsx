@@ -70,7 +70,7 @@ export function SimplifiedHowWeWork() {
 
         <div className="text-center">
           <Button asChild className="bg-green-500 hover:bg-green-600 text-white px-8">
-            <Link href="/services#how-we-work">{t("howwework.learn.more")}</Link>
+            <Link href="/solutions#how-we-work">{t("howwework.learn.more")}</Link>
           </Button>
         </div>
       </div>

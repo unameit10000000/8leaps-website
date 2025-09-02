@@ -10,7 +10,7 @@ import Link from "next/link"
 import { useEffect } from "react"
 import { HowWeWork } from "@/components/how-we-work"
 
-export default function ServicesPage() {
+export default function SolutionsPage() {
   const { t, language } = useLanguage()
 
   // Add this useEffect at the beginning of the ServicesPage component to handle hash navigation
@@ -140,8 +140,8 @@ export default function ServicesPage() {
       <Header />
       <div className="bg-gradient-to-b from-green-500 to-green-400 py-12 md:py-24">
         <div className="container">
-          <h1 className="text-4xl font-bold text-white text-center">{t("services.title")}</h1>
-          <p className="text-white text-center mt-4 max-w-2xl mx-auto">{t("services.page.subtitle")}</p>
+          <h1 className="text-4xl font-bold text-white text-center">{t("solutions.title")}</h1>
+          <p className="text-white text-center mt-4 max-w-2xl mx-auto">{t("solutions.page.subtitle")}</p>
         </div>
       </div>
 

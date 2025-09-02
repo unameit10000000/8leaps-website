@@ -28,13 +28,13 @@ export function Services() {
       icon: <MessageCircleQuestion className="h-10 w-10 text-green-500" />,
       title: t("services.consulting"),
       description: t("services.consulting.desc"),
-      link: "/services#consulting",
+      link: "/solutions#consulting",
     },
     {
       icon: <Lightbulb className="h-10 w-10 text-green-500" />,
       title: t("services.validation"),
       description: t("services.validation.desc"),
-      link: "/services#validation",
+      link: "/solutions#validation",
     },
   ];
 
@@ -44,7 +44,7 @@ export function Services() {
       icon: <Code className="h-10 w-10 text-white" />,
       title: t("services.webdev"),
       description: t("services.webdev.desc"),
-      link: "/services#webdev",
+      link: "/solutions#webdev",
     },
     {
       icon: <Rocket className="h-10 w-10 text-white" />,
@@ -56,7 +56,7 @@ export function Services() {
       icon: <Bot className="h-10 w-10 text-white" />,
       title: t("services.aiintegration"),
       description: t("services.aiintegration.desc"),
-      link: "/services#ai-integration",
+      link: "/solutions#ai-integration",
     },
   ];
 

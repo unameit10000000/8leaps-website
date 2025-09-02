@@ -60,9 +60,9 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services"
+                  href="/solutions"
                   className={`text-gray-400 hover:text-green-500 transition-colors ${
-                    isActive("/services") ? "text-green-500" : ""
+                    isActive("/solutions") ? "text-green-500" : ""
                   }`}
                 >
                   {t("nav.services")}

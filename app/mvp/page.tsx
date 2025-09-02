@@ -166,7 +166,7 @@ export default function MVPPage() {
                     variant="outline"
                     className="border-green-500 text-green-500 hover:bg-green-50 px-8"
                     onClick={() => {
-                      window.location.href = "/services"
+                      window.location.href = "/solutions"
                     }}
                   >
                     {language === "en" ? "Other Services" : "Andere Diensten"}

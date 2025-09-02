@@ -60,23 +60,33 @@ export function Header() {
               {t("nav.home")}
             </Link>
 
-            {/* Services as a normal link, not a dropdown */}
+            {/* Solutions link */}
             <Link
-              href="/services"
+              href="/solutions"
               className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive("/services") ? "text-primary" : ""
+                isActive("/solutions") ? "text-primary" : ""
               }`}
             >
               {t("nav.services")}
             </Link>
 
             <Link
-              href="/pricing"
+              href="/cases"
               className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive("/pricing") ? "text-primary" : ""
+                isActive("/cases") ? "text-primary" : ""
               }`}
             >
-              {t("nav.pricing")}
+              Cases
+            </Link>
+
+            {/* New Blog link */}
+            <Link
+              href="/blog"
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                isActive("/blog") ? "text-primary" : ""
+              }`}
+            >
+              {t("nav.blog")}
             </Link>
 
             <Link
@@ -86,16 +96,6 @@ export function Header() {
               }`}
             >
               {t("nav.about")}
-            </Link>
-
-            {/* Update to point to /contact page */}
-            <Link
-              href="/contact"
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive("/contact") ? "text-primary" : ""
-              }`}
-            >
-              {t("nav.contact")}
             </Link>
           </nav>
         </div>
@@ -170,20 +170,28 @@ export function Header() {
                     {t("nav.home")}
                   </Link>
                   <Link
-                    href="/services"
+                    href="/solutions"
                     className={`text-lg font-medium transition-colors hover:text-primary ${
-                      isActive("/services") ? "text-primary" : ""
+                      isActive("/solutions") ? "text-primary" : ""
                     }`}
                   >
                     {t("nav.services")}
                   </Link>
                   <Link
-                    href="/pricing"
+                    href="/cases"
                     className={`text-lg font-medium transition-colors hover:text-primary ${
-                      isActive("/pricing") ? "text-primary" : ""
+                      isActive("/cases") ? "text-primary" : ""
                     }`}
                   >
-                    {t("nav.pricing")}
+                    Cases
+                  </Link>
+                  <Link
+                    href="/blog"
+                    className={`text-lg font-medium transition-colors hover:text-primary ${
+                      isActive("/blog") ? "text-primary" : ""
+                    }`}
+                  >
+                    {t("nav.blog")}
                   </Link>
                   <Link
                     href="/about"
@@ -192,15 +200,6 @@ export function Header() {
                     }`}
                   >
                     {t("nav.about")}
-                  </Link>
-                  {/* Update mobile menu link as well */}
-                  <Link
-                    href="/contact"
-                    className={`text-lg font-medium transition-colors hover:text-primary ${
-                      isActive("/contact") ? "text-primary" : ""
-                    }`}
-                  >
-                    {t("nav.contact")}
                   </Link>
                   <div className="mt-4 pt-4 border-t">
                     <Button

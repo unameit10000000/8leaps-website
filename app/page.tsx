@@ -2,7 +2,7 @@
 
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
-import { Services } from "@/components/services"
+import { Services } from "@/components/solutions"
 import { SimplifiedHowWeWork } from "@/components/simplified-how-we-work"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
