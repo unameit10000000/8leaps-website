@@ -15,6 +15,18 @@ type CaseItem = {
 // Dummy data – will be replaced by database later
 const cases: CaseItem[] = [
   {
+    title: "Techblog - jetstack.xyz",
+    url: "https://jetstack.xyz",
+    status: "building",
+    imageUrl: "/cases/jetstack.png",
+  },
+  {
+    title: "Portaalvoormij - portaalvoormij.nl",
+    url: "https://portaalvoormij.nl",
+    status: "live",
+    imageUrl: "/cases/portaalvoormij.png",
+  },
+  {
     title: "Portfolio site - bartolomeo.pro",
     url: "https://bartolomeo.pro",
     status: "live",
