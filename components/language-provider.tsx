@@ -367,7 +367,7 @@ const translations = {
 
     // Guide page translations
     "guide.hero.title": "Welcome to our quickstart guide",
-    "guide.hero.subtitle": "Your business has potential. Let's unlock it together—step by step, in just 5 minutes.",
+    "guide.hero.subtitle": "Your business has potential. Let's unlock it together, step by step, in just 1 minute.",
     "guide.hero.startButton": "Start Your Journey",
     "guide.step1.title": "Where Are You Right Now?",
     "guide.step1.subtitle": "Let's figure out where you are and where you want to go",
@@ -464,9 +464,9 @@ const translations = {
     "guide.why.risk.title": "No Risk",
     "guide.why.risk.description": "No long-term contracts. We succeed when you succeed.",
     "guide.final.title": "Ready to Take the First Step?",
-    "guide.final.subtitle": "Your business has potential. Let's unlock it together—one sprint at a time.",
+    "guide.final.subtitle": "Your business has potential. Let's unlock it together, one sprint at a time.",
     "guide.final.startOver": "Start Over",
-    "guide.final.getStarted": "Get Started Now",
+    "guide.final.getStarted": "Contact us direct",
     "guide.modal.title": "Submit Your Request",
     "guide.modal.description": "Review your selections and provide additional details",
     "guide.modal.selections": "Your Selections:",
@@ -938,7 +938,7 @@ const translations = {
 
     // Guide page translations
     "guide.hero.title": "Welkom bij onze snelle startgids",
-    "guide.hero.subtitle": "Uw bedrijf heeft potentieel. Laten we het samen ontgrendelen—stap voor stap, in slechts 5 minuten.",
+    "guide.hero.subtitle": "Uw bedrijf heeft potentieel. Laten we het samen ontgrendelen, stap voor stap, in slechts 1 minuut.",
     "guide.hero.startButton": "Start Uw Reis",
     "guide.step1.title": "Waar Bent U Nu?",
     "guide.step1.subtitle": "Laten we uitzoeken waar u bent en waar u naartoe wilt",
@@ -1035,9 +1035,9 @@ const translations = {
     "guide.why.risk.title": "Geen Risico",
     "guide.why.risk.description": "Geen langetermijncontracten. We slagen wanneer u slaagt.",
     "guide.final.title": "Klaar Om De Eerste Stap Te Zetten?",
-    "guide.final.subtitle": "Uw bedrijf heeft potentieel. Laten we het samen ontgrendelen—één sprint tegelijk.",
+    "guide.final.subtitle": "Uw bedrijf heeft potentieel. Laten we het samen ontgrendelen, één sprint tegelijk.",
     "guide.final.startOver": "Opnieuw Beginnen",
-    "guide.final.getStarted": "Begin Nu",
+    "guide.final.getStarted": "Neem contact op",
     "guide.modal.title": "Dien Uw Verzoek In",
     "guide.modal.description": "Bekijk uw selecties en geef aanvullende details",
     "guide.modal.selections": "Uw Selecties:",
