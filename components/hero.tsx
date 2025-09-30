@@ -44,9 +44,14 @@ export function Hero() {
               <p className={`mb-5 ${theme === "dark" ? "text-muted-foreground" : "text-gray-300"}`}>
                 {t("hero.subtitle")}
               </p>
-              <Button asChild className="bg-green-500 hover:bg-green-600 text-white">
-                <a href="#services">{t("hero.cta")}</a>
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button asChild className="bg-green-500 hover:bg-green-600 text-white">
+                  <a href="#services">{t("hero.cta")}</a>
+                </Button>
+                <Button asChild variant="outline" className={`border-white ${theme === "dark" ? "text-white hover:bg-white hover:text-green-600" : "text-green-600 hover:bg-green-600 hover:text-white"}`}>
+                  <a href="/guide">Quick start</a>
+                </Button>
+              </div>
             </div>
           ) : (
             <div className="p-4 md:p-8 rounded-lg max-w-md bg-black text-white">
@@ -61,9 +66,14 @@ export function Hero() {
               </div>
 
               <p className="mb-5 text-gray-300">{t("hero.subtitle")}</p>
-              <Button asChild className="bg-green-500 hover:bg-green-600 text-white">
-                <a href="#services">{t("hero.cta")}</a>
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button asChild className="bg-green-500 hover:bg-green-600 text-white">
+                  <a href="#services">{t("hero.cta")}</a>
+                </Button>
+                <Button asChild variant="outline" className="border-white text-green-600 hover:bg-green-600 hover:text-white">
+                  <a href="/guide">Quick start</a>
+                </Button>
+              </div>
             </div>
           )}
         </div>
