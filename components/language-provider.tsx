@@ -466,7 +466,7 @@ const translations = {
     "guide.final.title": "Ready to Take the First Step?",
     "guide.final.subtitle": "Your business has potential. Let's unlock it together, one sprint at a time.",
     "guide.final.startOver": "Start Over",
-    "guide.final.getStarted": "Contact us direct",
+    "guide.final.getStarted": "Contact us directly",
     "guide.modal.title": "Submit Your Request",
     "guide.modal.description": "Review your selections and provide additional details",
     "guide.modal.selections": "Your Selections:",
