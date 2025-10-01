@@ -21,18 +21,6 @@ const cases: CaseItem[] = [
     imageUrl: "/cases/jetstack.png",
   },
   {
-    title: "Portaalvoormij - portaalvoormij.nl",
-    url: "https://portaalvoormij.nl",
-    status: "live",
-    imageUrl: "/cases/portaalvoormij.png",
-  },
-  {
-    title: "Portfolio site - bartolomeo.pro",
-    url: "https://bartolomeo.pro",
-    status: "live",
-    imageUrl: "/cases/barto-pro-resized.png",
-  },
-  {
     title: "Marktplaats - fyndly.io",
     url: "https://fyndly.io",
     status: "live",
