@@ -50,7 +50,49 @@ export async function POST(request: Request) {
     let emailContent = ""
     let htmlContent = ""
 
-    if (formType === "pricing") {
+    if (formType === "guide_request") {
+      const { email, guide } = body
+
+      subject = isNL
+        ? `Nieuwe Gids Aanvraag: ${guide}`
+        : `New Guide Request: ${guide}`
+
+      emailContent = isNL
+        ? `
+          Nieuwe Gids Aanvraag
+          
+          E-mail: ${email}
+          Gids: ${guide}
+          
+          De gebruiker heeft de gids aangevraagd via de resources pagina.
+        `
+        : `
+          New Guide Request
+          
+          Email: ${email}
+          Guide: ${guide}
+          
+          User requested the guide through the resources page.
+        `
+
+      htmlContent = isNL
+        ? `
+          <h2>Nieuwe Gids Aanvraag</h2>
+          
+          <p><strong>E-mail:</strong> ${email}</p>
+          <p><strong>Gids:</strong> ${guide}</p>
+          
+          <p>De gebruiker heeft de gids aangevraagd via de resources pagina.</p>
+        `
+        : `
+          <h2>New Guide Request</h2>
+          
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Guide:</strong> ${guide}</p>
+          
+          <p>User requested the guide through the resources page.</p>
+        `
+    } else if (formType === "pricing") {
       const { firstName, lastName, email, phone, message, packageDetails } = formData
 
       subject = isNL
@@ -232,7 +274,7 @@ export async function POST(request: Request) {
     const info = await transporter.sendMail({
       from: process.env.EMAIL_FROM,
       to: toEmail,
-      replyTo: formData.email, // Set reply-to as the user's email
+      replyTo: formData.email || body.email, // Set reply-to as the user's email
       subject,
       text: emailContent,
       html: htmlContent,
@@ -248,24 +290,28 @@ export async function POST(request: Request) {
       const userConfirmationSubject = isNL
         ? formType === "pricing"
           ? "Bedankt voor uw prijsaanvraag"
-          : "Bedankt voor uw MVP ontwikkelingsaanvraag"
+          : formType === "mvp"
+          ? "Bedankt voor uw MVP ontwikkelingsaanvraag"
+          : "Bedankt voor uw gids aanvraag"
         : formType === "pricing"
           ? "Thank you for your pricing request"
-          : "Thank you for your MVP development request"
+          : formType === "mvp"
+          ? "Thank you for your MVP development request"
+          : "Thank you for your guide request"
 
       const userConfirmationText = isNL
         ? `
-          Beste ${formData.firstName},
+          Beste ${formData.firstName || "gebruiker"},
           
-          Bedankt voor uw ${formType === "pricing" ? "prijsaanvraag" : "MVP ontwikkelingsaanvraag"} bij 8Leaps. We hebben uw aanvraag ontvangen en zullen zo snel mogelijk contact met u opnemen.
+          Bedankt voor uw ${formType === "pricing" ? "prijsaanvraag" : formType === "mvp" ? "MVP ontwikkelingsaanvraag" : "gids aanvraag"} bij 8Leaps. We hebben uw aanvraag ontvangen en zullen zo snel mogelijk contact met u opnemen.
           
           Met vriendelijke groet,
           Het 8Leaps Team
         `
         : `
-          Dear ${formData.firstName},
+          Dear ${formData.firstName || "user"},
           
-          Thank you for your ${formType === "pricing" ? "pricing request" : "MVP development request"} with 8Leaps. We have received your submission and will get back to you as soon as possible.
+          Thank you for your ${formType === "pricing" ? "pricing request" : formType === "mvp" ? "MVP development request" : "guide request"} with 8Leaps. We have received your submission and will get back to you as soon as possible.
           
           Best regards,
           The 8Leaps Team
@@ -273,23 +319,23 @@ export async function POST(request: Request) {
 
       const userConfirmationHtml = isNL
         ? `
-          <p>Beste ${formData.firstName},</p>
+          <p>Beste ${formData.firstName || "gebruiker"},</p>
           
-          <p>Bedankt voor uw ${formType === "pricing" ? "prijsaanvraag" : "MVP ontwikkelingsaanvraag"} bij 8Leaps. We hebben uw aanvraag ontvangen en zullen zo snel mogelijk contact met u opnemen.</p>
+          <p>Bedankt voor uw ${formType === "pricing" ? "prijsaanvraag" : formType === "mvp" ? "MVP ontwikkelingsaanvraag" : "gids aanvraag"} bij 8Leaps. We hebben uw aanvraag ontvangen en zullen zo snel mogelijk contact met u opnemen.</p>
           
           <p>Met vriendelijke groet,<br>Het 8Leaps Team</p>
         `
         : `
-          <p>Dear ${formData.firstName},</p>
+          <p>Dear ${formData.firstName || "user"},</p>
           
-          <p>Thank you for your ${formType === "pricing" ? "pricing request" : "MVP development request"} with 8Leaps. We have received your submission and will get back to you as soon as possible.</p>
+          <p>Thank you for your ${formType === "pricing" ? "pricing request" : formType === "mvp" ? "MVP development request" : "guide request"} with 8Leaps. We have received your submission and will get back to you as soon as possible.</p>
           
           <p>Best regards,<br>The 8Leaps Team</p>
         `
 
       const userConfirmationInfo = await transporter.sendMail({
         from: process.env.EMAIL_FROM,
-        to: formData.email,
+        to: formData.email || body.email,
         subject: userConfirmationSubject,
         text: userConfirmationText,
         html: userConfirmationHtml,

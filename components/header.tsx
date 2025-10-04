@@ -90,6 +90,15 @@ export function Header() {
             </Link>
 
             <Link
+              href="/resources"
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                isActive("/resources") ? "text-primary" : ""
+              }`}
+            >
+              Resources
+            </Link>
+
+            <Link
               href="/about"
               className={`text-sm font-medium transition-colors hover:text-primary ${
                 isActive("/about") ? "text-primary" : ""
@@ -192,6 +201,14 @@ export function Header() {
                     }`}
                   >
                     {t("nav.blog")}
+                  </Link>
+                  <Link
+                    href="/resources"
+                    className={`text-lg font-medium transition-colors hover:text-primary ${
+                      isActive("/resources") ? "text-primary" : ""
+                    }`}
+                  >
+                    Resources
                   </Link>
                   <Link
                     href="/about"
