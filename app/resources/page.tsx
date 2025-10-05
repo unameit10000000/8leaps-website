@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Clock, Zap, Target } from "lucide-react"
+import { ArrowRight, Clock, Zap, Target, Lightbulb } from "lucide-react"
 import Link from "next/link"
 import { useLanguage } from "@/components/language-provider"
 
@@ -103,6 +103,33 @@ export default function ResourcesPage() {
               </Card>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Final Section */}
+      <div className="container py-16">
+        <div className="max-w-4xl mx-auto">
+          <Card className="border-2 border-gray-200 bg-gray-50">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <Lightbulb className="h-6 w-6 text-gray-600" />
+                {t("resources.final.title")}
+              </CardTitle>
+              <CardDescription>
+                {t("resources.final.description")}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex gap-3">
+                <Button asChild className="flex-1 bg-green-500 hover:bg-green-600">
+                  <Link href="/solutions">{t("resources.final.services")}</Link>
+                </Button>
+                <Button asChild variant="outline" className="flex-1">
+                  <Link href="/contact">{t("resources.final.contact")}</Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
 

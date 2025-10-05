@@ -138,7 +138,6 @@ const translations = {
     "services.webdev.sub2": "Responsive design for all devices",
     "services.webdev.sub3": "Content management systems",
     "services.webdev.sub4": "Performance optimization and SEO",
-    "services.webdev.sub5": "Performance optimization and SEO",
     "services.webdev.card1.title": "WordPress Solutions",
     "services.webdev.card1.description":
       "From simple websites to complex custom solutions, we build professional WordPress sites with clean code, optimized performance, and user-friendly admin interfaces.",
@@ -369,14 +368,14 @@ const translations = {
     "guide.hero.title": "Welcome to our quickstart guide",
     "guide.hero.subtitle": "Your business has potential. Let's unlock it together, step by step, in just 1 minute.",
     "guide.hero.startButton": "Start Your Journey",
-    "guide.step1.title": "Where Are You Right Now?",
+    "guide.step1.title": "Where are you right now?",
     "guide.step1.subtitle": "Let's figure out where you are and where you want to go",
     "guide.step1.description": "Every successful business journey starts with understanding where you are today. Let's identify your current situation.",
-    "guide.step2.startup.title": "Perfect! Let's Get Your Idea to Market",
+    "guide.step2.startup.title": "Perfect! Let's get your idea to market",
     "guide.step2.startup.subtitle": "Here's exactly what we recommend for startups like yours. We'll get you to market fast and validate your idea.",
-    "guide.step2.scale.title": "Great! Let's Scale Your Business",
+    "guide.step2.scale.title": "Great! Let's scale your business",
     "guide.step2.scale.subtitle": "Here's how we can help you scale efficiently. We'll automate your growth and maximize your potential.",
-    "guide.step3.title": "Let's Make It Happen",
+    "guide.step3.title": "Let's make it happen",
     "guide.step3.subtitle": "You've identified your path. Now let's take the first step together. We'll make sure it fits your budget and timeline.",
     "guide.path.startup.title": "I'm Starting Something New",
     "guide.path.startup.description": "I have an idea, a vision, or I'm in the early stages of building my business",
@@ -442,6 +441,10 @@ const translations = {
     "guide.solution.other.perfectValue": "Complex projects or when you're not sure what you need",
     "guide.solution.other.investment": "Investment:",
     "guide.solution.other.investmentValue": "We'll discuss the best approach for your situation",
+    "guide.step2.notfound.title": "Not found what you are looking for?",
+    "guide.step2.notfound.description": "Explore our free resources or contact us directly",
+    "guide.step2.notfound.resources": "Explore resources",
+    "guide.step2.notfound.contact": "Contact us",
     "guide.action.discovery.title": "Quick Discovery Call",
     "guide.action.discovery.description": "Perfect if you want to discuss your project and get personalized recommendations",
     "guide.action.discovery.bullet1": "• 30-minute focused conversation",
@@ -505,6 +508,10 @@ const translations = {
     "resources.ai-marketing.description": "Cut through the AI marketing hype and learn practical strategies that actually work. No fluff, just actionable insights.",
     "resources.get-guide": "Get Guide",
     "resources.coming-soon": "Coming Soon",
+    "resources.final.title": "Need something more specific?",
+    "resources.final.description": "Explore our comprehensive services or contact us directly for personalized assistance",
+    "resources.final.services": "Explore our services",
+    "resources.final.contact": "Contact us directly",
     // Resource src page
     "resource.not-found": "Resource not found",
     "resource.not-found-desc": "The resource you're looking for doesn't exist.",
@@ -962,14 +969,14 @@ const translations = {
     "guide.hero.title": "Welkom bij onze snelle startgids",
     "guide.hero.subtitle": "Uw bedrijf heeft potentieel. Laten we het samen ontgrendelen, stap voor stap, in slechts 1 minuut.",
     "guide.hero.startButton": "Start Uw Reis",
-    "guide.step1.title": "Waar Bent U Nu?",
+    "guide.step1.title": "Waar bent u nu?",
     "guide.step1.subtitle": "Laten we uitzoeken waar u bent en waar u naartoe wilt",
     "guide.step1.description": "Elke succesvolle bedrijfsreis begint met het begrijpen van waar u vandaag staat. Laten we uw huidige situatie identificeren.",
-    "guide.step2.startup.title": "Perfect! Laten We Uw Idee Op De Markt Brengen",
+    "guide.step2.startup.title": "Perfect! Laten we uw idee op de markt brengen",
     "guide.step2.startup.subtitle": "Hier is precies wat we aanbevelen voor startups zoals de uwe. We brengen u snel op de markt en valideren uw idee.",
-    "guide.step2.scale.title": "Geweldig! Laten We Uw Bedrijf Schalen",
+    "guide.step2.scale.title": "Geweldig! Laten we uw bedrijf schalen",
     "guide.step2.scale.subtitle": "Hier is hoe we u kunnen helpen efficiënt te schalen. We automatiseren uw groei en maximaliseren uw potentieel.",
-    "guide.step3.title": "Laten We Het Waarmaken",
+    "guide.step3.title": "Laten we het waarmaken",
     "guide.step3.subtitle": "U heeft uw pad geïdentificeerd. Laten we nu samen de eerste stap zetten. We zorgen ervoor dat het past bij uw budget en tijdlijn.",
     "guide.path.startup.title": "Ik Begin Iets Nieuws",
     "guide.path.startup.description": "Ik heb een idee, een visie, of ik ben in de vroege stadia van het opbouwen van mijn bedrijf",
@@ -1035,6 +1042,10 @@ const translations = {
     "guide.solution.other.perfectValue": "Complexe projecten of wanneer u niet zeker weet wat u nodig heeft",
     "guide.solution.other.investment": "Investering:",
     "guide.solution.other.investmentValue": "We bespreken de beste aanpak voor uw situatie",
+    "guide.step2.notfound.title": "Niet gevonden wat u zoekt?",
+    "guide.step2.notfound.description": "Bekijk onze gratis bronnen of neem direct contact met ons op",
+    "guide.step2.notfound.resources": "Bekijk bronnen",
+    "guide.step2.notfound.contact": "Neem contact op",
     "guide.action.discovery.title": "Snelle Ontdekkingsgesprek",
     "guide.action.discovery.description": "Perfect als u uw project wilt bespreken en gepersonaliseerde aanbevelingen wilt krijgen",
     "guide.action.discovery.bullet1": "• 30-minuten gefocust gesprek",
@@ -1098,6 +1109,10 @@ const translations = {
     "resources.ai-marketing.description": "Snijd door de AI marketing hype en leer praktische strategieën die daadwerkelijk werken. Geen onzin, alleen actiegerichte inzichten.",
     "resources.get-guide": "Krijg Gids",
     "resources.coming-soon": "Binnenkort Beschikbaar",
+    "resources.final.title": "Heeft u iets specifiekers nodig?",
+    "resources.final.description": "Bekijk onze uitgebreide diensten of neem direct contact met ons op voor persoonlijke hulp",
+    "resources.final.services": "Bekijk onze diensten",
+    "resources.final.contact": "Neem direct contact op",
     // Resource src page
     "resource.not-found": "Bron niet gevonden",
     "resource.not-found-desc": "De bron die je zoekt bestaat niet.",
@@ -1146,7 +1161,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const t = (key: string): string => {
     // Check if the key exists in the current language
     if (translations[language] && key in translations[language]) {
-      return translations[language][key as keyof typeof translations.en];
+      return translations[language][key as keyof typeof translations.en] as string;
     }
 
     // If not found in current language, try English as fallback
@@ -1154,7 +1169,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       console.warn(
         `Missing translation for key "${key}" in language "${language}", using English fallback`
       );
-      return translations.en[key as keyof typeof translations.en];
+      return translations.en[key as keyof typeof translations.en] as string;
     }
 
     // If still not found, return the key itself and log a warning

@@ -478,6 +478,29 @@ Source: Guide Form`,
                       </div>
                     </CardContent>
                   </Card>
+
+                  {/* Not found what you're looking for card */}
+                  <Card className="border-2 border-gray-200 bg-gray-50">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-3">
+                        <Lightbulb className="h-6 w-6 text-gray-600" />
+                        {t("guide.step2.notfound.title")}
+                      </CardTitle>
+                      <CardDescription>
+                        {t("guide.step2.notfound.description")}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="flex gap-3">
+                        <Button asChild className="flex-1 bg-green-500 hover:bg-green-600">
+                          <Link href="/resources">{t("guide.step2.notfound.resources")}</Link>
+                        </Button>
+                        <Button asChild variant="outline" className="flex-1">
+                          <Link href="/contact">{t("guide.step2.notfound.contact")}</Link>
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
               ) : (
                 <div className="space-y-6 mb-8">
@@ -577,6 +600,29 @@ Source: Guide Form`,
                         <p className="text-sm"><strong>{t("guide.solution.other.what")}</strong> {t("guide.solution.other.whatValue")}</p>
                         <p className="text-sm"><strong>{t("guide.solution.other.perfect")}</strong> {t("guide.solution.other.perfectValue")}</p>
                         <p className="text-sm"><strong>{t("guide.solution.other.investment")}</strong> {t("guide.solution.other.investmentValue")}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Not found what you're looking for card */}
+                  <Card className="border-2 border-gray-200 bg-gray-50">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-3">
+                        <Lightbulb className="h-6 w-6 text-gray-600" />
+                        {t("guide.step2.notfound.title")}
+                      </CardTitle>
+                      <CardDescription>
+                        {t("guide.step2.notfound.description")}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="flex gap-3">
+                        <Button asChild className="flex-1 bg-green-500 hover:bg-green-600">
+                          <Link href="/resources">{t("guide.step2.notfound.resources")}</Link>
+                        </Button>
+                        <Button asChild variant="outline" className="flex-1">
+                          <Link href="/contact">{t("guide.step2.notfound.contact")}</Link>
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
