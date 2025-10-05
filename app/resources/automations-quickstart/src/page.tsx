@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -10,7 +10,7 @@ import { ArrowLeft, CheckCircle, X } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
-export default function AutomationsQuickstartSrcPage() {
+function AutomationsQuickstartSrcContent() {
   const searchParams = useSearchParams()
   const [isAuthorized, setIsAuthorized] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -180,5 +180,22 @@ You now have everything you need to start automating your business processes!
 
       <Footer />
     </main>
+  )
+}
+
+export default function AutomationsQuickstartSrcPage() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen flex flex-col">
+        <Header />
+        <div className="container py-16 text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500 mx-auto"></div>
+          <p className="mt-4">Loading...</p>
+        </div>
+        <Footer />
+      </main>
+    }>
+      <AutomationsQuickstartSrcContent />
+    </Suspense>
   )
 }
