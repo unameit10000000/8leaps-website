@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, CheckCircle, X } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { useLanguage } from "@/components/language-provider"
 
 const resourceContent = {
   "automations-quickstart": {
@@ -61,6 +62,7 @@ const resourceContent = {
 }
 
 export default function ResourceSrcPage() {
+  const { t } = useLanguage()
   const params = useParams()
   const searchParams = useSearchParams()
   const resourceId = params.id as string
@@ -76,7 +78,7 @@ export default function ResourceSrcPage() {
       const ref = searchParams.get('ref')
       
       if (!ref) {
-        setError("Invalid access link")
+        setError(t("resource.invalid-link"))
         setIsLoading(false)
         return
       }
@@ -84,14 +86,18 @@ export default function ResourceSrcPage() {
       // Check if this is automations-quickstart and validate accordingly
       if (resourceId === 'automations-quickstart') {
         const expectedRef = process.env.NEXT_PUBLIC_RESOURCE_QUICKSTART_REF
-        if (ref !== expectedRef) {
-          setError("Invalid resource reference")
+        
+        // Handle URL decoding - convert spaces back to + if needed
+        const normalizedRef = ref.replace(/ /g, '+')
+        
+        if (normalizedRef !== expectedRef) {
+          setError(t("resource.invalid-reference"))
           setIsLoading(false)
           return
         }
       } else {
         // For other resources, you can add more validation logic here
-        setError("Resource not found")
+        setError(t("resource.not-found"))
         setIsLoading(false)
         return
       }
@@ -108,10 +114,10 @@ export default function ResourceSrcPage() {
       <main className="min-h-screen flex flex-col">
         <Header />
         <div className="container py-16 text-center">
-          <h1 className="text-2xl font-bold mb-4">Resource not found</h1>
-          <p className="text-muted-foreground mb-6">The resource you're looking for doesn't exist.</p>
+          <h1 className="text-2xl font-bold mb-4">{t("resource.not-found")}</h1>
+          <p className="text-muted-foreground mb-6">{t("resource.not-found-desc")}</p>
           <Button asChild>
-            <Link href="/resources">Back to Resources</Link>
+            <Link href="/resources">{t("resource.go-to-resources")}</Link>
           </Button>
         </div>
         <Footer />
@@ -125,7 +131,7 @@ export default function ResourceSrcPage() {
         <Header />
         <div className="container py-16 text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500 mx-auto"></div>
-          <p className="mt-4">Loading...</p>
+          <p className="mt-4">{t("resource.loading")}</p>
         </div>
         <Footer />
       </main>
@@ -141,7 +147,7 @@ export default function ResourceSrcPage() {
         <Button asChild variant="ghost" className="mb-4">
           <Link href="/resources">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Resources
+            {t("resource.back-to-resources")}
           </Link>
         </Button>
       </div>
@@ -154,13 +160,13 @@ export default function ResourceSrcPage() {
             <Card className="border-2 border-red-200 bg-red-50/50">
               <CardContent className="p-8 text-center">
                 <X className="h-16 w-16 text-red-600 mx-auto mb-4" />
-                <h1 className="text-3xl font-bold mb-4">Access Denied</h1>
+                <h1 className="text-3xl font-bold mb-4">{t("resource.access-denied")}</h1>
                 <p className="text-xl text-muted-foreground mb-6">{error}</p>
                 <p className="text-sm text-muted-foreground mb-6">
-                  Please use the link provided in your email to access this resource.
+                  {t("resource.email-instruction")}
                 </p>
                 <Button asChild>
-                  <Link href="/resources">Back to Resources</Link>
+                  <Link href="/resources">{t("resource.go-to-resources")}</Link>
                 </Button>
               </CardContent>
             </Card>

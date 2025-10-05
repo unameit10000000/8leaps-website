@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-provider";
+import { Toaster } from "@/components/ui/sonner";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import Head from "next/head";
@@ -78,6 +79,7 @@ export default function ClientLayout({
           <LanguageProvider>
             <ScrollToTop />
             {children}
+            <Toaster />
           </LanguageProvider>
         </ThemeProvider>
       </body>

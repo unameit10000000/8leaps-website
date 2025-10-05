@@ -497,6 +497,28 @@ const translations = {
     "guide.solution.process.label": "Process Optimization",
     "guide.solution.other.label": "Other / All",
     "guide.solution.notSelected": "Not selected",
+    // Resources page
+    "resources.title": "Get Our Free Guides",
+    "resources.subtitle": "Access our collection of free guides designed to help you grow your business and improve your workflow.",
+    "resources.automations.description": "Learn how to set up powerful automations that save you time and boost your productivity. Perfect for beginners looking to streamline their workflow.",
+    "resources.x-growth.description": "A comprehensive guide to growing your presence on X (Twitter) with just 10 hours of focused effort per week. Coming soon!",
+    "resources.ai-marketing.description": "Cut through the AI marketing hype and learn practical strategies that actually work. No fluff, just actionable insights.",
+    "resources.get-guide": "Get Guide",
+    "resources.coming-soon": "Coming Soon",
+    // Resource src page
+    "resource.not-found": "Resource not found",
+    "resource.not-found-desc": "The resource you're looking for doesn't exist.",
+    "resource.go-to-resources": "Go to Resources",
+    "resource.back-to-resources": "Go to Resources",
+    "resource.access-denied": "Access Denied",
+    "resource.invalid-link": "Invalid access link",
+    "resource.invalid-reference": "Invalid resource reference",
+    "resource.email-instruction": "Please use the link provided in your email to access this resource.",
+    "resource.loading": "Loading...",
+    // Resource detail page
+    "resource.go-to-resources-button": "Go to Resources",
+    // Toaster messages
+    "resource.redirecting": "Redirecting in {seconds} seconds...",
   },
   nl: {
     "nav.home": "Home",
@@ -1068,6 +1090,28 @@ const translations = {
     "guide.solution.process.label": "Proces Optimalisatie",
     "guide.solution.other.label": "Anders / Alles",
     "guide.solution.notSelected": "Niet geselecteerd",
+    // Resources page
+    "resources.title": "Krijg Onze Gratis Gidsen",
+    "resources.subtitle": "Toegang tot onze collectie van gratis gidsen ontworpen om je bedrijf te helpen groeien en je workflow te verbeteren.",
+    "resources.automations.description": "Leer hoe je krachtige automatiseringen opzet die je tijd besparen en je productiviteit verhogen. Perfect voor beginners die hun workflow willen stroomlijnen.",
+    "resources.x-growth.description": "Een uitgebreide gids voor het groeien van je aanwezigheid op X (Twitter) met slechts 10 uur gefocuste inspanning per week. Binnenkort beschikbaar!",
+    "resources.ai-marketing.description": "Snijd door de AI marketing hype en leer praktische strategieën die daadwerkelijk werken. Geen onzin, alleen actiegerichte inzichten.",
+    "resources.get-guide": "Krijg Gids",
+    "resources.coming-soon": "Binnenkort Beschikbaar",
+    // Resource src page
+    "resource.not-found": "Bron niet gevonden",
+    "resource.not-found-desc": "De bron die je zoekt bestaat niet.",
+    "resource.go-to-resources": "Ga naar Resources",
+    "resource.back-to-resources": "Ga naar Resources",
+    "resource.access-denied": "Toegang Geweigerd",
+    "resource.invalid-link": "Ongeldige toegangslink",
+    "resource.invalid-reference": "Ongeldige bronreferentie",
+    "resource.email-instruction": "Gebruik de link in je e-mail om toegang te krijgen tot deze bron.",
+    "resource.loading": "Laden...",
+    // Resource detail page
+    "resource.go-to-resources-button": "Ga naar Resources",
+    // Toaster messages
+    "resource.redirecting": "Omleiden over {seconds} seconden...",
   },
 };
 

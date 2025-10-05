@@ -8,8 +8,10 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Mail, Shield } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useParams } from "next/navigation"
+import { useLanguage } from "@/components/language-provider"
+import { toast } from "sonner"
 
 const guideData = {
   "automations-quickstart": {
@@ -30,12 +32,27 @@ const guideData = {
 }
 
 export default function ResourceDetailPage() {
+  const { t } = useLanguage()
   const params = useParams()
   const guideId = params.id as string
   const guide = guideData[guideId as keyof typeof guideData]
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [countdown, setCountdown] = useState(0)
+
+  // Countdown effect
+  useEffect(() => {
+    if (countdown > 0) {
+      const timer = setTimeout(() => {
+        setCountdown(countdown - 1)
+      }, 1000)
+      return () => clearTimeout(timer)
+    } else if (countdown === 0 && submitStatus === 'success') {
+      // Redirect to resources page
+      window.location.href = '/resources'
+    }
+  }, [countdown, submitStatus])
 
   if (!guide) {
     return (
@@ -45,7 +62,7 @@ export default function ResourceDetailPage() {
           <h1 className="text-2xl font-bold mb-4">Guide not found</h1>
           <p className="text-muted-foreground mb-6">The guide you're looking for doesn't exist.</p>
           <Button asChild>
-            <Link href="/resources">Back to Resources</Link>
+            <Link href="/resources">Go to Resources</Link>
           </Button>
         </div>
         <Footer />
@@ -83,6 +100,10 @@ export default function ResourceDetailPage() {
       if (ghlResponse.ok) {
         setSubmitStatus('success')
         setEmail("")
+        setCountdown(5)
+        toast.success(t("resource.redirecting").replace("{seconds}", "5"), {
+          duration: 4000,
+        })
       } else {
         setSubmitStatus('error')
       }
@@ -99,7 +120,7 @@ export default function ResourceDetailPage() {
       <Button asChild variant="ghost" className="absolute top-4 left-4 text-white hover:bg-white/10 hover:text-white">
         <Link href="/resources">
           <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Resources
+          {t("resource.go-to-resources-button")}
         </Link>
       </Button>
 
@@ -107,11 +128,23 @@ export default function ResourceDetailPage() {
       <Card className="w-full max-w-4xl bg-white">
         <CardContent className="p-0">
           <div className="grid lg:grid-cols-2">
-            {/* Left Column - Content */}
-            <div className="p-8 space-y-8">
+            {/* Right Column - Image (shown first on mobile) */}
+            <div className="flex justify-center items-center bg-gray-50 order-1 lg:order-2">
+              <div className="relative w-full h-full min-h-[400px]">
+                <Image
+                  src="/resources/automations-quickstart.png"
+                  alt={guide.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Left Column - Content (shown second on mobile) */}
+            <div className="p-8 space-y-8 order-2 lg:order-1">
               <div>
-                <h1 className="text-4xl font-bold mb-4">{guide.title}</h1>
-                <p className="text-xl text-muted-foreground leading-relaxed">
+                <h1 className="text-3xl sm:text-4xl font-bold mb-4">{guide.title}</h1>
+                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
                   {guide.description}
                 </p>
               </div>
@@ -128,64 +161,58 @@ export default function ResourceDetailPage() {
                     </p>
                   </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3 text-center">
-                        Subscribe to get guide
-                      </h3>
-                      <div className="flex gap-2">
-                        <Input
-                          type="email"
-                          placeholder="Enter your email address"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          required
-                          className="flex-1"
-                        />
-                        <Button 
-                          type="submit" 
-                          disabled={isSubmitting || !email}
-                          className="bg-green-500 hover:bg-green-600 text-white px-8"
-                        >
-                          {isSubmitting ? "Sending..." : "GET FREE GUIDE"}
-                        </Button>
-                      </div>
-                    </div>
-
-                    {/* Status Messages */}
-                    {submitStatus === 'success' && (
-                      <div className="bg-green-100 border border-green-300 text-green-800 p-3 rounded-lg text-sm">
-                        <div className="flex items-center gap-2">
-                          <Mail className="h-4 w-4" />
-                          Check your email for the guide!
+                    {/* Fixed height container to prevent layout shift */}
+                    <div className="h-32 flex items-center justify-center">
+                      {submitStatus === 'success' ? (
+                        /* Success State - Centered in fixed height */
+                        <div className="bg-green-100 border border-green-300 text-green-800 p-4 rounded-lg text-center w-full">
+                          <div className="flex items-center justify-center gap-2">
+                            <Mail className="h-4 w-4" />
+                            <span className="font-semibold">Check your email for the guide!</span>
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      ) : (
+                        /* Form State */
+                        <form onSubmit={handleSubmit} className="w-full space-y-4">
+                          <div>
+                            <h3 className="text-lg font-semibold mb-3 text-center">
+                              Subscribe to get guide
+                            </h3>
+                            <div className="flex flex-col sm:flex-row gap-2">
+                              <Input
+                                type="email"
+                                placeholder="Enter your email address"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                className="flex-1"
+                              />
+                              <Button 
+                                type="submit" 
+                                disabled={isSubmitting || !email}
+                                className="bg-green-500 hover:bg-green-600 text-white px-8 w-full sm:w-auto"
+                              >
+                                {isSubmitting ? "Sending..." : "GET FREE GUIDE"}
+                              </Button>
+                            </div>
+                          </div>
 
-                    {submitStatus === 'error' && (
-                      <div className="bg-red-100 border border-red-300 text-red-800 p-3 rounded-lg text-sm">
-                        Something went wrong. Please try again.
-                      </div>
-                    )}
-
+                          {/* Error Message */}
+                          {submitStatus === 'error' && (
+                            <div className="bg-red-100 border border-red-300 text-red-800 p-3 rounded-lg text-sm">
+                              Something went wrong. Please try again.
+                            </div>
+                          )}
+                        </form>
+                      )}
+                    </div>
+                    
+                    {/* Privacy notice - always shown */}
                     <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
                       <Shield className="h-4 w-4" />
                       We respect your privacy. Unsubscribe at any time.
                     </p>
-                  </form>
                 </div>
-              </div>
-            </div>
-
-            {/* Right Column - Image */}
-            <div className="flex justify-center items-center bg-gray-50">
-              <div className="relative w-full h-full min-h-[400px]">
-                <Image
-                  src="/resources/automations-quickstart.png"
-                  alt={guide.title}
-                  fill
-                  className="object-cover"
-                />
               </div>
             </div>
           </div>
