@@ -1112,7 +1112,7 @@ const translations = {
     "resources.final.title": "Heeft u iets specifiekers nodig?",
     "resources.final.description": "Bekijk onze uitgebreide diensten of neem direct contact met ons op voor persoonlijke hulp",
     "resources.final.services": "Bekijk diensten",
-    "resources.final.contact": "Neem direct contact op",
+    "resources.final.contact": "Neem contact op",
     // Resource src page
     "resource.not-found": "Bron niet gevonden",
     "resource.not-found-desc": "De bron die je zoekt bestaat niet.",
