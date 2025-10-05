@@ -92,6 +92,7 @@ export async function POST(request: Request) {
           
           <p>User requested the guide through the resources page.</p>
         `
+
     } else if (formType === "pricing") {
       const { firstName, lastName, email, phone, message, packageDetails } = formData
 

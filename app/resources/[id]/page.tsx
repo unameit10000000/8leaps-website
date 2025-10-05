@@ -59,19 +59,28 @@ export default function ResourceDetailPage() {
     setSubmitStatus('idle')
 
     try {
-      const response = await fetch('/api/form-submission', {
+      // Send to GoHighLevel webhook directly
+      const ghlWebhookUrl = process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL
+      if (!ghlWebhookUrl) {
+        throw new Error('GHL webhook URL not configured')
+      }
+      
+      const ghlResponse = await fetch(ghlWebhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email,
+          email: email,
           guide: guideId,
-          type: 'guide_request'
+          formType: 'guide_request',
+          source: '8leaps-website',
+          timestamp: new Date().toISOString(),
+          language: 'en'
         }),
       })
 
-      if (response.ok) {
+      if (ghlResponse.ok) {
         setSubmitStatus('success')
         setEmail("")
       } else {
@@ -87,7 +96,7 @@ export default function ResourceDetailPage() {
   return (
     <main className="min-h-screen bg-black flex items-center justify-center p-4">
       {/* Back Button - Fixed position */}
-      <Button asChild variant="ghost" className="absolute top-4 left-4 text-white hover:bg-white/10">
+      <Button asChild variant="ghost" className="absolute top-4 left-4 text-white hover:bg-white/10 hover:text-white">
         <Link href="/resources">
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Resources
@@ -119,7 +128,7 @@ export default function ResourceDetailPage() {
                     </p>
                   </div>
 
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                       <h3 className="text-lg font-semibold mb-3 text-center">
                         Subscribe to get guide
