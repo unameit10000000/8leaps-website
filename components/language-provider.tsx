@@ -510,7 +510,7 @@ const translations = {
     "resources.coming-soon": "Coming Soon",
     "resources.final.title": "Need something more specific?",
     "resources.final.description": "Explore our comprehensive services or contact us directly for personalized assistance",
-    "resources.final.services": "Explore our services",
+    "resources.final.services": "Explore services",
     "resources.final.contact": "Contact us directly",
     // Resource src page
     "resource.not-found": "Resource not found",
@@ -1111,7 +1111,7 @@ const translations = {
     "resources.coming-soon": "Binnenkort Beschikbaar",
     "resources.final.title": "Heeft u iets specifiekers nodig?",
     "resources.final.description": "Bekijk onze uitgebreide diensten of neem direct contact met ons op voor persoonlijke hulp",
-    "resources.final.services": "Bekijk onze diensten",
+    "resources.final.services": "Bekijk diensten",
     "resources.final.contact": "Neem direct contact op",
     // Resource src page
     "resource.not-found": "Bron niet gevonden",
