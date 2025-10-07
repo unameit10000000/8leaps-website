@@ -244,19 +244,19 @@ If you encounter issues not covered in the troubleshooting section:
 - **Community Support**: Join our community forum for peer support
 - **Professional Support**: Contact us at [https://8leaps.com/contact](https://8leaps.com/contact) for personalized assistance
 - **GitHub Issues**: Report bugs or feature requests on our GitHub repository`,
-    image: "/resources/automations-quickstart.png"
+    image: "/resources/automations-quickstart.webp"
   },
   "10-hour-x-growth-strategy": {
     title: "10-Hour X Growth Strategy",
     description: "A comprehensive guide to growing your presence on X (Twitter) with just 10 hours of focused effort per week.",
     content: "Coming soon...",
-    image: "/resources/automations-quickstart.png"
+    image: "/resources/automations-quickstart.webp"
   },
   "no-bs-ai-marketing-guide": {
     title: "No-BS AI Marketing Guide",
     description: "Cut through the AI marketing hype and learn practical strategies that actually work.",
     content: "Coming soon...",
-    image: "/resources/automations-quickstart.png"
+    image: "/resources/automations-quickstart.webp"
   }
 }
 
@@ -375,7 +375,19 @@ export default function ResourceSrcPage() {
               <div className="text-center">
                 <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
                 <h1 className="text-4xl font-bold mb-4">{resource.title}</h1>
-                <p className="text-xl text-muted-foreground">{resource.description}</p>
+                <p className="text-xl text-muted-foreground mb-6">{resource.description}</p>
+                
+                {resource.image && (
+                  <div className="flex justify-center mb-8">
+                    <Image
+                      src={resource.image}
+                      alt={resource.title}
+                      width={600}
+                      height={400}
+                      className="rounded-lg shadow-lg"
+                    />
+                  </div>
+                )}
               </div>
 
               <Card>
@@ -392,18 +404,6 @@ export default function ResourceSrcPage() {
                   />
                 </CardContent>
               </Card>
-
-              {resource.image && (
-                <div className="flex justify-center">
-                  <Image
-                    src={resource.image}
-                    alt={resource.title}
-                    width={600}
-                    height={400}
-                    className="rounded-lg shadow-lg"
-                  />
-                </div>
-              )}
             </div>
           )}
         </div>
