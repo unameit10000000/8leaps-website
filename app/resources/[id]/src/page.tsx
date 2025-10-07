@@ -375,20 +375,20 @@ export default function ResourceSrcPage() {
               <div className="text-center">
                 <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
                 <h1 className="text-4xl font-bold mb-4">{resource.title}</h1>
-                <p className="text-xl text-muted-foreground mb-6">{resource.description}</p>
-                
-                {resource.image && (
-                  <div className="flex justify-center mb-8">
-                    <Image
-                      src={resource.image}
-                      alt={resource.title}
-                      width={600}
-                      height={400}
-                      className="rounded-lg shadow-lg"
-                    />
-                  </div>
-                )}
+                <p className="text-xl text-muted-foreground">{resource.description}</p>
               </div>
+
+              {resource.image && (
+                <div className="flex justify-center mb-8">
+                  <Image
+                    src={resource.image}
+                    alt={resource.title}
+                    width={600}
+                    height={400}
+                    className="rounded-lg shadow-lg"
+                  />
+                </div>
+              )}
 
               <Card>
                 <CardContent className="p-8">

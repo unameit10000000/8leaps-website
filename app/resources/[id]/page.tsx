@@ -17,17 +17,17 @@ const guideData = {
   "automations-quickstart": {
     title: "Automations Quickstart Guide",
     description: "Learn how to set up powerful automations that save you time and boost your productivity. This comprehensive guide covers everything from basic setup to advanced automation strategies.",
-    image: "/automations-quickstart.png"
+    image: "/automations-quickstart.webp"
   },
   "10-hour-x-growth-strategy": {
     title: "10-Hour X Growth Strategy",
     description: "A comprehensive guide to growing your presence on X (Twitter) with just 10 hours of focused effort per week. Coming soon!",
-    image: "/automations-quickstart.png" // Placeholder
+    image: "/automations-quickstart.webp" // Placeholder
   },
   "no-bs-ai-marketing-guide": {
     title: "No-BS AI Marketing Guide",
     description: "Cut through the AI marketing hype and learn practical strategies that actually work. No fluff, just actionable insights.",
-    image: "/automations-quickstart.png" // Placeholder
+    image: "/automations-quickstart.webp" // Placeholder
   }
 }
 
@@ -132,7 +132,7 @@ export default function ResourceDetailPage() {
             <div className="flex justify-center items-center bg-gray-50 order-1 lg:order-2">
               <div className="relative w-full h-full min-h-[400px]">
                 <Image
-                  src="/resources/automations-quickstart.png"
+                  src="/resources/automations-quickstart.webp"
                   alt={guide.title}
                   fill
                   className="object-cover"
