@@ -35,7 +35,7 @@ const cases: CaseItem[] = [
   {
     title: "Herstel bedrijf - schadeherstelkosta.nl",
     url: "https://schadeherstelkosta.nl",
-    status: "building",
+    status: "live",
     imageUrl: "/cases/snapshot-kostaschadeherstel-resized.png",
   },
 ]
