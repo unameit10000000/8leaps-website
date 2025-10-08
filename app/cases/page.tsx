@@ -29,7 +29,7 @@ const cases: CaseItem[] = [
   {
     title: "Eetcafe - dekameraad.nl",
     url: "https://dekameraad.nl",
-    status: "building",
+    status: "live",
     imageUrl: "/cases/snapshot-dekameraad-resized.png",
   },
   {
