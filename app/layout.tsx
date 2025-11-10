@@ -1,5 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
+import Script from "next/script";
 import ClientLayout from "./clientLayout";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -50,6 +51,19 @@ export default function RootLayout({
     <ClientLayout>
       {children}
       <Analytics />
+      {/* Google Analytics */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-3KSMBWX6NE"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-3KSMBWX6NE');
+        `}
+      </Script>
       {/* GoHighLevel Tracking Script */}
       <script
         dangerouslySetInnerHTML={{
