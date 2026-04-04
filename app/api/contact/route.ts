@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server"
 import nodemailer from "nodemailer"
+import { getEmailPassword } from "@/lib/email-env"
 
 export async function POST(request: Request) {
   try {
     // Parse the request body
     const body = await request.json()
     const { name, email, subject, message, language } = body
+
+    const emailPassword = getEmailPassword()
 
     // Log the received information and environment variables (for debugging)
     console.log("Contact form submission received:", { name, email, subject, language })
@@ -14,7 +17,7 @@ export async function POST(request: Request) {
       port: process.env.EMAIL_SERVER_PORT,
       secure: process.env.EMAIL_SERVER_SECURE === "true",
       username: process.env.EMAIL_USERNAME ? "Set" : "Not set",
-      password: process.env.EMAIL_PASSWORD ? "Set" : "Not set",
+      password: emailPassword ? "Set" : "Not set",
       from: process.env.EMAIL_FROM,
     })
 
@@ -23,7 +26,7 @@ export async function POST(request: Request) {
       !process.env.EMAIL_SERVER_HOST ||
       !process.env.EMAIL_SERVER_PORT ||
       !process.env.EMAIL_USERNAME ||
-      !process.env.EMAIL_PASSWORD ||
+      !emailPassword ||
       !process.env.EMAIL_FROM
     ) {
       console.error("Missing required email configuration environment variables")
@@ -37,7 +40,7 @@ export async function POST(request: Request) {
       secure: process.env.EMAIL_SERVER_SECURE === "true",
       auth: {
         user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD,
+        pass: emailPassword,
       },
       debug: true, // Enable debug output
       logger: true, // Log information to the console

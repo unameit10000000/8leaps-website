@@ -27,6 +27,23 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+  async redirects() {
+    return [
+      { source: "/about", destination: "/", permanent: false },
+      { source: "/blog", destination: "/", permanent: false },
+      { source: "/blog/:slug", destination: "/", permanent: false },
+      { source: "/cases", destination: "/", permanent: false },
+      { source: "/contact", destination: "/", permanent: false },
+      { source: "/guide", destination: "/", permanent: false },
+      { source: "/mvp", destination: "/", permanent: false },
+      { source: "/pricing", destination: "/", permanent: false },
+      { source: "/resources", destination: "/", permanent: false },
+      { source: "/resources/:id", destination: "/", permanent: false },
+      { source: "/resources/:id/src", destination: "/", permanent: false },
+      { source: "/solutions", destination: "/", permanent: false },
+      { source: "/spa", destination: "/", permanent: false },
+    ];
+  },
 };
 
 if (userConfig) {

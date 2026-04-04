@@ -37,9 +37,12 @@ At 8Leaps, the mission is to accelerate projects and help organizations stay agi
 
 Visit 8Leaps to learn more about their web development [services](https://8leaps.com/services) and how they help various types of clients create effective online presences.
 
-## Copyright
+## Issues
 
-(c) 2025-present 8Leaps. All rights reserved.
+### Email password and `.env` parsing (build/postbuild)
 
-This code is the exclusive property of 8Leaps. Unauthorized copying,
-modification, distribution, or use is strictly prohibited.
+If the SMTP password contains characters such as `$` or `#`, putting it in `.env.local` as `EMAIL_PASSWORD=...` can cause the build to fail during the **postbuild** step (next-sitemap). The Next.js env loader (`@next/env`) interpolates values and can throw `TypeError: Cannot read properties of undefined (reading 'split')` when it parses those characters.
+
+**Fix (local):** Use a separate password file so the value is never parsed from `.env.local`. In `.env.local`, set `EMAIL_PASSWORD_FILE=.env.email-password` and put the password as the first line in `.env.email-password` (that file is gitignored). The app reads the password via `lib/email-env.ts` (`getEmailPassword()`).
+
+**Vercel:** Set only `EMAIL_PASSWORD` in the project’s Environment Variables. Vercel injects env vars directly, so special characters in the password do not cause this error.
